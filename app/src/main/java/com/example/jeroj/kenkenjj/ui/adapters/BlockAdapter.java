@@ -51,6 +51,7 @@ public class BlockAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.block_item, parent, false);
         }
 
+
         Block cur_block = this.blocks.get(position);
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
         tv_overtexte.setText(cur_block.getTw_overtext());
@@ -74,24 +75,37 @@ public class BlockAdapter extends BaseAdapter {
         });
 
         final View borderTop = convertView.findViewById(R.id.vtop);
-        if(cur_block.getBorderTop() == false) {
+        if(!cur_block.getBorderTop()) {
             borderTop.setVisibility(View.INVISIBLE);
+        }else{
+            borderTop.setVisibility(View.VISIBLE);
         }
 
         final View borderLeft = convertView.findViewById(R.id.vleft);
-        if(cur_block.getBorderLeft() == false) {
+        if(!cur_block.getBorderLeft()) {
             borderLeft.setVisibility(View.INVISIBLE);
+        }else{
+            borderLeft.setVisibility(View.VISIBLE);
         }
 
         final View borderRight = convertView.findViewById(R.id.vright);
-        if(cur_block.getBorderRight() == false) {
+        if(!cur_block.getBorderRight()) {
             borderRight.setVisibility(View.INVISIBLE);
+        }else{
+            borderRight.setVisibility(View.VISIBLE);
         }
 
         final View borderBottom = convertView.findViewById(R.id.vbottom);
-        if(cur_block.getBorderBottom() == false) {
+        if(!cur_block.getBorderBottom()) {
             borderBottom.setVisibility(View.INVISIBLE);
+        }else{
+            borderBottom.setVisibility(View.VISIBLE);
         }
+
+        convertView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int height = convertView.getMeasuredHeight();
+        borderLeft.setMinimumHeight(height);
+        borderRight.setMinimumHeight(height);
 
        // final RelativeLayout relativeLayout = convertView.findViewById(R.id.block_id);
        // relativeLayout.setBackgroundResource(R.drawable.block_style);
