@@ -1,11 +1,6 @@
 package com.example.jeroj.kenkenjj.ui.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -13,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -58,21 +54,6 @@ public class BlockAdapter extends BaseAdapter {
         Block cur_block = this.blocks.get(position);
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
         tv_overtexte.setText(cur_block.getTw_overtext());
-/*        ShapeDrawable sd = new ShapeDrawable();
-
-        // Specify the shape of ShapeDrawable
-        sd.setShape(new RectShape());
-
-        // Specify the border color of shape
-        sd.getPaint().setColor(Color.RED);
-
-        // Set the border width
-        sd.getPaint().setStrokeWidth(10f);
-
-        // Specify the style is a Stroke
-        sd.getPaint().setStyle(Paint.Style.STROKE);
-        tv_overtexte.setBackground(sd);*/
-
 
         final EditText et_texte = convertView.findViewById(R.id.et_texte);
         et_texte.addTextChangedListener(new TextWatcher() {
@@ -91,6 +72,29 @@ public class BlockAdapter extends BaseAdapter {
 
             }
         });
+
+        final View borderTop = convertView.findViewById(R.id.vtop);
+        if(cur_block.getBorderTop() == false) {
+            borderTop.setVisibility(View.INVISIBLE);
+        }
+
+        final View borderLeft = convertView.findViewById(R.id.vleft);
+        if(cur_block.getBorderLeft() == false) {
+            borderLeft.setVisibility(View.INVISIBLE);
+        }
+
+        final View borderRight = convertView.findViewById(R.id.vright);
+        if(cur_block.getBorderRight() == false) {
+            borderRight.setVisibility(View.INVISIBLE);
+        }
+
+        final View borderBottom = convertView.findViewById(R.id.vbottom);
+        if(cur_block.getBorderBottom() == false) {
+            borderBottom.setVisibility(View.INVISIBLE);
+        }
+
+       // final RelativeLayout relativeLayout = convertView.findViewById(R.id.block_id);
+       // relativeLayout.setBackgroundResource(R.drawable.block_style);
 
 
 

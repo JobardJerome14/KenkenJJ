@@ -1,9 +1,6 @@
 package com.example.jeroj.kenkenjj.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -30,47 +27,48 @@ public class KenkenActivity extends ActivityBase {
         this.gridView = findViewById(R.id.gridview);
         //1
         ArrayList<Block> blocks = new ArrayList<>();
-        blocks.add(new Block( "15x", "20dp", "20dp", "20dp", "20dp"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "10x"));
-        blocks.add(new Block( "24x"));
-        blocks.add(new Block( "11+"));
-        blocks.add(new Block( ""));
+        //blocks.add(new Block( "15x", "20dp", "20dp", "20dp", "20dp"));
+        blocks.add(new Block( "15x", true, true, false, true));
+        blocks.add(new Block( "", true, false, true, false));
+        blocks.add(new Block( "10x", true, true, true, false));
+        blocks.add(new Block( "24x", true, true, true, false));
+        blocks.add(new Block( "11+",true, true, false, true));
+        blocks.add(new Block( "",true, false, true, false));
         //2
-        blocks.add(new Block( "2/"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
+        blocks.add(new Block( "2/", true, true, true, false));
+        blocks.add(new Block( "", false, true,true,true));
+        blocks.add(new Block( "", false, true,true,true));
+        blocks.add(new Block( "", false, true, false, true));
+        blocks.add(new Block( "", true, false, true, true));
+        blocks.add(new Block( "", false, true,true,true));
         //3
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "5-"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "9+"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "60x"));
+        blocks.add(new Block( "", false, true,true,true));
+        blocks.add(new Block( "5-", true, true, false, true));
+        blocks.add(new Block( "", true, false, true, true));
+        blocks.add(new Block( "9+", true, true, false, true));
+        blocks.add(new Block( "", true, false, true, true));
+        blocks.add(new Block( "60x", true, true, true, false));
         //4
-        blocks.add(new Block( "2/"));
-        blocks.add(new Block( "3-"));
-        blocks.add(new Block( "2-"));
-        blocks.add(new Block( "3+"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
+        blocks.add(new Block( "2/", true, true, true, false));
+        blocks.add(new Block( "3-", true, true, true, false));
+        blocks.add(new Block( "2-", true, true, true, false));
+        blocks.add(new Block( "3+", true, true, false, true));
+        blocks.add(new Block( "", true, false, true, true));
+        blocks.add(new Block( "", false, true, true, false));
         //5
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "3-"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
+        blocks.add(new Block( "", false, true,true,true));
+        blocks.add(new Block( "",false, true, true, true));
+        blocks.add(new Block( "",false, true, true, true));
+        blocks.add(new Block( "3-", true, true, true, false));
+        blocks.add(new Block( "", true, true, false, true));
+        blocks.add(new Block( "", false, false, true, true));
         //6
-        blocks.add(new Block( "12x"));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( ""));
-        blocks.add(new Block( "3-"));
-        blocks.add(new Block( ""));
+        blocks.add(new Block( "12x", true, true, false, true));
+        blocks.add(new Block( "", true, false, false, true));
+        blocks.add(new Block( "", true, false, true, true));
+        blocks.add(new Block( "", false, true,true,true));
+        blocks.add(new Block( "3-", true, true, false, true));
+        blocks.add(new Block( "", true, false, true, true));
 
 
 

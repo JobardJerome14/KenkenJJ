@@ -1,27 +1,31 @@
 package com.example.jeroj.kenkenjj.ui.models;
 
-import android.graphics.Color;
-import android.widget.RelativeLayout;
+import android.graphics.drawable.Drawable;
 
 public class Block {
     private String et_text = "";
     private String tw_overtext = "";
-    private String marginBottom = "0dp";
-    private String marginLeft = "0dp";
-    private String marginRight = "0dp";
-    private String marginTop = "0dp";
+
+    private Boolean borderTop = true;
+    private Boolean borderLeft = true;
+    private Boolean borderRight = true;
+    private Boolean borderBottom = true;
+
 
     public Block( String overtexte) {
         this.tw_overtext = overtexte;
     }
 
-    public Block( String overtexte, String marginBottom, String marginLeft, String marginRight, String marginTop) {
+    public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom) {
         this.tw_overtext = overtexte;
-        this.marginBottom = marginBottom;
-        this.marginLeft = marginLeft;
-        this.marginRight = marginRight;
-        this.marginTop = marginTop;
+        this.borderTop = borderTop;
+        this.borderLeft = borderLeft;
+        this.borderRight = borderRight;
+        this.borderBottom = borderBottom;
     }
+
+
+
 
     public String getEt_text() {
         return et_text;
@@ -40,35 +44,35 @@ public class Block {
         this.tw_overtext = tw_overtext;
     }
 
-    public String getMarginBottom() {
-        return marginBottom;
+    public Boolean getBorderTop() {
+        return borderTop;
     }
 
-    public void setMarginBottom(String marginBottom) {
-        this.marginBottom = marginBottom;
+    public void setBorderTop(Boolean borderTop) {
+        this.borderTop = borderTop;
     }
 
-    public String getMarginLeft() {
-        return marginLeft;
+    public Boolean getBorderLeft() {
+        return borderLeft;
     }
 
-    public void setMarginLeft(String marginLeft) {
-        this.marginLeft = marginLeft;
+    public void setBorderLeft(Boolean borderLeft) {
+        this.borderLeft = borderLeft;
     }
 
-    public String getMarginRight() {
-        return marginRight;
+    public Boolean getBorderRight() {
+        return borderRight;
     }
 
-    public void setMarginRight(String marginRight) {
-        this.marginRight = marginRight;
+    public void setBorderRight(Boolean borderRight) {
+        this.borderRight = borderRight;
     }
 
-    public String getMarginTop() {
-        return marginTop;
+    public Boolean getBorderBottom() {
+        return borderBottom;
     }
 
-    public void setMarginTop(String marginTop) {
-        this.marginTop = marginTop;
+    public void setBorderBottom(Boolean borderBottom) {
+        this.borderBottom = borderBottom;
     }
 }
