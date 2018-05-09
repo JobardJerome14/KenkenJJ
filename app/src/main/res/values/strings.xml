@@ -3,5 +3,5 @@
     <string name="welcome_text">Bienvenue sur KenkenJJ</string>
     <string name="welcome_btn">Play Kenken</string>
     <string name="num_non_autorise_title">Chiffre non autorisé</string>
-    <string name="num_non_autorise_desc">Il faut saisir un chiffre entra 1 et 6</string>
+    <string name="num_non_autorise_desc">Il faut saisir un chiffre entre 1 et 6</string>
 </resources>
