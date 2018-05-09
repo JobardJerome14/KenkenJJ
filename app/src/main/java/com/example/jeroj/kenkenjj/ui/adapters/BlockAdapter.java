@@ -1,6 +1,8 @@
 package com.example.jeroj.kenkenjj.ui.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -8,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -65,7 +66,21 @@ public class BlockAdapter extends BaseAdapter {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (!et_texte.getText().toString().equals("")) {
+                    Integer text = Integer.parseInt(et_texte.getText().toString());
+                    switch (text) {
+                        case 0:
+                        case 7:
+                        case 8:
+                        case 9:
+                            et_texte.setText("");
+                            notify_number_unauthorized();
+                            break;
+                        default:
+                            //TODO close keyboard
+                            break;
+                    }
+                }
             }
 
             @Override
@@ -107,21 +122,22 @@ public class BlockAdapter extends BaseAdapter {
         borderLeft.setMinimumHeight(height);
         borderRight.setMinimumHeight(height);
 
-       // final RelativeLayout relativeLayout = convertView.findViewById(R.id.block_id);
-       // relativeLayout.setBackgroundResource(R.drawable.block_style);
-
-
-
-
-/*        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv_meteo.setBackgroundColor(contexte.getResources().getColor(R.color.flashy2));
-            }
-        });*/
-
-
         return convertView;
-        //return null;
     }
+
+    private void notify_number_unauthorized() {
+        AlertDialog alertDialog;
+        alertDialog = new AlertDialog.Builder(this.contexte).create();
+        alertDialog.setTitle(R.string.num_non_autorise_title);
+        alertDialog.setMessage(contexte.getString(R.string.num_non_autorise_desc));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
+    }
+
 }
