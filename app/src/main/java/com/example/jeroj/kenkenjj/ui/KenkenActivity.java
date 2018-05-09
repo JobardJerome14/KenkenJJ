@@ -1,6 +1,8 @@
 package com.example.jeroj.kenkenjj.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 public class KenkenActivity extends ActivityBase {
     private GridView gridView;
-
+    private Button raz_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +72,16 @@ public class KenkenActivity extends ActivityBase {
         blocks.add(new Block( "3-", true, true, false, true));
         blocks.add(new Block( "", true, false, true, true));
 
-
-
         gridView.setAdapter(new BlockAdapter(this, blocks));
 
+        this.raz_btn = findViewById(R.id.raz_btn);
+        this.raz_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO raz du gridview
+            }
+        });
     }
+    
+
 }
