@@ -25,10 +25,13 @@
             android:layout_below="@+id/tv_overtexte"
             android:id="@+id/et_texte"
             android:hint="\?"
+            android:textColorHint="#ff8400"
             android:backgroundTint="@android:color/transparent"
             android:padding="3dp"
             android:textAlignment="center"
-            android:textSize="10sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#ff8400"
             android:inputType="number"
             android:maxLength="1"
             android:layout_width="match_parent"
@@ -41,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
-        android:background="#ff000d"/>
+        android:background="@color/colorPrimary"/>
 
     <View
         android:id="@+id/vleft"
@@ -49,7 +52,7 @@
         android:layout_alignParentLeft="true"
         android:layout_width="2dp"
         android:layout_height="match_parent"
-        android:background="#ff000d"/>
+        android:background="@color/colorPrimary"/>
 
     <View
         android:id="@+id/vright"
@@ -57,14 +60,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_height="match_parent"
-        android:background="#ff000d"/>
+        android:background="@color/colorPrimary"/>
 
     <View
         android:id="@+id/vbottom"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="2dp"
-        android:background="#ff000d"/>
+        android:background="@color/colorPrimary"/>
 
 
 </RelativeLayout>
