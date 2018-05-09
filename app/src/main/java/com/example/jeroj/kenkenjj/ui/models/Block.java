@@ -1,7 +1,5 @@
 package com.example.jeroj.kenkenjj.ui.models;
 
-import android.graphics.drawable.Drawable;
-
 public class Block {
     private String et_text = "";
     private String tw_overtext = "";
