@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ public class BlockAdapter extends BaseAdapter {
     public BlockAdapter(Context contexte, ArrayList<Block> blocks) {
         this.contexte = contexte;
         this.blocks = blocks;
-
     }
 
 
@@ -53,7 +53,7 @@ public class BlockAdapter extends BaseAdapter {
         }
 
 
-        Block cur_block = this.blocks.get(position);
+        final Block cur_block = this.blocks.get(position);
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
         tv_overtexte.setText(cur_block.getTw_overtext());
 
@@ -77,7 +77,7 @@ public class BlockAdapter extends BaseAdapter {
                             notify_number_unauthorized();
                             break;
                         default:
-                            //TODO close keyboard
+                            //TODO auto close keyboard si possible
                             break;
                     }
                 }
@@ -85,7 +85,12 @@ public class BlockAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (/*!s.toString().equals("") &&*/ !et_texte.getText().toString().equals("")) {
+                    Integer text = Integer.parseInt(et_texte.getText().toString());
+                    cur_block.setCurrent_value(text);
 
+                    check_grille();
+                }
             }
         });
 
@@ -125,6 +130,25 @@ public class BlockAdapter extends BaseAdapter {
         return convertView;
     }
 
+
+
+    private void check_grille() {
+        Integer i = 0;
+        Integer good = 0;
+        for (Block block: this.blocks ) {
+            i++;
+            //Log.i("block_current_value", i+" : "+block.getCurrent_value());
+            //Log.i("block_good_value", i+" : "+block.getGood_value());
+            if(block.getCurrent_value() == block.getGood_value()) {
+                good++;
+            }
+        }
+        if(good==36) {
+            //Log.i("victory", "C'est la victoire !");
+            notify_victory();
+        }
+    }
+
     private void notify_number_unauthorized() {
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this.contexte).create();
@@ -137,7 +161,20 @@ public class BlockAdapter extends BaseAdapter {
                     }
                 });
         alertDialog.show();
-
+    }
+    
+    private void notify_victory() {
+        AlertDialog alertDialog;
+        alertDialog = new AlertDialog.Builder(this.contexte).create();
+        alertDialog.setTitle(R.string.win_message_title);
+        alertDialog.setMessage(contexte.getString(R.string.win_message_desc));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 }

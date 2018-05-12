@@ -9,20 +9,23 @@ public class Block {
     private Boolean borderRight = true;
     private Boolean borderBottom = true;
 
+    private Integer current_value = 0;
+    private Integer good_value = 0;
+
 
     public Block( String overtexte) {
         this.tw_overtext = overtexte;
     }
 
-    public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom) {
+    public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
         this.tw_overtext = overtexte;
         this.borderTop = borderTop;
         this.borderLeft = borderLeft;
         this.borderRight = borderRight;
         this.borderBottom = borderBottom;
+        this.current_value = 0;
+        this.good_value = good_value;
     }
-
-
 
 
     public String getEt_text() {
@@ -72,5 +75,21 @@ public class Block {
 
     public void setBorderBottom(Boolean borderBottom) {
         this.borderBottom = borderBottom;
+    }
+
+    public Integer getCurrent_value() {
+        return current_value;
+    }
+
+    public void setCurrent_value(Integer current_value) {
+        this.current_value = current_value;
+    }
+
+    public Integer getGood_value() {
+        return good_value;
+    }
+
+    public void setGood_value(Integer good_value) {
+        this.good_value = good_value;
     }
 }

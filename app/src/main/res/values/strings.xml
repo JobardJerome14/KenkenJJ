@@ -4,4 +4,6 @@
     <string name="welcome_btn">Play Kenken</string>
     <string name="num_non_autorise_title">Chiffre non autorisé</string>
     <string name="num_non_autorise_desc">Il faut saisir un chiffre entre 1 et 6</string>
+    <string name="win_message_title">Gagné!</string>
+    <string name="win_message_desc">Bravo, tu as terminé cette grille!</string>
 </resources>
