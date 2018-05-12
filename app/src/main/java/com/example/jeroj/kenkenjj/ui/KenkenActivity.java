@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class KenkenActivity extends ActivityBase {
     private GridView gridView;
     private Button raz_btn;
+    private BlockAdapter blockAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,8 @@ public class KenkenActivity extends ActivityBase {
         blocks.add(new Block( "3-", true, true, false, true, 2));
         blocks.add(new Block( "", true, false, true, true, 5));
 
-        gridView.setAdapter(new BlockAdapter(this, blocks));
+        this.blockAdapter = new BlockAdapter(this, blocks);
+        gridView.setAdapter(this.blockAdapter);
 
 
         this.raz_btn = findViewById(R.id.raz_btn);
@@ -80,9 +82,14 @@ public class KenkenActivity extends ActivityBase {
             @Override
             public void onClick(View v) {
                 //TODO raz du gridview
+                raz();
             }
         });
     }
-    
+
+    private void raz() {
+        this.blockAdapter.raz();
+        this.blockAdapter.notifyDataSetChanged();
+    }
 
 }

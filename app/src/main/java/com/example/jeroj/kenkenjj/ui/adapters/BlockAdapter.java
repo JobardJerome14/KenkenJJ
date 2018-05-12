@@ -130,6 +130,12 @@ public class BlockAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void raz() {
+        for (Block block: this.blocks) {
+            block.setEt_text("");
+            block.setCurrent_value(0);
+        }
+    }
 
 
     private void check_grille() {
@@ -162,7 +168,7 @@ public class BlockAdapter extends BaseAdapter {
                 });
         alertDialog.show();
     }
-    
+
     private void notify_victory() {
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this.contexte).create();
