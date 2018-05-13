@@ -25,12 +25,9 @@ public class KenkenActivity extends ActivityBase {
         bindView();
     }
 
-
-    private void bindView() {
-        this.gridView = findViewById(R.id.gridview);
-        //1
+    private ArrayList<Block> get_blocs() {
         ArrayList<Block> blocks = new ArrayList<>();
-        //blocks.add(new Block( "15x", "20dp", "20dp", "20dp", "20dp"));
+        //1
         blocks.add(new Block( "15x", true, true, false, true, 5));
         blocks.add(new Block( "", true, false, true, false, 1));
         blocks.add(new Block( "10x", true, true, true, false, 2));
@@ -73,6 +70,14 @@ public class KenkenActivity extends ActivityBase {
         blocks.add(new Block( "3-", true, true, false, true, 2));
         blocks.add(new Block( "", true, false, true, true, 5));
 
+        return blocks;
+    }
+
+
+    private void bindView() {
+        this.gridView = findViewById(R.id.gridview);
+
+        ArrayList<Block> blocks = get_blocs();
         this.blockAdapter = new BlockAdapter(this, blocks);
         gridView.setAdapter(this.blockAdapter);
 
@@ -88,7 +93,9 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void raz() {
-        this.blockAdapter.raz();
+        ArrayList<Block> blocks = get_blocs();
+        this.blockAdapter = new BlockAdapter(this, blocks);
+        gridView.setAdapter(this.blockAdapter);
         this.blockAdapter.notifyDataSetChanged();
     }
 
