@@ -1,21 +1,34 @@
 package com.example.jeroj.kenkenjj.ui.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Block {
-    private String et_text = "";
-    private String tw_overtext = "";
+    @SerializedName("overtexte")
+    private String tw_overtext;
 
-    private Boolean borderTop = true;
-    private Boolean borderLeft = true;
-    private Boolean borderRight = true;
-    private Boolean borderBottom = true;
+    @SerializedName("vtop")
+    private Boolean borderTop;
 
-    private Integer current_value = 0;
+    @SerializedName("vleft")
+    private Boolean borderLeft;
+
+    @SerializedName("vright")
+    private Boolean borderRight;
+
+    @SerializedName("vbottom")
+    private Boolean borderBottom;
+
+
+    @SerializedName("texte")
     private Integer good_value = 0;
 
+    private String et_text = "";
+    private Integer current_value = 0;
 
-    public Block( String overtexte) {
+
+/*    public Block( String overtexte) {
         this.tw_overtext = overtexte;
-    }
+    }*/
 
     public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
         this.tw_overtext = overtexte;

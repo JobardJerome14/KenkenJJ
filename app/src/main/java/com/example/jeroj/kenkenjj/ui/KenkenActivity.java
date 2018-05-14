@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.jeroj.kenkenjj.R;
+import com.example.jeroj.kenkenjj.api.API;
+import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
@@ -73,13 +75,29 @@ public class KenkenActivity extends ActivityBase {
         return blocks;
     }
 
+    private void load_grille(ArrayList<Block> blockArrayList) {
+        this.blockAdapter = new BlockAdapter(this, blockArrayList);
+        this.gridView.setAdapter(this.blockAdapter);
+    }
+
+    private void get_blocs_via_api () {
+        API api = new API();
+
+        api.getKenkenGrille(new ResultatCallback() {
+            @Override
+            public void onWaitingResultat(ArrayList<Block> blockArrayList) {
+                load_grille(blockArrayList);
+            }
+        });
+
+    }
+
 
     private void bindView() {
         this.gridView = findViewById(R.id.gridview);
 
-        ArrayList<Block> blocks = get_blocs();
-        this.blockAdapter = new BlockAdapter(this, blocks);
-        gridView.setAdapter(this.blockAdapter);
+        get_blocs_via_api();
+        //ArrayList<Block> blocks = get_blocs();
 
 
         this.raz_btn = findViewById(R.id.raz_btn);
