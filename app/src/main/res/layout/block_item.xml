@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sweet_borders"
     android:id="@+id/block_id">
 
     <RelativeLayout
@@ -24,7 +25,7 @@
         <EditText
             android:layout_below="@+id/tv_overtexte"
             android:id="@+id/et_texte"
-            android:hint="\?"
+            android:hint=""
             android:textColorHint="@color/block_number"
             android:backgroundTint="@android:color/transparent"
             android:padding="3dp"
@@ -42,7 +43,7 @@
     <View
         android:id="@+id/vtop"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"/>
 
@@ -50,13 +51,13 @@
         android:id="@+id/vleft"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_width="1dp"
+        android:layout_width="2dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"/>
 
     <View
         android:id="@+id/vright"
-        android:layout_width="1dp"
+        android:layout_width="2dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_height="match_parent"
@@ -66,7 +67,7 @@
         android:id="@+id/vbottom"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:background="@color/colorPrimary"/>
 
 
