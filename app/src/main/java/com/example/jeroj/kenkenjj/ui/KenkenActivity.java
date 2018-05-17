@@ -83,7 +83,7 @@ public class KenkenActivity extends ActivityBase {
     private void get_blocs_via_api () {
         API api = new API();
 
-        api.getKenkenGrille(new ResultatCallback() {
+        api.getKenkenGrille(new ResultatCallback<Block>() {
             @Override
             public void onWaitingResultat(ArrayList<Block> blockArrayList) {
                 load_grille(blockArrayList);
@@ -96,9 +96,10 @@ public class KenkenActivity extends ActivityBase {
     private void bindView() {
         this.gridView = findViewById(R.id.gridview);
 
-        get_blocs_via_api();
-        //ArrayList<Block> blocks = get_blocs();
-
+            //premiere ligne pour test sur virtual device , 2e et 3e pour test sur terminal
+        //get_blocs_via_api();
+        ArrayList<Block> blocks = get_blocs();
+        load_grille(blocks);
 
         this.raz_btn = findViewById(R.id.raz_btn);
         this.raz_btn.setOnClickListener(new View.OnClickListener() {
