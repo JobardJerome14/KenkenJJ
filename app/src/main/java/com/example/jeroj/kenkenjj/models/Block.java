@@ -26,10 +26,6 @@ public class Block {
     private Integer current_value = 0;
 
 
-/*    public Block( String overtexte) {
-        this.tw_overtext = overtexte;
-    }*/
-
     public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
         this.tw_overtext = overtexte;
         this.borderTop = borderTop;

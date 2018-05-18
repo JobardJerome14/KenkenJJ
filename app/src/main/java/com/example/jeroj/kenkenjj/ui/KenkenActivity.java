@@ -8,6 +8,7 @@ import android.widget.GridView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
@@ -23,7 +24,9 @@ public class KenkenActivity extends ActivityBase {
     private BlockAdapter blockAdapter;
 
 
-    private Boolean test_id_grille = true;
+    private Integer id_grille = 0;
+
+    private String user_id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +36,18 @@ public class KenkenActivity extends ActivityBase {
         bindView();
     }
 
-    private ArrayList<Block> get_blocs(Integer new_grille) {
-        ArrayList<Block> blocks = new ArrayList<>();
+    private Grille get_grille(Integer new_grille) {
+        ArrayList<Block> blocks = new ArrayList<Block>();
 
         if(new_grille == 1 ) {
-            this.test_id_grille = !this.test_id_grille;
+            if(this.id_grille ==0 ) {
+                this.id_grille = 1;
+            } else {
+                this.id_grille = 0;
+            }
         }
-        if(this.test_id_grille) {
+
+        if(this.id_grille == 1) {
             //1
             blocks.add(new Block("15x", true, true, false, true, 5));
             blocks.add(new Block("", true, false, true, false, 1));
@@ -126,21 +134,25 @@ public class KenkenActivity extends ActivityBase {
             blocks.add(new Block("", true, false, true, true, 3));
             blocks.add(new Block("", false, true, true, true, 5));
         }
-        return blocks;
+
+
+        Grille grille = new Grille(this.id_grille, blocks);
+        return grille;
     }
 
-    private void load_grille(ArrayList<Block> blockArrayList) {
-        this.blockAdapter = new BlockAdapter(this, blockArrayList);
+    private void load_grille(Grille grille) {
+        this.blockAdapter = new BlockAdapter(this, grille);
         this.gridView.setAdapter(this.blockAdapter);
     }
 
-    private void get_blocs_via_api () {
+    private void get_grille_via_api () {
         API api = new API();
 
-        api.getKenkenGrille(new ResultatCallback<Block>() {
+
+        api.getKenkenGrille(this.user_id, new ResultatCallback() {
             @Override
-            public void onWaitingResultat(ArrayList<Block> blockArrayList) {
-                load_grille(blockArrayList);
+            public void onWaitingResultat(Grille grille) {
+                load_grille(grille);
             }
         });
 
@@ -151,10 +163,10 @@ public class KenkenActivity extends ActivityBase {
         this.gridView = findViewById(R.id.gridview);
 
         //premiere ligne pour test sur virtual device , 2e et 3e pour test sur terminal
-        //get_blocs_via_api();
-        ArrayList<Block> blocks = get_blocs(0);
-        load_grille(blocks);
-
+        get_grille_via_api();
+        /*Grille grille = get_grille(0);
+        load_grille(grille);
+*/
         this.raz_btn = findViewById(R.id.raz_btn);
         this.raz_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,8 +203,8 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void raz() {
-        ArrayList<Block> blocks = get_blocs(0);
-        this.blockAdapter = new BlockAdapter(this, blocks);
+        Grille grille = get_grille(0);
+        this.blockAdapter = new BlockAdapter(this, grille);
         gridView.setAdapter(this.blockAdapter);
         this.blockAdapter.notifyDataSetChanged();
     }
@@ -200,10 +212,11 @@ public class KenkenActivity extends ActivityBase {
     private void new_game() {
         //TODO sauvegarde partie en cours 'Game Over' --> api
 
-        ArrayList<Block> blocks = get_blocs(1);
-        this.blockAdapter = new BlockAdapter(this, blocks);
+        get_grille_via_api();
+        /*Grille grille = get_grille(1);
+        this.blockAdapter = new BlockAdapter(this, grille);
         gridView.setAdapter(this.blockAdapter);
-        this.blockAdapter.notifyDataSetChanged();
+        this.blockAdapter.notifyDataSetChanged();*/
     }
 
 }

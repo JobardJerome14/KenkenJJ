@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
+import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 
 import java.util.ArrayList;
@@ -22,11 +23,12 @@ import java.util.ArrayList;
 public class BlockAdapter extends BaseAdapter {
     private Context contexte;
     private ArrayList<Block> blocks;
+    private Integer id_grille;
 
-
-    public BlockAdapter(Context contexte, ArrayList<Block> blocks) {
+    public BlockAdapter(Context contexte, Grille grille) {
         this.contexte = contexte;
-        this.blocks = blocks;
+        this.blocks = grille.getBlocks();
+        this.id_grille = grille.getId_grille();
     }
 
 
@@ -89,8 +91,10 @@ public class BlockAdapter extends BaseAdapter {
                 if (/*!s.toString().equals("") &&*/ !et_texte.getText().toString().equals("")) {
                     Integer text = Integer.parseInt(et_texte.getText().toString());
                     cur_block.setCurrent_value(text);
-                    InputMethodManager imm = (InputMethodManager)contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(et_texte.getWindowToken(), 0);
+
+                    hideKeyboard(et_texte);
+                    //InputMethodManager imm = (InputMethodManager)contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    //imm.hideSoftInputFromWindow(et_texte.getWindowToken(), 0);
                     check_grille();
                 }
             }
@@ -132,10 +136,10 @@ public class BlockAdapter extends BaseAdapter {
         return convertView;
     }
 
-/*    private void hideKeyboard(EditText editText) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    private void hideKeyboard(EditText editText) {
+        InputMethodManager imm = (InputMethodManager)this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-    }*/
+    }
 
     public void raz() {
         for (Block block: this.blocks) {
@@ -167,7 +171,7 @@ public class BlockAdapter extends BaseAdapter {
         alertDialog = new AlertDialog.Builder(this.contexte).create();
         alertDialog.setTitle(R.string.num_non_autorise_title);
         alertDialog.setMessage(contexte.getString(R.string.num_non_autorise_desc));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"+this.id_grille,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

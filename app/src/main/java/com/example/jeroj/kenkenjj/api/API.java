@@ -1,10 +1,8 @@
 package com.example.jeroj.kenkenjj.api;
 
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
-import com.example.jeroj.kenkenjj.ui.models.Block;
+import com.example.jeroj.kenkenjj.models.Grille;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -36,20 +34,20 @@ public class API {
         this.iApi = retrofit.create(IApi.class);
     }
 
-    public void getKenkenGrille(final ResultatCallback resultatCallback) {
-        Call<ArrayList<Block>> call = this.iApi.getKenkenGrille();
+    public void getKenkenGrille(String user_id, final ResultatCallback resultatCallback) {
+        Call<Grille> call = this.iApi.getKenkenGrille(user_id);
 
-        call.enqueue(new Callback<ArrayList<Block>>() {
+        call.enqueue(new Callback<Grille>() {
             @Override
-            public void onResponse(Call<ArrayList<Block>> call, Response<ArrayList<Block>> response) {
+            public void onResponse(Call<Grille> call, Response<Grille> response) {
                 if(response.isSuccessful()) {
-                    ArrayList<Block> blockArrayList = response.body();
-                    resultatCallback.onWaitingResultat(blockArrayList);
+                    Grille grille = response.body();
+                    resultatCallback.onWaitingResultat(grille);
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Block>> call, Throwable t) {
+            public void onFailure(Call<Grille> call, Throwable t) {
                 //TODO
             }
         });
