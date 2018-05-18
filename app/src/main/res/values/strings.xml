@@ -6,4 +6,6 @@
     <string name="num_non_autorise_desc">Il faut saisir un chiffre entre 1 et 6</string>
     <string name="win_message_title">Gagné!</string>
     <string name="win_message_desc">Bravo, tu as terminé cette grille!</string>
+    <string name="raz_btn_label">Vider la grille</string>
+    <string name="new_game_btn_label">Nouvelle partie</string>
 </resources>
