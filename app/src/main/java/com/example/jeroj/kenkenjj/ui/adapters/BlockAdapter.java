@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -88,7 +89,8 @@ public class BlockAdapter extends BaseAdapter {
                 if (/*!s.toString().equals("") &&*/ !et_texte.getText().toString().equals("")) {
                     Integer text = Integer.parseInt(et_texte.getText().toString());
                     cur_block.setCurrent_value(text);
-
+                    InputMethodManager imm = (InputMethodManager)contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(et_texte.getWindowToken(), 0);
                     check_grille();
                 }
             }
@@ -129,6 +131,11 @@ public class BlockAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+/*    private void hideKeyboard(EditText editText) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }*/
 
     public void raz() {
         for (Block block: this.blocks) {
