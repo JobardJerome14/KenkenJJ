@@ -18,6 +18,8 @@ public class KenkenActivity extends ActivityBase {
     private GridView gridView;
     private Button raz_btn;
     private Button new_game_btn;
+    private Button help_btn;
+    private Button rules_btn;
     private BlockAdapter blockAdapter;
 
 
@@ -166,6 +168,24 @@ public class KenkenActivity extends ActivityBase {
             @Override
             public void onClick(View v) {
                 new_game();
+            }
+        });
+
+        this.help_btn = findViewById(R.id.help_btn);
+        this.help_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+
+            }
+        });
+
+
+        this.rules_btn = findViewById(R.id.rules_btn);
+        this.rules_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
             }
         });
     }

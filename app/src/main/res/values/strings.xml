@@ -8,4 +8,6 @@
     <string name="win_message_desc">Bravo, tu as terminé cette grille!</string>
     <string name="raz_btn_label">Vider la grille</string>
     <string name="new_game_btn_label">Nouvelle partie</string>
+    <string name="rules_btn_label">Règles</string>
+    <string name="help_btn_label">Aide</string>
 </resources>
