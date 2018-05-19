@@ -8,7 +8,9 @@ import android.widget.GridView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
+import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
@@ -25,8 +27,9 @@ public class KenkenActivity extends ActivityBase {
 
 
     private Integer id_grille = 0;
+    private String user_id = "JJUSER";
 
-    private String user_id = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,11 +146,11 @@ public class KenkenActivity extends ActivityBase {
     private void load_grille(Grille grille) {
         this.blockAdapter = new BlockAdapter(this, grille);
         this.gridView.setAdapter(this.blockAdapter);
+        this.id_grille = grille.getId_grille();
     }
 
     private void get_grille_via_api () {
         API api = new API();
-
 
         api.getKenkenGrille(this.user_id, new ResultatCallback() {
             @Override
@@ -210,8 +213,9 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void new_game() {
-        //TODO sauvegarde partie en cours 'Game Over' --> api
+        //TODO sauvegarde partie en cours
 
+        //get nouvelle grille ET sauvegarde abandon en base via api
         get_grille_via_api();
         /*Grille grille = get_grille(1);
         this.blockAdapter = new BlockAdapter(this, grille);

@@ -1,7 +1,9 @@
 package com.example.jeroj.kenkenjj.api;
 
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
+import com.example.jeroj.kenkenjj.models.RetourUpdate;
 
 
 import okhttp3.OkHttpClient;
@@ -43,15 +45,37 @@ public class API {
                 if(response.isSuccessful()) {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
+                } else {
+                    //TODO event firebase ?
                 }
             }
 
             @Override
             public void onFailure(Call<Grille> call, Throwable t) {
-                //TODO
+                //TODO event firebase ?
             }
         });
 
+    }
 
+    public void updKenGame(String user_id, Integer id_grille, Integer gagne, final UpdateCallback updateCallback) {
+        Call<RetourUpdate> call = this.iApi.updKenGame(user_id, id_grille, gagne);
+
+        call.enqueue(new Callback<RetourUpdate>() {
+            @Override
+            public void onResponse(Call<RetourUpdate> call, Response<RetourUpdate> response) {
+                if(response.isSuccessful()) {
+                    RetourUpdate retourUpdate = response.body();
+                    updateCallback.onWaitingResultat(retourUpdate);
+                } else {
+                    //TODO event firebase ?
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RetourUpdate> call, Throwable t) {
+                //TODO event firebase ?
+            }
+        });
     }
 }

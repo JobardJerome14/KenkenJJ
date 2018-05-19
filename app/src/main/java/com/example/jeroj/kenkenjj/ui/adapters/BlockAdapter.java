@@ -15,7 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
+import com.example.jeroj.kenkenjj.api.API;
+import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
+import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 
 import java.util.ArrayList;
@@ -25,10 +28,13 @@ public class BlockAdapter extends BaseAdapter {
     private ArrayList<Block> blocks;
     private Integer id_grille;
 
+    private Boolean win = false;
+
     public BlockAdapter(Context contexte, Grille grille) {
         this.contexte = contexte;
         this.blocks = grille.getBlocks();
         this.id_grille = grille.getId_grille();
+        this.win = false;
     }
 
 
@@ -92,9 +98,8 @@ public class BlockAdapter extends BaseAdapter {
                     Integer text = Integer.parseInt(et_texte.getText().toString());
                     cur_block.setCurrent_value(text);
 
-                    hideKeyboard(et_texte);
-                    //InputMethodManager imm = (InputMethodManager)contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    //imm.hideSoftInputFromWindow(et_texte.getWindowToken(), 0);
+                    hideKeyboard(et_texte); //TODO close keyboard
+
                     check_grille();
                 }
             }
@@ -150,23 +155,28 @@ public class BlockAdapter extends BaseAdapter {
 
 
     private void check_grille() {
-        Integer i = 0;
-        Integer good = 0;
-        for (Block block: this.blocks ) {
-            i++;
-            //Log.i("block_current_value", i+" : "+block.getCurrent_value());
-            //Log.i("block_good_value", i+" : "+block.getGood_value());
-            if(block.getCurrent_value() == block.getGood_value()) {
-                good++;
+        if(this.win == false) {
+            //Integer i = 0;
+            Integer good = 0;
+            for (Block block : this.blocks) {
+                //i++;
+                //Log.i("block_current_value", i+" : "+block.getCurrent_value());
+                //Log.i("block_good_value", i+" : "+block.getGood_value());
+                if (block.getCurrent_value() == block.getGood_value()) {
+                    good++;
+                }
             }
-        }
-        if(good==36) {
-            //Log.i("victory", "C'est la victoire !");
-            notify_victory();
+            if (good == 36) {
+                this.win = true;
+                //Log.i("victory", "C'est la victoire !");
+                notify_victory();
+                save_victory_via_api();
+            }
         }
     }
 
     private void notify_number_unauthorized() {
+        //TODO delete id grille glitch
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this.contexte).create();
         alertDialog.setTitle(R.string.num_non_autorise_title);
@@ -192,6 +202,22 @@ public class BlockAdapter extends BaseAdapter {
                     }
                 });
         alertDialog.show();
+    }
+
+    private void save_victory_via_api() {
+        //TODO get user et sauvegarde ou?
+        //sauvegarde victoire en base via api
+        API api = new API();
+        api.updKenGame("JJUSER", this.id_grille, 1, new UpdateCallback() {
+            @Override
+            public void onWaitingResultat(RetourUpdate retourUpdate) {
+                if(retourUpdate.getStatus() == "OK") {
+                    //TODO
+                } else {
+                    //TODO
+                }
+            }
+        });
     }
 
 }
