@@ -104,7 +104,7 @@ public class BlockAdapter extends BaseAdapter {
                     Integer text = Integer.parseInt(et_texte.getText().toString());
                     cur_block.setCurrent_value(text);
 
-                    hideKeyboard(et_texte); //TODO close keyboard
+                    //hideKeyboard(et_texte); //TODO close keyboard
 
                     save_current_grille(); //save current grille en sharedPreferences
 
