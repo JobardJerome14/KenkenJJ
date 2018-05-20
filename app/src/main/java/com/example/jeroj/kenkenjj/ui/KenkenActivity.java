@@ -7,6 +7,7 @@ import android.widget.GridView;
 
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
+import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
@@ -16,6 +17,7 @@ import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class KenkenActivity extends ActivityBase {
     private GridView gridView;
@@ -29,17 +31,27 @@ public class KenkenActivity extends ActivityBase {
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
 
-
+    private SharedP sharedP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kenken);
 
+        sharedP = new SharedP(this);
+        this.user_id = sharedP.getUserId();
         bindView();
+
+    }
+
+    private void fillSharedPref() {
     }
 
     private Grille get_grille(Integer new_grille) {
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString(); //current timestamp en string
+        this.user_id = UUID.randomUUID().toString() + ts;
+
         ArrayList<Block> blocks = new ArrayList<Block>();
 
         if(new_grille == 1 ) {

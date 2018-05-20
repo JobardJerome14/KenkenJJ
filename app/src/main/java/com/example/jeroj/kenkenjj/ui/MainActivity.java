@@ -6,7 +6,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
+import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
+
+import java.util.UUID;
 
 public class MainActivity extends ActivityBase {
     public static final String MAINACT_MESSAGE_TO_ACT2 = "play_kenken";
@@ -14,11 +17,17 @@ public class MainActivity extends ActivityBase {
     private TextView tw_main;
     private Button welcome_btn;
 
+    private SharedP sharedP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.sharedP = new SharedP(this);
+        if(this.sharedP.getUserId() == "") {
+            this.sharedP.setUserId(UUID.randomUUID().toString());
+        }
         bindView();
     }
 

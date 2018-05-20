@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
+import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
@@ -30,11 +31,14 @@ public class BlockAdapter extends BaseAdapter {
 
     private Boolean win = false;
 
+    private SharedP sharedP;
+
     public BlockAdapter(Context contexte, Grille grille) {
         this.contexte = contexte;
         this.blocks = grille.getBlocks();
         this.id_grille = grille.getId_grille();
         this.win = false;
+        this.sharedP = new SharedP(contexte);
     }
 
 
@@ -208,7 +212,7 @@ public class BlockAdapter extends BaseAdapter {
         //TODO get user et sauvegarde ou?
         //sauvegarde victoire en base via api
         API api = new API();
-        api.updKenGame("JJUSER", this.id_grille, 1, new UpdateCallback() {
+        api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new UpdateCallback() {
             @Override
             public void onWaitingResultat(RetourUpdate retourUpdate) {
                 if(retourUpdate.getStatus() == "OK") {
