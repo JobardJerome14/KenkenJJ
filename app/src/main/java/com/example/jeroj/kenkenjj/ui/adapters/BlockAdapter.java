@@ -71,6 +71,9 @@ public class BlockAdapter extends BaseAdapter {
         tv_overtexte.setText(cur_block.getTw_overtext());
 
         final EditText et_texte = convertView.findViewById(R.id.et_texte);
+        if(cur_block.getCurrent_value() != null && cur_block.getCurrent_value() != 0) {
+            et_texte.setText(Integer.toString(cur_block.getCurrent_value()));
+        }
         et_texte.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -90,7 +93,6 @@ public class BlockAdapter extends BaseAdapter {
                             notify_number_unauthorized();
                             break;
                         default:
-                            //TODO auto close keyboard si possible
                             break;
                     }
                 }
@@ -103,6 +105,8 @@ public class BlockAdapter extends BaseAdapter {
                     cur_block.setCurrent_value(text);
 
                     hideKeyboard(et_texte); //TODO close keyboard
+
+                    save_current_grille(); //save current grille en sharedPreferences
 
                     check_grille();
                 }
@@ -150,11 +154,10 @@ public class BlockAdapter extends BaseAdapter {
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 
-    public void raz() {
-        for (Block block: this.blocks) {
-            block.setEt_text("");
-            block.setCurrent_value(0);
-        }
+
+    public void save_current_grille() {
+        Grille grille = new Grille( this.id_grille, this.blocks);
+        this.sharedP.setCurrentGrille(grille);
     }
 
 

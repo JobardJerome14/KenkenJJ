@@ -162,6 +162,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void get_grille_via_api () {
+
         API api = new API();
 
         api.getKenkenGrille(this.user_id, new ResultatCallback() {
@@ -178,7 +179,13 @@ public class KenkenActivity extends ActivityBase {
         this.gridView = findViewById(R.id.gridview);
 
         //premiere ligne pour test sur virtual device , 2e et 3e pour test sur terminal
-        get_grille_via_api();
+
+        Grille current_grille = this.sharedP.getCurrentGrille();
+        if(current_grille != null && current_grille.getId_grille() != 0) {
+            load_grille(current_grille);
+        } else {
+            get_grille_via_api();
+        }
         /*Grille grille = get_grille(0);
         load_grille(grille);
 */
@@ -218,7 +225,13 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void raz() {
-        Grille grille = get_grille(0);
+        //Grille grille = get_grille(0); //mode reel
+        Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
+        for (Block block : grille.getBlocks()) {
+            //block.setEt_text("");
+            block.setCurrent_value(0);
+        }
+        this.sharedP.setCurrentGrille(grille);
         this.blockAdapter = new BlockAdapter(this, grille);
         gridView.setAdapter(this.blockAdapter);
         this.blockAdapter.notifyDataSetChanged();
