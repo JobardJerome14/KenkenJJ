@@ -12,7 +12,6 @@ import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 import java.util.UUID;
 
 public class MainActivity extends ActivityBase {
-    public static final String MAINACT_MESSAGE_TO_ACT2 = "play_kenken";
 
     TextView tw_main;
     Button welcome_btn;
@@ -45,7 +44,6 @@ public class MainActivity extends ActivityBase {
     }
 
     public void play_ken() {
-        Bundle bundle = new Bundle();
-        navigate(KenkenActivity.class, bundle);
+        navigate(KenkenActivity.class, null);
     }
 }

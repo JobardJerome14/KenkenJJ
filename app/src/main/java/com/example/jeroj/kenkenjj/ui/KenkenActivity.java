@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class KenkenActivity extends ActivityBase {
-    public static final String KENPLAY_TO_RULES = "go_to_rules";
-
 
     private GridView gridView;
     Button raz_btn;
@@ -221,8 +219,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void see_rules() {
-        Bundle bundle = new Bundle();
-        navigate(RulesActivity.class, bundle);
+        navigate(RulesActivity.class, null);
     }
 
     private void raz() {

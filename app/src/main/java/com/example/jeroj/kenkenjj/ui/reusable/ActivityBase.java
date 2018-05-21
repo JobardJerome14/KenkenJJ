@@ -2,9 +2,10 @@ package com.example.jeroj.kenkenjj.ui.reusable;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-
+//@SuppressWarnings("all")
 public class ActivityBase extends AppCompatActivity {
 
     public void navigate(Class activity, Bundle bundle) {
