@@ -74,7 +74,7 @@ public class API {
             }
 
             @Override
-            public void onFailure(Call<RetourUpdate> call, Throwable t) {
+            public void onFailure(@NonNull Call<RetourUpdate> call, @NonNull Throwable t) {
                 //TODO event firebase ?
             }
         });

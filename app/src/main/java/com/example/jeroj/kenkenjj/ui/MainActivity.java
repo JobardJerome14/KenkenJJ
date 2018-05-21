@@ -14,10 +14,10 @@ import java.util.UUID;
 public class MainActivity extends ActivityBase {
     public static final String MAINACT_MESSAGE_TO_ACT2 = "play_kenken";
 
-    private TextView tw_main;
-    private Button welcome_btn;
+    TextView tw_main;
+    Button welcome_btn;
 
-    private SharedP sharedP;
+    SharedP sharedP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
