@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/block_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sweet_borders"
-    android:id="@+id/block_id">
+    android:background="@drawable/sweet_borders">
 
     <RelativeLayout
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_margin="2dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="2dp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/tv_overtexte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="3dp"
             android:textSize="10sp"
-            tools:text="15x"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            tools:text="15x" />
 
         <EditText
-            android:layout_below="@+id/tv_overtexte"
             android:id="@+id/et_texte"
-            android:hint=""
-            android:textColorHint="@color/block_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_overtexte"
             android:backgroundTint="@android:color/transparent"
-            android:padding="3dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/block_number"
+            android:hint=""
             android:inputType="number"
             android:maxLength="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:padding="3dp"
+            android:textAlignment="center"
+            android:textColor="@color/block_number"
+            android:textColorHint="@color/block_number"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -45,30 +44,30 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 
     <View
         android:id="@+id/vleft"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_width="2dp"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary" />
 
     <View
         android:id="@+id/vright"
         android:layout_width="2dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorPrimary" />
 
     <View
         android:id="@+id/vbottom"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
         android:layout_height="2dp"
-        android:background="@color/colorPrimary"/>
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary" />
 
 
 </RelativeLayout>

@@ -15,11 +15,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/welcome_btn"
-        app:layout_constraintTop_toBottomOf="@+id/tw_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_btn"/>
+        android:text="@string/welcome_btn"
+        app:layout_constraintTop_toBottomOf="@+id/tw_main" />
 
 </android.support.constraint.ConstraintLayout>
