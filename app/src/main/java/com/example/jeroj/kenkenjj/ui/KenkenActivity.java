@@ -177,10 +177,15 @@ public class KenkenActivity extends ActivityBase {
         Grille current_grille = this.sharedP.getCurrentGrille();
         if(current_grille != null && current_grille.getId_grille() != 0) {
             load_grille(current_grille);
-        } else {
-            //get_grille_via_api();
+        } else if(this.sharedP.getModeApi().equals("0")) {
+            //Mode without API
             Grille grille = get_grille(0);
             load_grille(grille);
+        } else if (this.sharedP.getModeApi().equals("1")) {
+            //Mode with API
+            get_grille_via_api();
+        } else {
+            //TODO event firebase
         }
 
         this.raz_btn = findViewById(R.id.raz_btn);
@@ -238,11 +243,14 @@ public class KenkenActivity extends ActivityBase {
     private void new_game() {
 
         //get nouvelle grille ET sauvegarde abandon en base via api
-        //get_grille_via_api();
-        Grille grille = get_grille(1);
-        this.blockAdapter = new BlockAdapter(this, grille);
-        gridView.setAdapter(this.blockAdapter);
-        this.blockAdapter.notifyDataSetChanged();
+        if(this.sharedP.getModeApi().equals("0")) {
+            Grille grille = get_grille(1);
+            this.blockAdapter = new BlockAdapter(this, grille);
+            gridView.setAdapter(this.blockAdapter);
+            this.blockAdapter.notifyDataSetChanged();
+        } else if(this.sharedP.getModeApi().equals("1")) {
+            get_grille_via_api();
+        }
     }
 
 }
