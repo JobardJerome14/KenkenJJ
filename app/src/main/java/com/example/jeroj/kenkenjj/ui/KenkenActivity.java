@@ -1,6 +1,7 @@
 package com.example.jeroj.kenkenjj.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -15,6 +16,7 @@ import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class KenkenActivity extends ActivityBase {
@@ -206,8 +208,7 @@ public class KenkenActivity extends ActivityBase {
         this.help_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
-
+                help();
             }
         });
 
@@ -223,6 +224,48 @@ public class KenkenActivity extends ActivityBase {
 
     public void see_rules() {
         navigate(RulesActivity.class, null);
+    }
+
+    public void help() {
+        int bloc_ok = 0;
+        Integer i = 0;
+        boolean help_impossible = false;
+        ArrayList<Integer> bloc_non_trouve = new ArrayList<>();
+        Grille grille = this.sharedP.getCurrentGrille();
+        for (Block block : grille.getBlocks()) {
+
+            if (block.getCurrent_value() == block.getGood_value()) {
+                bloc_ok++;
+            } else {
+                bloc_non_trouve.add(i);
+            }
+            i++;
+        }
+        if (bloc_ok == 36) {
+            help_impossible = true;
+        }
+
+        if (!help_impossible) {
+            int size_nf = bloc_non_trouve.size();
+            //Log.i("tab non size_nf", "size_nf : " + size_nf);
+
+            Random r = new Random();
+            int id_bloc = r.nextInt(size_nf);
+            //Log.i("tab non trouve", "id_bloc : " + id_bloc);
+            //Log.i("tab non trouve", "val get : " + bloc_non_trouve.get(id_bloc));
+            Block blk_to_help = grille.getBlocks().get(bloc_non_trouve.get(id_bloc));
+            blk_to_help.setCurrent_value(blk_to_help.getGood_value());
+            blk_to_help.setEt_text(String.valueOf(blk_to_help.getGood_value()));
+
+            save_current_grille(grille.getId_grille(), grille.getBlocks());
+            load_grille(grille);
+        }
+
+    }
+
+    private void save_current_grille(Integer id_grille, ArrayList<Block> blockArrayList) {
+        Grille grille = new Grille(id_grille, blockArrayList);
+        this.sharedP.setCurrentGrille(grille);
     }
 
     private void raz() {
