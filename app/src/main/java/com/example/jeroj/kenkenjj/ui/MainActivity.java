@@ -25,7 +25,7 @@ public class MainActivity extends ActivityBase {
         setContentView(R.layout.activity_main);
 
         this.sharedP = new SharedP(this);
-        if(this.sharedP.getUserId() == "") {
+        if(this.sharedP.getUserId().isEmpty()) {
             this.sharedP.setUserId(UUID.randomUUID().toString());
         }
         bindView();
@@ -39,12 +39,12 @@ public class MainActivity extends ActivityBase {
         this.welcome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigate();
+                play_ken();
             }
         });
     }
 
-    public void navigate() {
+    public void play_ken() {
         Bundle bundle = new Bundle();
         navigate(KenkenActivity.class, bundle);
     }

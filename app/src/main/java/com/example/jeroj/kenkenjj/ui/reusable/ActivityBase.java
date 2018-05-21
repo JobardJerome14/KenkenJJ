@@ -14,9 +14,4 @@ public class ActivityBase extends AppCompatActivity {
         }
         startActivity(i);
     }
-
-    public void navigateAndClose( Class activity, Bundle bundle){
-        navigate(activity, bundle);
-        finish();
-    }
 }

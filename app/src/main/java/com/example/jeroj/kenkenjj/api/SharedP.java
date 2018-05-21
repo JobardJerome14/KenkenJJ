@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.jeroj.kenkenjj.models.Grille;
-import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 public class SharedP {
     private Context context;
@@ -17,7 +14,7 @@ public class SharedP {
     }
 
     private SharedPreferences getSharedPref(String dictonnary) {
-        return this.context.getSharedPreferences(dictonnary, this.context.MODE_PRIVATE);
+        return this.context.getSharedPreferences(dictonnary, Context.MODE_PRIVATE);
     }
 
 
@@ -43,9 +40,7 @@ public class SharedP {
     public Grille getCurrentGrille() {
         Gson gson = new Gson();
         String json = getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_CURRENT_GRILLE, "");
-        Grille grille = gson.fromJson(json, Grille.class);
-
-        return grille;
+        return gson.fromJson(json, Grille.class);
     }
 /*
     public void setCurrentIdGrille(Integer id_grille) {
@@ -58,6 +53,7 @@ public class SharedP {
         return Integer.parseInt(getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_CURRENT_ID_GRILLE, ""));
     }*/
 
+    @SuppressWarnings("unused")
     private class UserPrefHelper {
         final static String USER_PREF_DICO = "user_pref";
         final static String USER_ID = "user_id";

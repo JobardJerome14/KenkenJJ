@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
-import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
+import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.models.Block;
@@ -29,7 +29,7 @@ public class BlockAdapter extends BaseAdapter {
     private ArrayList<Block> blocks;
     private Integer id_grille;
 
-    private Boolean win = false;
+    private boolean win = false;
 
     private SharedP sharedP;
 
@@ -58,21 +58,24 @@ public class BlockAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) contexte.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.block_item, parent, false);
+            if(inflater != null)
+                convertView = inflater.inflate(R.layout.block_item, parent, false);
         }
 
+        if(convertView == null)
+            return null;
 
         final Block cur_block = this.blocks.get(position);
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
         tv_overtexte.setText(cur_block.getTw_overtext());
 
         final EditText et_texte = convertView.findViewById(R.id.et_texte);
-        if(cur_block.getCurrent_value() != null && cur_block.getCurrent_value() != 0) {
-            et_texte.setText(Integer.toString(cur_block.getCurrent_value()));
+        if(cur_block.getCurrent_value() != 0) {
+            et_texte.setText(String.valueOf(cur_block.getCurrent_value()));
         }
         et_texte.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,16 +103,16 @@ public class BlockAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (/*!s.toString().equals("") &&*/ !et_texte.getText().toString().equals("")) {
-                    Integer text = Integer.parseInt(et_texte.getText().toString());
-                    cur_block.setCurrent_value(text);
+                String tmp = "s:"+s.toString()+ "     et-texte:" +et_texte.getText().toString() + " Item position: " + position;
+                Log.i("textchanged", tmp);
 
-                    //hideKeyboard(et_texte); //TODO close keyboard
+                //Set Current Value
+                cur_block.setCurrent_value(!s.toString().isEmpty() ? Integer.parseInt(s.toString()) : 0);
 
-                    save_current_grille(); //save current grille en sharedPreferences
+                check_grille();
+                hideKeyboard(et_texte);
 
-                    check_grille();
-                }
+                save_current_grille(); //save current grille en sharedPreferences
             }
         });
 
@@ -151,18 +154,19 @@ public class BlockAdapter extends BaseAdapter {
 
     private void hideKeyboard(EditText editText) {
         InputMethodManager imm = (InputMethodManager)this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        if(imm != null)
+            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 
 
-    public void save_current_grille() {
+    private void save_current_grille() {
         Grille grille = new Grille( this.id_grille, this.blocks);
         this.sharedP.setCurrentGrille(grille);
     }
 
 
     private void check_grille() {
-        if(this.win == false) {
+        if(!this.win) {
             //Integer i = 0;
             Integer good = 0;
             for (Block block : this.blocks) {
@@ -215,10 +219,10 @@ public class BlockAdapter extends BaseAdapter {
         //TODO get user et sauvegarde ou?
         //sauvegarde victoire en base via api
         API api = new API();
-        api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new UpdateCallback() {
+        api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new ResultatCallback<RetourUpdate>() {
             @Override
-            public void onWaitingResultat(RetourUpdate retourUpdate) {
-                if(retourUpdate.getStatus() == "OK") {
+            public void onWaitingResultat(RetourUpdate result) {
+                if(result.getStatus().equals("OK")) {
                     //TODO
                 } else {
                     //TODO

@@ -9,9 +9,7 @@ import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
-import com.example.jeroj.kenkenjj.api.helpers.UpdateCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
-import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
@@ -20,11 +18,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class KenkenActivity extends ActivityBase {
+    public static final String KENPLAY_TO_RULES = "go_to_rules";
+
+
     private GridView gridView;
-    private Button raz_btn;
-    private Button new_game_btn;
-    private Button help_btn;
-    private Button rules_btn;
+    Button raz_btn;
+    Button new_game_btn;
+    Button help_btn;
+    Button rules_btn;
     private BlockAdapter blockAdapter;
 
 
@@ -44,15 +45,12 @@ public class KenkenActivity extends ActivityBase {
 
     }
 
-    private void fillSharedPref() {
-    }
-
     private Grille get_grille(Integer new_grille) {
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString(); //current timestamp en string
         this.user_id = UUID.randomUUID().toString() + ts;
 
-        ArrayList<Block> blocks = new ArrayList<Block>();
+        ArrayList<Block> blocks = new ArrayList<>();
 
         if(new_grille == 1 ) {
             if(this.id_grille ==0 ) {
@@ -150,9 +148,7 @@ public class KenkenActivity extends ActivityBase {
             blocks.add(new Block("", false, true, true, true, 5));
         }
 
-
-        Grille grille = new Grille(this.id_grille, blocks);
-        return grille;
+        return new Grille(this.id_grille, blocks);
     }
 
     private void load_grille(Grille grille) {
@@ -165,7 +161,7 @@ public class KenkenActivity extends ActivityBase {
 
         API api = new API();
 
-        api.getKenkenGrille(this.user_id, new ResultatCallback() {
+        api.getKenkenGrille(this.user_id, new ResultatCallback<Grille>() {
             @Override
             public void onWaitingResultat(Grille grille) {
                 load_grille(grille);
@@ -184,11 +180,11 @@ public class KenkenActivity extends ActivityBase {
         if(current_grille != null && current_grille.getId_grille() != 0) {
             load_grille(current_grille);
         } else {
-            get_grille_via_api();
+            //get_grille_via_api();
+            Grille grille = get_grille(0);
+            load_grille(grille);
         }
-        /*Grille grille = get_grille(0);
-        load_grille(grille);
-*/
+
         this.raz_btn = findViewById(R.id.raz_btn);
         this.raz_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,9 +215,14 @@ public class KenkenActivity extends ActivityBase {
         this.rules_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                see_rules();
             }
         });
+    }
+
+    public void see_rules() {
+        Bundle bundle = new Bundle();
+        navigate(RulesActivity.class, bundle);
     }
 
     private void raz() {
@@ -238,14 +239,13 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void new_game() {
-        //TODO sauvegarde partie en cours
 
         //get nouvelle grille ET sauvegarde abandon en base via api
-        get_grille_via_api();
-        /*Grille grille = get_grille(1);
+        //get_grille_via_api();
+        Grille grille = get_grille(1);
         this.blockAdapter = new BlockAdapter(this, grille);
         gridView.setAdapter(this.blockAdapter);
-        this.blockAdapter.notifyDataSetChanged();*/
+        this.blockAdapter.notifyDataSetChanged();
     }
 
 }

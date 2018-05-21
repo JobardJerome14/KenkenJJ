@@ -23,7 +23,7 @@ public class Block {
     private Integer good_value = 0;
 
     private String et_text = "";
-    private Integer current_value = 0;
+    private int current_value = 0;
 
 
     public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
@@ -86,11 +86,15 @@ public class Block {
         this.borderBottom = borderBottom;
     }
 
-    public Integer getCurrent_value() {
+    public int getCurrent_value() {
         return current_value;
     }
 
-    public void setCurrent_value(Integer current_value) {
+    public void setCurrent_value(int current_value) {
+        this.current_value = current_value;
+    }
+
+    void setCurrent_value(Integer current_value) {
         this.current_value = current_value;
     }
 
