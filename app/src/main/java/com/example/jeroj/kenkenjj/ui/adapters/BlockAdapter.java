@@ -62,11 +62,11 @@ public class BlockAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) contexte.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if(inflater != null)
+            if (inflater != null)
                 convertView = inflater.inflate(R.layout.block_item, parent, false);
         }
 
-        if(convertView == null)
+        if (convertView == null)
             return null;
 
         final Block cur_block = this.blocks.get(position);
@@ -74,7 +74,7 @@ public class BlockAdapter extends BaseAdapter {
         tv_overtexte.setText(cur_block.getTw_overtext());
 
         final EditText et_texte = convertView.findViewById(R.id.et_texte);
-        if(cur_block.getCurrent_value() != 0) {
+        if (cur_block.getCurrent_value() != 0) {
             et_texte.setText(String.valueOf(cur_block.getCurrent_value()));
         }
         et_texte.addTextChangedListener(new TextWatcher() {
@@ -103,7 +103,7 @@ public class BlockAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String tmp = "s:"+s.toString()+ "     et-texte:" +et_texte.getText().toString() + " Item position: " + position;
+                String tmp = "s:" + s.toString() + "     et-texte:" + et_texte.getText().toString() + " Item position: " + position;
                 Log.i("textchanged", tmp);
 
                 //Set Current Value
@@ -117,30 +117,30 @@ public class BlockAdapter extends BaseAdapter {
         });
 
         final View borderTop = convertView.findViewById(R.id.vtop);
-        if(!cur_block.getBorderTop()) {
+        if (!cur_block.getBorderTop()) {
             borderTop.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             borderTop.setVisibility(View.VISIBLE);
         }
 
         final View borderLeft = convertView.findViewById(R.id.vleft);
-        if(!cur_block.getBorderLeft()) {
+        if (!cur_block.getBorderLeft()) {
             borderLeft.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             borderLeft.setVisibility(View.VISIBLE);
         }
 
         final View borderRight = convertView.findViewById(R.id.vright);
-        if(!cur_block.getBorderRight()) {
+        if (!cur_block.getBorderRight()) {
             borderRight.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             borderRight.setVisibility(View.VISIBLE);
         }
 
         final View borderBottom = convertView.findViewById(R.id.vbottom);
-        if(!cur_block.getBorderBottom()) {
+        if (!cur_block.getBorderBottom()) {
             borderBottom.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             borderBottom.setVisibility(View.VISIBLE);
         }
 
@@ -153,20 +153,20 @@ public class BlockAdapter extends BaseAdapter {
     }
 
     private void hideKeyboard(EditText editText) {
-        InputMethodManager imm = (InputMethodManager)this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if(imm != null)
+        InputMethodManager imm = (InputMethodManager) this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null)
             imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 
 
     private void save_current_grille() {
-        Grille grille = new Grille( this.id_grille, this.blocks);
+        Grille grille = new Grille(this.id_grille, this.blocks);
         this.sharedP.setCurrentGrille(grille);
     }
 
 
     private void check_grille() {
-        if(!this.win) {
+        if (!this.win) {
             //Integer i = 0;
             Integer good = 0;
             for (Block block : this.blocks) {
@@ -192,7 +192,7 @@ public class BlockAdapter extends BaseAdapter {
         alertDialog = new AlertDialog.Builder(this.contexte).create();
         alertDialog.setTitle(R.string.num_non_autorise_title);
         alertDialog.setMessage(contexte.getString(R.string.num_non_autorise_desc));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"+this.id_grille,
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK" + this.id_grille,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -222,7 +222,7 @@ public class BlockAdapter extends BaseAdapter {
         api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new ResultatCallback<RetourUpdate>() {
             @Override
             public void onWaitingResultat(RetourUpdate result) {
-                if(result.getStatus().equals("OK")) {
+                if (result.getStatus().equals("OK")) {
                     //TODO
                 } else {
                     //TODO

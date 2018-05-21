@@ -6,7 +6,6 @@ import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -43,7 +42,7 @@ public class API {
         call.enqueue(new Callback<Grille>() {
             @Override
             public void onResponse(@NonNull Call<Grille> call, @NonNull Response<Grille> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
                 } else {
@@ -64,8 +63,8 @@ public class API {
 
         call.enqueue(new Callback<RetourUpdate>() {
             @Override
-            public void onResponse(@NonNull Call<RetourUpdate> call,@NonNull Response<RetourUpdate> response) {
-                if(response.isSuccessful()) {
+            public void onResponse(@NonNull Call<RetourUpdate> call, @NonNull Response<RetourUpdate> response) {
+                if (response.isSuccessful()) {
                     RetourUpdate retourUpdate = response.body();
                     updateCallback.onWaitingResultat(retourUpdate);
                 } else {

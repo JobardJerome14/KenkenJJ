@@ -1,8 +1,8 @@
 package com.example.jeroj.kenkenjj.models;
 
+import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.google.gson.annotations.SerializedName;
 
-import com.example.jeroj.kenkenjj.ui.models.Block;
 import java.util.ArrayList;
 
 public class Grille {

@@ -19,13 +19,12 @@ import java.util.UUID;
 
 public class KenkenActivity extends ActivityBase {
 
-    private GridView gridView;
     Button raz_btn;
     Button new_game_btn;
     Button help_btn;
     Button rules_btn;
+    private GridView gridView;
     private BlockAdapter blockAdapter;
-
 
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
@@ -40,25 +39,24 @@ public class KenkenActivity extends ActivityBase {
         sharedP = new SharedP(this);
         this.user_id = sharedP.getUserId();
         bindView();
-
     }
 
     private Grille get_grille(Integer new_grille) {
-        Long tsLong = System.currentTimeMillis()/1000;
+        Long tsLong = System.currentTimeMillis() / 1000;
         String ts = tsLong.toString(); //current timestamp en string
         this.user_id = UUID.randomUUID().toString() + ts;
 
         ArrayList<Block> blocks = new ArrayList<>();
 
-        if(new_grille == 1 ) {
-            if(this.id_grille ==0 ) {
+        if (new_grille == 1) {
+            if (this.id_grille == 0) {
                 this.id_grille = 1;
             } else {
                 this.id_grille = 0;
             }
         }
 
-        if(this.id_grille == 1) {
+        if (this.id_grille == 1) {
             //1
             blocks.add(new Block("15x", true, true, false, true, 5));
             blocks.add(new Block("", true, false, true, false, 1));
@@ -155,7 +153,7 @@ public class KenkenActivity extends ActivityBase {
         this.id_grille = grille.getId_grille();
     }
 
-    private void get_grille_via_api () {
+    private void get_grille_via_api() {
 
         API api = new API();
 
@@ -172,12 +170,11 @@ public class KenkenActivity extends ActivityBase {
     private void bindView() {
         this.gridView = findViewById(R.id.gridview);
 
-        //premiere ligne pour test sur virtual device , 2e et 3e pour test sur terminal
-
         Grille current_grille = this.sharedP.getCurrentGrille();
-        if(current_grille != null && current_grille.getId_grille() != 0) {
+        if (current_grille != null && current_grille.getId_grille() != 0) {
+            //Load current Grille
             load_grille(current_grille);
-        } else if(this.sharedP.getModeApi().equals("0")) {
+        } else if (this.sharedP.getModeApi().equals("0")) {
             //Mode without API
             Grille grille = get_grille(0);
             load_grille(grille);
@@ -185,6 +182,7 @@ public class KenkenActivity extends ActivityBase {
             //Mode with API
             get_grille_via_api();
         } else {
+            //Problem
             //TODO event firebase
         }
 
@@ -228,10 +226,8 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void raz() {
-        //Grille grille = get_grille(0); //mode reel
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
         for (Block block : grille.getBlocks()) {
-            //block.setEt_text("");
             block.setCurrent_value(0);
         }
         this.sharedP.setCurrentGrille(grille);
@@ -241,14 +237,13 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void new_game() {
-
         //get nouvelle grille ET sauvegarde abandon en base via api
-        if(this.sharedP.getModeApi().equals("0")) {
+        if (this.sharedP.getModeApi().equals("0")) {
             Grille grille = get_grille(1);
             this.blockAdapter = new BlockAdapter(this, grille);
             gridView.setAdapter(this.blockAdapter);
             this.blockAdapter.notifyDataSetChanged();
-        } else if(this.sharedP.getModeApi().equals("1")) {
+        } else if (this.sharedP.getModeApi().equals("1")) {
             get_grille_via_api();
         }
     }

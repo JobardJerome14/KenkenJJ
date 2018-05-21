@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.KenkenActivity" />
-        <activity android:name=".ui.RulesActivity"/>
+        <activity android:name=".ui.RulesActivity" />
     </application>
 
 </manifest>

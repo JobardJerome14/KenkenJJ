@@ -24,7 +24,7 @@ public class MainActivity extends ActivityBase {
         setContentView(R.layout.activity_main);
 
         this.sharedP = new SharedP(this);
-        if(this.sharedP.getUserId().isEmpty()) {
+        if (this.sharedP.getUserId().isEmpty()) {
             this.sharedP.setUserId(UUID.randomUUID().toString());
         }
         this.sharedP.setModeApi("0"); // Mode API:  0=without API, 1=with API
@@ -33,9 +33,8 @@ public class MainActivity extends ActivityBase {
 
     private void bindView() {
         this.tw_main = findViewById(R.id.tw_main);
+
         this.welcome_btn = findViewById(R.id.welcome_btn);
-
-
         this.welcome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

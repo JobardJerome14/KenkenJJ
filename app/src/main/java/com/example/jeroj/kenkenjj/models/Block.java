@@ -26,7 +26,7 @@ public class Block {
     private int current_value = 0;
 
 
-    public Block( String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
+    public Block(String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
         this.tw_overtext = overtexte;
         this.borderTop = borderTop;
         this.borderLeft = borderLeft;
@@ -90,11 +90,11 @@ public class Block {
         return current_value;
     }
 
-    public void setCurrent_value(int current_value) {
+    void setCurrent_value(Integer current_value) {
         this.current_value = current_value;
     }
 
-    void setCurrent_value(Integer current_value) {
+    public void setCurrent_value(int current_value) {
         this.current_value = current_value;
     }
 
