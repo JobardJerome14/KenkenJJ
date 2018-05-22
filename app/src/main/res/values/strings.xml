@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">KenJJ</string>
     <string name="welcome_text">Bienvenue sur KenJJ</string>
-    <string name="welcome_btn">Jouer à KenJJ</string>
+    <string name="welcome_btn">Jouer</string>
     <string name="num_non_autorise_title">Chiffre non autorisé</string>
     <string name="num_non_autorise_desc">Il faut saisir un chiffre entre 1 et 6</string>
     <string name="win_message_title">Gagné!</string>
