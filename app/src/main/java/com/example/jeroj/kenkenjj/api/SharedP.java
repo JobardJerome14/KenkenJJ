@@ -52,10 +52,25 @@ public class SharedP {
                 .apply();
     }
 
+    public String getModeEdition() {
+        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, "STYLO");
+    }
+
+    public void setModeEdition(boolean flag) {
+        String mode_edition = "STYLO";
+        if(flag) {
+            mode_edition = "CRAYON";
+        }
+        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+                .putString(UserPrefHelper.USER_MODE_EDITION, mode_edition)
+                .apply();
+    }
+
     private class UserPrefHelper {
         final static String USER_PREF_DICO = "user_pref";
         final static String USER_ID = "user_id";
         final static String USER_CURRENT_GRILLE = "user_grille";
         final static String USER_MODE_API = "mode_api";
+        final static String USER_MODE_EDITION = "user_mode_edition";
     }
 }

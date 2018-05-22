@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -27,9 +29,17 @@ public class KenkenActivity extends ActivityBase {
     Button rules_btn;
     private GridView gridView;
     private BlockAdapter blockAdapter;
+    CheckBox mode_crayon;
+    Button btn1;
+    Button btn2;
+    Button btn3;
+    Button btn4;
+    Button btn5;
+    Button btn6;
 
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
+    private String mode_edition = "STYLO";
 
     private SharedP sharedP;
 
@@ -220,6 +230,77 @@ public class KenkenActivity extends ActivityBase {
                 see_rules();
             }
         });
+
+        this.mode_crayon = findViewById(R.id.mode_crayon);
+        if(this.sharedP.getModeEdition().equals("CRAYON")) {
+            this.mode_crayon.setChecked(true);
+        }
+        this.mode_crayon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //Log.i("checkbox clicked ", String.valueOf(isChecked));
+                change_edition_mode(isChecked);
+            }
+        });
+
+        this.btn1 = findViewById(R.id.btn1);
+        this.btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(1);
+            }
+        });
+
+
+
+        this.btn2 = findViewById(R.id.btn2);
+        this.btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(2);
+            }
+        });
+
+        this.btn3 = findViewById(R.id.btn3);
+        this.btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(3);
+            }
+        });
+
+        this.btn4 = findViewById(R.id.btn4);
+        this.btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(4);
+            }
+        });
+
+        this.btn5 = findViewById(R.id.btn5);
+        this.btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(5);
+            }
+        });
+
+        this.btn6 = findViewById(R.id.btn6);
+        this.btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_click(6);
+            }
+        });
+
+    }
+
+    public void change_edition_mode(boolean flag) {
+        this.sharedP.setModeEdition(flag);
+    }
+
+    public void btn_click(int i) {
+        Log.i("btn click", String.valueOf(i));
     }
 
     public void see_rules() {

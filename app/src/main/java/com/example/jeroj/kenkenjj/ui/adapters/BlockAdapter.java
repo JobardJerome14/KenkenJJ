@@ -3,6 +3,7 @@ package com.example.jeroj.kenkenjj.ui.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
@@ -70,51 +72,29 @@ public class BlockAdapter extends BaseAdapter {
             return null;
 
         final Block cur_block = this.blocks.get(position);
+
+        final RelativeLayout block_id = convertView.findViewById(R.id.block_id);
+        block_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sharedP.getModeEdition().equals("STYLO)")) {
+                    deselect_all_blocks();
+                    block_id.setBackgroundColor(Color.GREEN);
+                }
+            }
+        });
+
+
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
         tv_overtexte.setText(cur_block.getTw_overtext());
 
-        final EditText et_texte = convertView.findViewById(R.id.et_texte);
+        final TextView stylo = convertView.findViewById(R.id.stylo);
         if (cur_block.getCurrent_value() != 0) {
-            et_texte.setText(String.valueOf(cur_block.getCurrent_value()));
+            stylo.setText(String.valueOf(cur_block.getCurrent_value()));
         }
-        et_texte.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+        final TextView crayon = convertView.findViewById(R.id.crayon);
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!et_texte.getText().toString().equals("")) {
-                    Integer text = Integer.parseInt(et_texte.getText().toString());
-                    switch (text) {
-                        case 0:
-                        case 7:
-                        case 8:
-                        case 9:
-                            et_texte.setText("");
-                            notify_number_unauthorized();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String tmp = "s:" + s.toString() + "     et-texte:" + et_texte.getText().toString() + " Item position: " + position;
-                Log.i("textchanged", tmp);
-
-                //Set Current Value
-                cur_block.setCurrent_value(!s.toString().isEmpty() ? Integer.parseInt(s.toString()) : 0);
-
-                check_grille();
-                hideKeyboard(et_texte);
-
-                save_current_grille(); //save current grille en sharedPreferences
-            }
-        });
 
         final View borderTop = convertView.findViewById(R.id.vtop);
         if (!cur_block.getBorderTop()) {
@@ -152,11 +132,17 @@ public class BlockAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void hideKeyboard(EditText editText) {
+    public void  deselect_all_blocks () {
+        for (Block block : this.blocks) {
+            block.setStylo_selected(false);
+            block.setBa
+        }
+    }
+/*    private void hideKeyboard(EditText editText) {
         InputMethodManager imm = (InputMethodManager) this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null)
             imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-    }
+    }*/
 
 
     private void save_current_grille() {
@@ -186,7 +172,7 @@ public class BlockAdapter extends BaseAdapter {
         }
     }
 
-    private void notify_number_unauthorized() {
+/*    private void notify_number_unauthorized() {
         //TODO delete id grille glitch
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this.contexte).create();
@@ -199,7 +185,7 @@ public class BlockAdapter extends BaseAdapter {
                     }
                 });
         alertDialog.show();
-    }
+    }*/
 
     private void notify_victory() {
         AlertDialog alertDialog;

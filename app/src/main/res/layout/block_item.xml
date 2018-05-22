@@ -21,21 +21,31 @@
             android:textSize="10sp"
             tools:text="15x" />
 
-        <EditText
-            android:id="@+id/et_texte"
+        <TextView
+            android:id="@+id/stylo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_overtexte"
-            android:backgroundTint="@android:color/transparent"
-            android:hint=""
-            android:inputType="number"
             android:maxLength="1"
             android:padding="3dp"
             android:textAlignment="center"
             android:textColor="@color/block_number"
-            android:textColorHint="@color/block_number"
+            android:text="1"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/crayon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stylo"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:text="1 2 3 4 5 6"
+            android:textSize="12sp"
+            android:textColor="@color/block_crayon"
+            />
 
     </RelativeLayout>
 

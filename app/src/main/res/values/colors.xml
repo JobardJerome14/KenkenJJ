@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="my_white">#ffffff</color>
     <color name="block_number">#ff8400</color>
+    <color name="block_crayon">#248028</color>
 </resources>

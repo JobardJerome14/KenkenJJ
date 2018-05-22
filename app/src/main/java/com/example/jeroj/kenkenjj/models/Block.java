@@ -19,11 +19,17 @@ public class Block {
     private Boolean borderBottom;
 
 
+
     @SerializedName("texte")
     private Integer good_value = 0;
 
-    private String et_text = "";
+    private String stylo = "";
+    private String crayon = "";
     private int current_value = 0;
+
+    private boolean stylo_selected = false;
+    private boolean crayon_selected = false;
+
 
 
     public Block(String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
@@ -37,14 +43,21 @@ public class Block {
     }
 
 
-    public String getEt_text() {
-        return et_text;
+    public String getStylo() {
+        return stylo;
     }
 
-    public void setEt_text(String et_text) {
-        this.et_text = et_text;
+    public void setStylo(String stylo) {
+        this.stylo = stylo;
     }
 
+    public String getCrayon() {
+        return crayon;
+    }
+
+    public void setCrayon(String crayon) {
+        this.crayon = crayon;
+    }
 
     public String getTw_overtext() {
         return tw_overtext;
@@ -104,5 +117,22 @@ public class Block {
 
     public void setGood_value(Integer good_value) {
         this.good_value = good_value;
+    }
+
+
+    public boolean isStylo_selected() {
+        return stylo_selected;
+    }
+
+    public void setStylo_selected(boolean stylo_selected) {
+        this.stylo_selected = stylo_selected;
+    }
+
+    public boolean isCrayon_selected() {
+        return crayon_selected;
+    }
+
+    public void setCrayon_selected(boolean crayon_selected) {
+        this.crayon_selected = crayon_selected;
     }
 }
