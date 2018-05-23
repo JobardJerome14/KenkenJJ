@@ -298,6 +298,15 @@ public class KenkenActivity extends ActivityBase {
 
     public void change_edition_mode(boolean flag) {
         this.sharedP.setModeEdition(flag);
+        Grille current_grille = this.sharedP.getCurrentGrille();
+        for(Block block : current_grille.getBlocks()) {
+            block.setSelected(false);
+        }
+
+        this.sharedP.setCurrentGrille(current_grille);
+        this.blockAdapter = new BlockAdapter(this, current_grille);
+        gridView.setAdapter(this.blockAdapter);
+        this.blockAdapter.notifyDataSetChanged();
     }
 
     public void btn_click(int i) {
@@ -399,6 +408,8 @@ public class KenkenActivity extends ActivityBase {
             Block blk_to_help = grille.getBlocks().get(bloc_non_trouve.get(id_bloc));
             blk_to_help.setCurrent_value(blk_to_help.getGood_value());
             blk_to_help.setStylo(String.valueOf(blk_to_help.getGood_value()));
+            blk_to_help.setCrayon("");
+            blk_to_help.setSelected(false);
 
             save_current_grille(grille.getId_grille(), grille.getBlocks());
             load_grille(grille);
@@ -415,6 +426,14 @@ public class KenkenActivity extends ActivityBase {
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
         for (Block block : grille.getBlocks()) {
             block.setCurrent_value(0);
+            block.setStylo("");
+            block.setCrayon("");
+            block.setC1_selected(false);
+            block.setC2_selected(false);
+            block.setC3_selected(false);
+            block.setC4_selected(false);
+            block.setC5_selected(false);
+            block.setC6_selected(false);
         }
         this.sharedP.setCurrentGrille(grille);
         this.blockAdapter = new BlockAdapter(this, grille);
