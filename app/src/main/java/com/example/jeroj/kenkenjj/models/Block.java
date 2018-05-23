@@ -23,7 +23,7 @@ public class Block {
     @SerializedName("texte")
     private Integer good_value = 0;
 
-    private String stylo = "";
+    private String stylo;
     private String crayon = "";
     private int current_value = 0;
 
@@ -31,6 +31,14 @@ public class Block {
     private boolean crayon_selected = false;
 
     private boolean isSelected = false;
+
+
+    private boolean c1_selected = false;
+    private boolean c2_selected = false;
+    private boolean c3_selected = false;
+    private boolean c4_selected = false;
+    private boolean c5_selected = false;
+    private boolean c6_selected = false;
 
 
 
@@ -144,5 +152,54 @@ public class Block {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+
+    public boolean isC1_selected() {
+        return c1_selected;
+    }
+
+    public void setC1_selected(boolean c1_selected) {
+        this.c1_selected = c1_selected;
+    }
+
+    public boolean isC2_selected() {
+        return c2_selected;
+    }
+
+    public void setC2_selected(boolean c2_selected) {
+        this.c2_selected = c2_selected;
+    }
+
+    public boolean isC3_selected() {
+        return c3_selected;
+    }
+
+    public void setC3_selected(boolean c3_selected) {
+        this.c3_selected = c3_selected;
+    }
+
+    public boolean isC4_selected() {
+        return c4_selected;
+    }
+
+    public void setC4_selected(boolean c4_selected) {
+        this.c4_selected = c4_selected;
+    }
+
+    public boolean isC5_selected() {
+        return c5_selected;
+    }
+
+    public void setC5_selected(boolean c5_selected) {
+        this.c5_selected = c5_selected;
+    }
+
+    public boolean isC6_selected() {
+        return c6_selected;
+    }
+
+    public void setC6_selected(boolean c6_selected) {
+        this.c6_selected = c6_selected;
     }
 }

@@ -189,6 +189,7 @@ public class KenkenActivity extends ActivityBase {
         } else if (this.sharedP.getModeApi().equals("0")) {
             //Mode without API
             Grille grille = get_grille(0);
+            this.sharedP.setCurrentGrille(grille);
             load_grille(grille);
         } else if (this.sharedP.getModeApi().equals("1")) {
             //Mode with API
@@ -301,6 +302,66 @@ public class KenkenActivity extends ActivityBase {
 
     public void btn_click(int i) {
         Log.i("btn click", String.valueOf(i));
+        Grille current_grille = this.sharedP.getCurrentGrille();
+        for(Block block : current_grille.getBlocks()) {
+            if(block.isSelected()) {
+                if (sharedP.getModeEdition().equals("STYLO")) {
+                    block.setCrayon("");
+                    block.setCurrent_value(i);
+                } else if (sharedP.getModeEdition().equals("CRAYON")) {
+                    block.setCurrent_value(0);
+                    String crayon = "";
+                    switch(i) {
+                        case 1 : block.setC1_selected(!block.isC1_selected()); break;
+                        case 2 : block.setC2_selected(!block.isC2_selected()); break;
+                        case 3 : block.setC3_selected(!block.isC3_selected()); break;
+                        case 4 : block.setC4_selected(!block.isC4_selected()); break;
+                        case 5 : block.setC5_selected(!block.isC5_selected()); break;
+                        case 6 : block.setC6_selected(!block.isC6_selected()); break;
+                    }
+                    if(block.isC1_selected()) {
+                        crayon = crayon + "1 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+                    if(block.isC2_selected()) {
+                        crayon = crayon + "2 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+                    if(block.isC3_selected()) {
+                        crayon = crayon + "3 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+                    if(block.isC4_selected()) {
+                        crayon = crayon + "4 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+                    if(block.isC5_selected()) {
+                        crayon = crayon + "5 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+                    if(block.isC6_selected()) {
+                        crayon = crayon + "6 ";
+                    } else {
+                        crayon = crayon + "  ";
+                    }
+
+                    block.setCrayon(crayon);
+                } else {
+                    //TODO event firebase
+                }
+            }
+        }
+
+        this.sharedP.setCurrentGrille(current_grille);
+        this.blockAdapter = new BlockAdapter(this, current_grille);
+        gridView.setAdapter(this.blockAdapter);
+        this.blockAdapter.notifyDataSetChanged();
+
     }
 
     public void see_rules() {
