@@ -336,7 +336,7 @@ public class KenkenActivity extends ActivityBase {
             //Log.i("tab non trouve", "val get : " + bloc_non_trouve.get(id_bloc));
             Block blk_to_help = grille.getBlocks().get(bloc_non_trouve.get(id_bloc));
             blk_to_help.setCurrent_value(blk_to_help.getGood_value());
-            blk_to_help.setEt_text(String.valueOf(blk_to_help.getGood_value()));
+            blk_to_help.setStylo(String.valueOf(blk_to_help.getGood_value()));
 
             save_current_grille(grille.getId_grille(), grille.getBlocks());
             load_grille(grille);

@@ -30,6 +30,8 @@ public class Block {
     private boolean stylo_selected = false;
     private boolean crayon_selected = false;
 
+    private boolean isSelected = false;
+
 
 
     public Block(String overtexte, Boolean borderTop, Boolean borderLeft, Boolean borderRight, Boolean borderBottom, Integer good_value) {
@@ -134,5 +136,13 @@ public class Block {
 
     public void setCrayon_selected(boolean crayon_selected) {
         this.crayon_selected = crayon_selected;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

@@ -73,16 +73,27 @@ public class BlockAdapter extends BaseAdapter {
 
         final Block cur_block = this.blocks.get(position);
 
-        final RelativeLayout block_id = convertView.findViewById(R.id.block_id);
-        block_id.setOnClickListener(new View.OnClickListener() {
+
+
+        final RelativeLayout block_RL = convertView.findViewById(R.id.block_id);
+
+        if(cur_block.isSelected()) {
+            block_RL.setBackgroundResource(R.drawable.stylo_selected);
+        } else {
+            block_RL.setBackgroundResource(R.drawable.sweet_borders);
+        }
+
+        block_RL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sharedP.getModeEdition().equals("STYLO)")) {
-                    deselect_all_blocks();
-                    block_id.setBackgroundColor(Color.GREEN);
+                for(Block block: blocks) {
+                    if(block.isSelected()) block.setSelected(!block.isSelected());
                 }
+                cur_block.setSelected(true);
+                notifyDataSetChanged();
             }
         });
+
 
 
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
@@ -132,17 +143,6 @@ public class BlockAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void  deselect_all_blocks () {
-        for (Block block : this.blocks) {
-            block.setStylo_selected(false);
-            block.setBa
-        }
-    }
-/*    private void hideKeyboard(EditText editText) {
-        InputMethodManager imm = (InputMethodManager) this.contexte.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null)
-            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-    }*/
 
 
     private void save_current_grille() {
