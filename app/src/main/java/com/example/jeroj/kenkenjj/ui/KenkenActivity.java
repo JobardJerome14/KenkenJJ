@@ -325,7 +325,6 @@ public class KenkenActivity extends ActivityBase {
                     block.setCrayon("");
                     block.setCurrent_value(i);
                     block.setStylo(String.valueOf(i));
-                    check_grille();
                 } else if (sharedP.getModeEdition().equals("CRAYON")) {
                     block.setCurrent_value(0);
                     String crayon = "";
@@ -380,6 +379,7 @@ public class KenkenActivity extends ActivityBase {
         gridView.setAdapter(this.blockAdapter);
         this.blockAdapter.notifyDataSetChanged();
 
+        check_grille();
     }
 
     public void see_rules() {
@@ -419,10 +419,13 @@ public class KenkenActivity extends ActivityBase {
             blk_to_help.setCrayon("");
             blk_to_help.setSelected(false);
 
-            save_current_grille(grille.getId_grille(), grille.getBlocks());
-            load_grille(grille);
-        }
+            this.sharedP.setCurrentGrille(grille);
+            this.blockAdapter = new BlockAdapter(this, grille);
+            gridView.setAdapter(this.blockAdapter);
+            this.blockAdapter.notifyDataSetChanged();
 
+            check_grille();
+        }
     }
 
     private void save_current_grille(Integer id_grille, ArrayList<Block> blockArrayList) {
