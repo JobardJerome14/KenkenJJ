@@ -1,5 +1,7 @@
 package com.example.jeroj.kenkenjj.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
+import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
@@ -42,6 +45,10 @@ public class KenkenActivity extends ActivityBase {
     private String mode_edition = "STYLO";
 
     private SharedP sharedP;
+
+    private boolean win = false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -310,7 +317,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void btn_click(int i) {
-        Log.i("btn click", String.valueOf(i));
+        //Log.i("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
         for(Block block : current_grille.getBlocks()) {
             if(block.isSelected()) {
@@ -318,6 +325,7 @@ public class KenkenActivity extends ActivityBase {
                     block.setCrayon("");
                     block.setCurrent_value(i);
                     block.setStylo(String.valueOf(i));
+                    check_grille();
                 } else if (sharedP.getModeEdition().equals("CRAYON")) {
                     block.setCurrent_value(0);
                     String crayon = "";
@@ -451,6 +459,61 @@ public class KenkenActivity extends ActivityBase {
         } else if (this.sharedP.getModeApi().equals("1")) {
             get_grille_via_api();
         }
+    }
+
+
+    private void check_grille() {
+        if (!this.win) {
+            //Integer i = 0;
+            Integer good = 0;
+            Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
+            for (Block block : grille.getBlocks()) {
+                //i++;
+                //Log.i("block_current_value", i+" : "+block.getCurrent_value());
+                //Log.i("block_good_value", i+" : "+block.getGood_value());
+                if (block.getCurrent_value() == block.getGood_value()) {
+                    good++;
+                }
+            }
+            if (good == 36) {
+                this.win = true;
+                //Log.i("victory", "C'est la victoire !");
+                notify_victory();
+                save_victory_via_api();
+            }
+        }
+    }
+
+
+
+    private void notify_victory() {
+        AlertDialog alertDialog;
+        alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(R.string.win_message_title);
+        alertDialog.setMessage(this.getString(R.string.win_message_desc));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
+    private void save_victory_via_api() {
+        //TODO get user et sauvegarde ou?
+        //sauvegarde victoire en base via api
+        API api = new API();
+        api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new ResultatCallback<RetourUpdate>() {
+            @Override
+            public void onWaitingResultat(RetourUpdate result) {
+                if (result.getStatus().equals("OK")) {
+                    //TODO
+                } else {
+                    //TODO
+                }
+            }
+        });
     }
 
 }

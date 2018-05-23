@@ -31,7 +31,6 @@ public class BlockAdapter extends BaseAdapter {
     private ArrayList<Block> blocks;
     private Integer id_grille;
 
-    private boolean win = false;
 
     private SharedP sharedP;
 
@@ -39,7 +38,6 @@ public class BlockAdapter extends BaseAdapter {
         this.contexte = contexte;
         this.blocks = grille.getBlocks();
         this.id_grille = grille.getId_grille();
-        this.win = false;
         this.sharedP = new SharedP(contexte);
     }
 
@@ -164,57 +162,6 @@ public class BlockAdapter extends BaseAdapter {
     }
 
 
-    private void check_grille() {
-        if (!this.win) {
-            //Integer i = 0;
-            Integer good = 0;
-            for (Block block : this.blocks) {
-                //i++;
-                //Log.i("block_current_value", i+" : "+block.getCurrent_value());
-                //Log.i("block_good_value", i+" : "+block.getGood_value());
-                if (block.getCurrent_value() == block.getGood_value()) {
-                    good++;
-                }
-            }
-            if (good == 36) {
-                this.win = true;
-                //Log.i("victory", "C'est la victoire !");
-                notify_victory();
-                save_victory_via_api();
-            }
-        }
-    }
 
-
-
-    private void notify_victory() {
-        AlertDialog alertDialog;
-        alertDialog = new AlertDialog.Builder(this.contexte).create();
-        alertDialog.setTitle(R.string.win_message_title);
-        alertDialog.setMessage(contexte.getString(R.string.win_message_desc));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
-    }
-
-    private void save_victory_via_api() {
-        //TODO get user et sauvegarde ou?
-        //sauvegarde victoire en base via api
-        API api = new API();
-        api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new ResultatCallback<RetourUpdate>() {
-            @Override
-            public void onWaitingResultat(RetourUpdate result) {
-                if (result.getStatus().equals("OK")) {
-                    //TODO
-                } else {
-                    //TODO
-                }
-            }
-        });
-    }
 
 }
