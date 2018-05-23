@@ -78,7 +78,13 @@ public class BlockAdapter extends BaseAdapter {
         final RelativeLayout block_RL = convertView.findViewById(R.id.block_id);
 
         if(cur_block.isSelected()) {
-            block_RL.setBackgroundResource(R.drawable.stylo_selected);
+            if(this.sharedP.getModeEdition().equals("STYLO")) {
+                block_RL.setBackgroundResource(R.drawable.stylo_selected);
+            } else if(this.sharedP.getModeEdition().equals("CRAYON")) {
+                block_RL.setBackgroundResource(R.drawable.crayon_selected);
+            } else {
+                //TODO event firebase
+            }
         } else {
             block_RL.setBackgroundResource(R.drawable.sweet_borders);
         }
@@ -86,10 +92,12 @@ public class BlockAdapter extends BaseAdapter {
         block_RL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(Block block: blocks) {
-                    if(block.isSelected()) block.setSelected(!block.isSelected());
+                if(sharedP.getModeEdition().equals("STYLO")) {
+                    for (Block block : blocks) {
+                        if (block.isSelected()) block.setSelected(!block.isSelected());
+                    }
                 }
-                cur_block.setSelected(true);
+                cur_block.setSelected(!cur_block.isSelected());
                 notifyDataSetChanged();
             }
         });
@@ -172,20 +180,7 @@ public class BlockAdapter extends BaseAdapter {
         }
     }
 
-/*    private void notify_number_unauthorized() {
-        //TODO delete id grille glitch
-        AlertDialog alertDialog;
-        alertDialog = new AlertDialog.Builder(this.contexte).create();
-        alertDialog.setTitle(R.string.num_non_autorise_title);
-        alertDialog.setMessage(contexte.getString(R.string.num_non_autorise_desc));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK" + this.id_grille,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
-    }*/
+
 
     private void notify_victory() {
         AlertDialog alertDialog;
