@@ -112,8 +112,8 @@ public class BlockAdapter extends BaseAdapter {
         }
 
         final TextView crayon = convertView.findViewById(R.id.crayon);
-        Log.i("get crayon", cur_block.getCrayon());
-        if(!cur_block.getCrayon().equals("")) {
+        //Log.i("get crayon", cur_block.getCrayon());
+        if(cur_block.getCrayon() != null && !cur_block.getCrayon().equals("")) {
             crayon.setText(cur_block.getCrayon());
         }
 
