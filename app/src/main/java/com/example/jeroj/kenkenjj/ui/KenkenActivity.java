@@ -183,7 +183,7 @@ public class KenkenActivity extends ActivityBase {
         this.gridView = findViewById(R.id.gridview);
 
         Grille current_grille = this.sharedP.getCurrentGrille();
-        if (current_grille != null && current_grille.getId_grille() != 0) {
+        if (current_grille != null /*&& current_grille.getId_grille() != 0*/) {
             //Load current Grille
             load_grille(current_grille);
         } else if (this.sharedP.getModeApi().equals("0")) {
@@ -308,6 +308,7 @@ public class KenkenActivity extends ActivityBase {
                 if (sharedP.getModeEdition().equals("STYLO")) {
                     block.setCrayon("");
                     block.setCurrent_value(i);
+                    block.setStylo(String.valueOf(i));
                 } else if (sharedP.getModeEdition().equals("CRAYON")) {
                     block.setCurrent_value(0);
                     String crayon = "";
