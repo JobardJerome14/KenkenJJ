@@ -304,8 +304,10 @@ public class KenkenActivity extends ActivityBase {
     public void change_edition_mode(boolean flag) {
         this.sharedP.setModeEdition(flag);
         Grille current_grille = this.sharedP.getCurrentGrille();
-        for(Block block : current_grille.getBlocks()) {
-            block.setSelected(false);
+        if(!flag) {
+            for (Block block : current_grille.getBlocks()) {
+                block.setSelected(false);
+            }
         }
 
         load_grille(current_grille);
