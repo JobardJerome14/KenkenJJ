@@ -117,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
                 android:layout_weight="1"
+                android:textColor="@color/my_white"
                 android:text="1"/>
             <Button
                 android:id="@+id/btn2"
@@ -124,12 +125,14 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
                 android:layout_weight="1"
+                android:textColor="@color/my_white"
                 android:text="2"/>
             <Button
                 android:id="@+id/btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:textColor="@color/my_white"
                 android:layout_weight="1"
                 android:text="3"/>
             <Button
@@ -137,6 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:textColor="@color/my_white"
                 android:layout_weight="1"
                 android:text="4"/>
             <Button
@@ -144,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:textColor="@color/my_white"
                 android:layout_weight="1"
                 android:text="5"/>
             <Button
@@ -151,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
+                android:textColor="@color/my_white"
                 android:layout_weight="1"
                 android:text="6"/>
 
