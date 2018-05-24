@@ -9,13 +9,13 @@ import retrofit2.http.Query;
 
 public interface IApi {
 
-    @GET("/kenkenjj/get-grille.php")
+    @GET("/kenAPI/get-grille.php")
     Call<Grille> getKenkenGrille(
             @Query("user_id") String user_id
     );
 
 
-    @GET("/kenkenjj/upd-game.php")
+    @GET("/kenAPI/upd-game.php")
     Call<RetourUpdate> updKenGame(
             @Query("user_id") String user_id,
             @Query("id_grille") Integer id_grille,
