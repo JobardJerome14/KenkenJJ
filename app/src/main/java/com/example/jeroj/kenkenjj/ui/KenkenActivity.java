@@ -436,6 +436,8 @@ public class KenkenActivity extends ActivityBase {
             block.setC6_selected(false);
         }
 
+        this.win = false;
+
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
     }
@@ -466,6 +468,7 @@ public class KenkenActivity extends ActivityBase {
                     good++;
                 }
             }
+            Log.i("nb bloc bon : ", String.valueOf(good));
             if (good == 36) {
                 this.win = true;
                 //Log.i("victory", "C'est la victoire !");
