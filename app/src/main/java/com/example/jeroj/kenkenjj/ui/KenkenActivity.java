@@ -367,7 +367,7 @@ public class KenkenActivity extends ActivityBase {
                         case 6 : block.setC6_selected(false); break;
                     }
 
-                    if(block.getStylo().equals("")) {
+                    if(block.getStylo() != null && block.getStylo().equals("")) {
                         block.setCrayon(crayon_formated_string(block));
                     }
                 }
@@ -509,7 +509,7 @@ public class KenkenActivity extends ActivityBase {
                     good++;
                 }
             }
-            Log.i("nb bloc bon : ", String.valueOf(good));
+            //Log.i("nb bloc bon : ", String.valueOf(good));
             if (good == 36) {
                 this.win = true;
                 //Log.i("victory", "C'est la victoire !");
