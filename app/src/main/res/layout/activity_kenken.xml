@@ -29,14 +29,16 @@
         <Button
             android:id="@+id/raz_btn"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_weight="1"
             android:text="@string/raz_btn_label" />
 
         <Button
             android:id="@+id/new_game_btn"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_weight="1"
             android:text="@string/new_game_btn_label" />
 
@@ -47,19 +49,22 @@
         android:id="@+id/lin_btn_2"
         android:layout_below="@+id/lin_btn_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/help_btn"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_weight="1"
             android:text="@string/help_btn_label" />
 
         <Button
             android:id="@+id/rules_btn"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
             android:layout_weight="1"
             android:text="@string/rules_btn_label" />
 
