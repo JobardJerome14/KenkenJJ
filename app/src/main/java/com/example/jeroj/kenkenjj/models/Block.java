@@ -1,4 +1,4 @@
-package com.example.jeroj.kenkenjj.ui.models;
+package com.example.jeroj.kenkenjj.models;
 
 import com.google.gson.annotations.SerializedName;
 

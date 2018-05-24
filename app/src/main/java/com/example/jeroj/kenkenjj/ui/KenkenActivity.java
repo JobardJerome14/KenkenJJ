@@ -17,7 +17,7 @@ import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
-import com.example.jeroj.kenkenjj.ui.models.Block;
+import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.ArrayList;
@@ -42,7 +42,6 @@ public class KenkenActivity extends ActivityBase {
 
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
-    private String mode_edition = "STYLO";
 
     private SharedP sharedP;
 
@@ -436,6 +435,8 @@ public class KenkenActivity extends ActivityBase {
             block.setC6_selected(false);
         }
 
+        this.win = false;
+
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
     }
@@ -466,6 +467,7 @@ public class KenkenActivity extends ActivityBase {
                     good++;
                 }
             }
+            Log.i("nb bloc bon : ", String.valueOf(good));
             if (good == 36) {
                 this.win = true;
                 //Log.i("victory", "C'est la victoire !");

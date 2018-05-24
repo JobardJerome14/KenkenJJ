@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:textSize="12sp"
-            tools:text="15x" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/stylo"
