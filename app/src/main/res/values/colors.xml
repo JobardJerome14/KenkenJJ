@@ -7,6 +7,9 @@
     <color name="block_number">#ff8400</color>
     <color name="block_crayon">#248028</color>
 
+    <!--MainActivity-->
+    <color name="btn_main">#798dff</color>
+
     <!--KenKenActivity-->
     <color name="btn_1_background">#FE7484</color>
     <color name="btn_2_background">#25f177</color>
