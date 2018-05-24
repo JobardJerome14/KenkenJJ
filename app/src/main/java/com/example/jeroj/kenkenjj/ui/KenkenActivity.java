@@ -317,15 +317,17 @@ public class KenkenActivity extends ActivityBase {
     public void btn_click(int i) {
         //Log.i("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
+        int id_block = 0;
+        int tmp = 0;
         for(Block block : current_grille.getBlocks()) {
             if(block.isSelected()) {
                 if (sharedP.getModeEdition().equals("STYLO")) {
                     block.setCrayon("");
                     block.setCurrent_value(i);
                     block.setStylo(String.valueOf(i));
+                    id_block = tmp;
                 } else if (sharedP.getModeEdition().equals("CRAYON")) {
                     block.setCurrent_value(0);
-                    String crayon = "";
                     switch(i) {
                         case 1 : block.setC1_selected(!block.isC1_selected()); break;
                         case 2 : block.setC2_selected(!block.isC2_selected()); break;
@@ -334,41 +336,43 @@ public class KenkenActivity extends ActivityBase {
                         case 5 : block.setC5_selected(!block.isC5_selected()); break;
                         case 6 : block.setC6_selected(!block.isC6_selected()); break;
                     }
-                    if(block.isC1_selected()) {
-                        crayon = crayon + "1 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
-                    if(block.isC2_selected()) {
-                        crayon = crayon + "2 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
-                    if(block.isC3_selected()) {
-                        crayon = crayon + "3 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
-                    if(block.isC4_selected()) {
-                        crayon = crayon + "4 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
-                    if(block.isC5_selected()) {
-                        crayon = crayon + "5 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
-                    if(block.isC6_selected()) {
-                        crayon = crayon + "6 ";
-                    } else {
-                        crayon = crayon + "  ";
-                    }
 
-                    block.setCrayon(crayon);
+                    block.setCrayon(crayon_formated_string(block));
                 } else {
                     //TODO event firebase
                 }
+            }
+            tmp++;
+        }
+
+        if (sharedP.getModeEdition().equals("STYLO")) {
+            tmp = 0;
+            for (Block block : current_grille.getBlocks()) {
+                boolean modif = false;
+                if(tmp%6 == id_block%6 && tmp!=id_block) {
+                    modif = true;
+                }
+
+                if( (tmp - (tmp%6)) == (id_block - id_block%6) &&  tmp!=id_block) {
+                    modif = true;
+                }
+
+                if(modif) {
+                    switch (i) {
+                        case 1 : block.setC1_selected(false); break;
+                        case 2 : block.setC2_selected(false); break;
+                        case 3 : block.setC3_selected(false); break;
+                        case 4 : block.setC4_selected(false); break;
+                        case 5 : block.setC5_selected(false); break;
+                        case 6 : block.setC6_selected(false); break;
+                    }
+
+                    if(block.getStylo().equals("")) {
+                        block.setCrayon(crayon_formated_string(block));
+                    }
+                }
+
+                tmp++;
             }
         }
 
@@ -376,6 +380,42 @@ public class KenkenActivity extends ActivityBase {
         this.blockAdapter.notifyDataSetChanged();
 
         check_grille();
+    }
+
+    public String crayon_formated_string(Block block) {
+        String crayon = "";
+        if(block.isC1_selected()) {
+            crayon = crayon + "1 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+        if(block.isC2_selected()) {
+            crayon = crayon + "2 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+        if(block.isC3_selected()) {
+            crayon = crayon + "3 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+        if(block.isC4_selected()) {
+            crayon = crayon + "4 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+        if(block.isC5_selected()) {
+            crayon = crayon + "5 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+        if(block.isC6_selected()) {
+            crayon = crayon + "6 ";
+        } else {
+            crayon = crayon + "  ";
+        }
+
+        return crayon;
     }
 
     public void see_rules() {
