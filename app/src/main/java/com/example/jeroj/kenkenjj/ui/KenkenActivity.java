@@ -167,6 +167,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void load_grille(Grille grille) {
+        this.sharedP.setCurrentGrille(grille);
         this.blockAdapter = new BlockAdapter(this, grille);
         this.gridView.setAdapter(this.blockAdapter);
         this.id_grille = grille.getId_grille();
