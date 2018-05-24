@@ -260,8 +260,6 @@ public class KenkenActivity extends ActivityBase {
             }
         });
 
-
-
         this.btn2 = findViewById(R.id.btn2);
         this.btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -311,9 +309,7 @@ public class KenkenActivity extends ActivityBase {
             block.setSelected(false);
         }
 
-        this.sharedP.setCurrentGrille(current_grille);
-        this.blockAdapter = new BlockAdapter(this, current_grille);
-        gridView.setAdapter(this.blockAdapter);
+        load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
     }
 
@@ -375,9 +371,7 @@ public class KenkenActivity extends ActivityBase {
             }
         }
 
-        this.sharedP.setCurrentGrille(current_grille);
-        this.blockAdapter = new BlockAdapter(this, current_grille);
-        gridView.setAdapter(this.blockAdapter);
+        load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
 
         check_grille();
@@ -420,19 +414,13 @@ public class KenkenActivity extends ActivityBase {
             blk_to_help.setCrayon("");
             blk_to_help.setSelected(false);
 
-            this.sharedP.setCurrentGrille(grille);
-            this.blockAdapter = new BlockAdapter(this, grille);
-            gridView.setAdapter(this.blockAdapter);
+            load_grille(grille);
             this.blockAdapter.notifyDataSetChanged();
 
             check_grille();
         }
     }
 
-    private void save_current_grille(Integer id_grille, ArrayList<Block> blockArrayList) {
-        Grille grille = new Grille(id_grille, blockArrayList);
-        this.sharedP.setCurrentGrille(grille);
-    }
 
     private void raz() {
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
@@ -447,9 +435,8 @@ public class KenkenActivity extends ActivityBase {
             block.setC5_selected(false);
             block.setC6_selected(false);
         }
-        this.sharedP.setCurrentGrille(grille);
-        this.blockAdapter = new BlockAdapter(this, grille);
-        gridView.setAdapter(this.blockAdapter);
+
+        load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
     }
 
