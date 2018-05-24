@@ -1,27 +1,17 @@
 package com.example.jeroj.kenkenjj.ui.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
-import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
-import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
-import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.models.Block;
 
 import java.util.ArrayList;

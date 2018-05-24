@@ -42,7 +42,6 @@ public class KenkenActivity extends ActivityBase {
 
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
-    private String mode_edition = "STYLO";
 
     private SharedP sharedP;
 
