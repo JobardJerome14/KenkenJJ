@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.models.Grille;
-import com.example.jeroj.kenkenjj.ui.models.Block;
+import com.example.jeroj.kenkenjj.models.Block;
 
 import java.util.ArrayList;
 

@@ -17,7 +17,7 @@ import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
-import com.example.jeroj.kenkenjj.ui.models.Block;
+import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.ArrayList;
