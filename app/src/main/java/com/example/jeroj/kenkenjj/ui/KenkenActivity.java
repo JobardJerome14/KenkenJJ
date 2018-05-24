@@ -162,7 +162,7 @@ public class KenkenActivity extends ActivityBase {
             blocks.add(new Block("", false, true, true, true, 5));
         }
 
-        return new Grille(this.id_grille, blocks);
+        return new Grille(this.id_grille, blocks, "73");
     }
 
     private void load_grille(Grille grille) {
@@ -522,10 +522,12 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void notify_victory() {
+        Grille grille = this.sharedP.getCurrentGrille();
+
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(R.string.win_message_title);
-        alertDialog.setMessage(this.getString(R.string.win_message_desc));
+        alertDialog.setMessage(this.getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

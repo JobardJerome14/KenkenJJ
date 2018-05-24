@@ -12,10 +12,14 @@ public class Grille {
     @SerializedName("tab")
     private ArrayList<Block> blocks;
 
+    @SerializedName("percent_victory")
+    private String percent_victory;
 
-    public Grille(Integer id_grille, ArrayList<Block> blockArrayList) {
+
+    public Grille(Integer id_grille, ArrayList<Block> blockArrayList, String percent_victory) {
         this.id_grille = id_grille;
         this.blocks = blockArrayList;
+        this.percent_victory = percent_victory;
     }
 
     public Integer getId_grille() {
@@ -32,5 +36,14 @@ public class Grille {
 
     public void setBlocks(ArrayList<Block> blocks) {
         this.blocks = blocks;
+    }
+
+
+    public String getPercent_victory() {
+        return percent_victory;
+    }
+
+    public void setPercent_victory(String percent_victory) {
+        this.percent_victory = percent_victory;
     }
 }

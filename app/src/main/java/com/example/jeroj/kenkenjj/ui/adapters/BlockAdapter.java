@@ -20,7 +20,7 @@ public class BlockAdapter extends BaseAdapter {
     private Context contexte;
     private ArrayList<Block> blocks;
     private Integer id_grille;
-
+    private String percent_victory;
 
     private SharedP sharedP;
 
@@ -28,6 +28,7 @@ public class BlockAdapter extends BaseAdapter {
         this.contexte = contexte;
         this.blocks = grille.getBlocks();
         this.id_grille = grille.getId_grille();
+        this.percent_victory = grille.getPercent_victory();
         this.sharedP = new SharedP(contexte);
     }
 
@@ -147,7 +148,7 @@ public class BlockAdapter extends BaseAdapter {
 
 
     private void save_current_grille() {
-        Grille grille = new Grille(this.id_grille, this.blocks);
+        Grille grille = new Grille(this.id_grille, this.blocks, this.percent_victory);
         this.sharedP.setCurrentGrille(grille);
     }
 
