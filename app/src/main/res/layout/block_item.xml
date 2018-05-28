@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_overtexte"
             android:maxLength="1"
+            android:layout_marginTop="-4dp"
             android:padding="3dp"
             android:textAlignment="center"
             android:textColor="@color/block_number"
@@ -37,9 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/stylo"
-            android:layout_marginTop="-10dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginStart="2dp"
+            android:layout_marginTop="-14dp"
+
             android:textSize="12sp"
             android:textColor="@color/block_crayon"
             />
