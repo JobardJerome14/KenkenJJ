@@ -14,12 +14,20 @@
             android:id="@+id/rules_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/btn_main"
             android:text="@string/rules_title" />
 
         <TextView
             android:id="@+id/rules_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/btn_main"
+            android:layout_margin="4dp"
+            android:padding="10dp"
             android:text="@string/rules_body" />
 
     </LinearLayout>
