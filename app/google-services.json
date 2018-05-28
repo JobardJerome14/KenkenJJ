@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "49423984",
+    "firebase_url": "https://kenjj-78916.firebaseio.com",
+    "project_id": "kenjj-78916",
+    "storage_bucket": "kenjj-78916.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49423984:android:52d9a8886ee047ab",
+        "android_client_info": {
+          "package_name": "com.example.jeroj.kenkenjj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49423984-291uk22fahl9rbqiv1km9gpjkavauuln.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "49423984-291uk22fahl9rbqiv1km9gpjkavauuln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAxNrFg6rJuE2ar_4UKkmbOMsj3hkKkWo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
