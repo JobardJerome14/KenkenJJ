@@ -29,7 +29,8 @@ public class API {
 
         // ip 10.0.2.2 special IP for localhost
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:80").client(client)
+                //.baseUrl("http://10.0.2.2:80").client(client)
+                .baseUrl("https://8080-dot-3963909-dot-devshell.appspot.com/").client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
