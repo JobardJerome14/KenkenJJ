@@ -53,8 +53,9 @@ public class MainActivity extends ActivityBase {
     public void play_ken() {
         navigate(KenkenActivity.class, null);
         Bundle bundle = new Bundle();
+        bundle.putString("button", "play_btn");
         bundle.putString("user_id", this.sharedP.getUserId());
-        mFirebaseAnalytics.logEvent("play_btn", bundle);
+        mFirebaseAnalytics.logEvent("clic", bundle);
 
     }
 }
