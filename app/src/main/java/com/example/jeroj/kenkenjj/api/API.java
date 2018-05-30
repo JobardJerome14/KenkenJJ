@@ -19,6 +19,8 @@ public class API {
 
     private IApi iApi;
 
+    private SharedP sharedP;
+
     /**
      *
      */
@@ -27,14 +29,16 @@ public class API {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        // ip 10.0.2.2 special IP for localhost
+        //String url = "https://8080-dot-3963909-dot-devshell.appspot.com/";
+        String url = "http://10.0.2.2:80";
+
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://10.0.2.2:80").client(client)
-                .baseUrl("https://8080-dot-3963909-dot-devshell.appspot.com/").client(client)
+                .baseUrl(url).client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         this.iApi = retrofit.create(IApi.class);
+
     }
 
     public void getKenkenGrille(String user_id, final ResultatCallback<Grille> resultatCallback) {

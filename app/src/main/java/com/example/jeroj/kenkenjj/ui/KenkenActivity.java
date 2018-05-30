@@ -14,6 +14,7 @@ import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+import com.example.jeroj.kenkenjj.helpers.FBevent;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
@@ -47,7 +48,7 @@ public class KenkenActivity extends ActivityBase {
     private SharedP sharedP;
 
     private boolean win = false;
-    private FirebaseAnalytics mFirebaseAnalytics;
+    //private FirebaseAnalytics mFirebaseAnalytics;
 
 
 
@@ -192,7 +193,7 @@ public class KenkenActivity extends ActivityBase {
     private void bindView() {
         this.gridView = findViewById(R.id.gridview);
 
-        this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        //this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Grille current_grille = this.sharedP.getCurrentGrille();
         if (current_grille != null /*&& current_grille.getId_grille() != 0*/) {
@@ -318,7 +319,9 @@ public class KenkenActivity extends ActivityBase {
         load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        send_firebase_event("clic", "checkbox", "mode_crayon_chkbx");
+        //send_firebase_event("clic", "checkbox", "mode_crayon_chkbx");
+        new FBevent(this, "clic", "checkbox", "mode_crayon_chkbx");
+
     }
 
     public void btn_click(int i) {
@@ -387,7 +390,9 @@ public class KenkenActivity extends ActivityBase {
         this.blockAdapter.notifyDataSetChanged();
 
         String value = "keyboard_btn_"+String.valueOf(i);
-        send_firebase_event("clic", "button", value);
+        //send_firebase_event("clic", "button", value);
+        new FBevent(this, "clic", "button", value);
+
 
         check_grille();
     }
@@ -429,7 +434,8 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void see_rules() {
-        send_firebase_event("clic", "button", "rules_btn");
+        //send_firebase_event("clic", "button", "rules_btn");
+        new FBevent(this, "clic", "button", "rules_btn");
 
         navigate(RulesActivity.class, null);
     }
@@ -469,7 +475,8 @@ public class KenkenActivity extends ActivityBase {
 
             load_grille(grille);
             this.blockAdapter.notifyDataSetChanged();
-            send_firebase_event("clic", "button", "help_btn");
+            //send_firebase_event("clic", "button", "help_btn");
+            new FBevent(this, "clic", "button", "help_btn");
 
 
             check_grille();
@@ -477,12 +484,12 @@ public class KenkenActivity extends ActivityBase {
     }
 
 
-    public void send_firebase_event(String event, String key, String value) {
+/*    public void send_firebase_event(String event, String key, String value) {
         Bundle bundle = new Bundle();
         bundle.putString(key, value);
         bundle.putString("user_id", this.sharedP.getUserId());
         mFirebaseAnalytics.logEvent(event, bundle);
-    }
+    }*/
 
 
     private void raz() {
@@ -504,7 +511,9 @@ public class KenkenActivity extends ActivityBase {
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        send_firebase_event("clic", "button", "raz_btn");
+        //send_firebase_event("clic", "button", "raz_btn");
+        new FBevent(this, "clic", "button", "raz_btn");
+
     }
 
     private void new_game() {
@@ -515,7 +524,8 @@ public class KenkenActivity extends ActivityBase {
             gridView.setAdapter(this.blockAdapter);
             this.blockAdapter.notifyDataSetChanged();
 
-            send_firebase_event("clic", "button", "new_game_btn");
+            //send_firebase_event("clic", "button", "new_game_btn");
+            new FBevent(this, "clic", "button", "new_game_btn");
 
         } else if (this.sharedP.getModeApi().equals("1")) {
             get_grille_via_api();
