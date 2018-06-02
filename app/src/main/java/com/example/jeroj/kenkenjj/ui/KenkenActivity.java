@@ -461,7 +461,7 @@ public class KenkenActivity extends ActivityBase {
 
         if (!help_impossible) {
             int size_nf = bloc_non_trouve.size();
-            //Log.i("tab non size_nf", "size_nf : " + size_nf);
+            Log.i("tab non trouve size_nf", "size_nf : " + size_nf);
 
             Random r = new Random();
             int id_bloc = r.nextInt(size_nf);
@@ -518,6 +518,7 @@ public class KenkenActivity extends ActivityBase {
 
     private void new_game() {
         //get nouvelle grille ET sauvegarde abandon en base via api
+        this.win = false;
         if (this.sharedP.getModeApi().equals("0")) {
             Grille grille = get_grille(1);
             this.blockAdapter = new BlockAdapter(this, grille);
@@ -534,6 +535,7 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void check_grille() {
+        Log.i("check_grille win" , String.valueOf(this.win));
         if (!this.win) {
             //Integer i = 0;
             Integer good = 0;
@@ -546,7 +548,7 @@ public class KenkenActivity extends ActivityBase {
                     good++;
                 }
             }
-            //Log.i("nb bloc bon : ", String.valueOf(good));
+            Log.i("nb bloc bon : ", String.valueOf(good));
             if (good == 36) {
                 this.win = true;
                 //Log.i("victory", "C'est la victoire !");

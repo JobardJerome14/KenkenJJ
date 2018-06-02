@@ -33,7 +33,7 @@ public class MainActivity extends ActivityBase {
         if (this.sharedP.getUserId().isEmpty()) {
             this.sharedP.setUserId(UUID.randomUUID().toString());
         }
-        this.sharedP.setModeApi("0"); // Mode API:  0=without API, 1=with API
+        this.sharedP.setModeApi("1"); // Mode API:  0=without API, 1=with API
         bindView();
     }
 
