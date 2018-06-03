@@ -2,6 +2,7 @@ package com.example.jeroj.kenkenjj.api;
 
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
+import com.example.jeroj.kenkenjj.models.Stats;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -22,5 +23,10 @@ public interface IApi {
             @Query("user_id") String user_id,
             @Query("id_grille") Integer id_grille,
             @Query("etat") Integer etat
+    );
+
+    @GET("/kenjjstats")
+    Call<Stats> getKenStats(
+            @Query("user_id") String user_id
     );
 }

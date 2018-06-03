@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
+import com.example.jeroj.kenkenjj.models.Stats;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -84,5 +85,26 @@ public class API {
         });
     }
 
+
+    public void getKenStats(String user_id, final ResultatCallback<Stats> resultatCallback) {
+        Call<Stats> call = this.iApi.getKenStats(user_id);
+
+        call.enqueue(new Callback<Stats>() {
+            @Override
+            public void onResponse(@NonNull Call<Stats> call, @NonNull Response<Stats> response) {
+                if(response.isSuccessful()) {
+                    Stats stats = response.body();
+                    resultatCallback.onWaitingResultat(stats);
+                } else {
+                    //TODO
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
+                //TODO
+            }
+        });
+    }
 
 }
