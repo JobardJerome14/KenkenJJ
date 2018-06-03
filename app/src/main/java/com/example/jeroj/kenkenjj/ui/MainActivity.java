@@ -21,8 +21,6 @@ public class MainActivity extends ActivityBase {
 
     SharedP sharedP;
 
-    //private FirebaseAnalytics mFirebaseAnalytics;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +38,6 @@ public class MainActivity extends ActivityBase {
     private void bindView() {
         this.tw_main = findViewById(R.id.tw_main);
 
-        //this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
         this.welcome_btn = findViewById(R.id.welcome_btn);
         this.welcome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +52,5 @@ public class MainActivity extends ActivityBase {
         navigate(KenkenActivity.class, null);
 
         new FBevent(this, "clic", "button", "play_btn");
-
-/*        Bundle bundle = new Bundle();
-        bundle.putString("button", "play_btn");
-        bundle.putString("user_id", this.sharedP.getUserId());
-        mFirebaseAnalytics.logEvent("clic", bundle);*/
-
     }
 }
