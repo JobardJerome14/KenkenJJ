@@ -20,7 +20,6 @@ import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.Random;
