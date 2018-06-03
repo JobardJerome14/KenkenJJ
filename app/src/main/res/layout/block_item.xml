@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary" />
+        android:background="@color/btn_main" />
 
     <View
         android:id="@+id/vleft"
@@ -59,7 +59,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary" />
+        android:background="@color/btn_main" />
 
     <View
         android:id="@+id/vright"
@@ -67,14 +67,14 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:background="@color/colorPrimary" />
+        android:background="@color/btn_main" />
 
     <View
         android:id="@+id/vbottom"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary" />
+        android:background="@color/btn_main" />
 
 
 </RelativeLayout>
