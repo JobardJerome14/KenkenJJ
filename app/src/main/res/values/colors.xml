@@ -9,6 +9,7 @@
 
     <!--MainActivity-->
     <color name="btn_main">#798dff</color>
+    <color name="btn_stats">#25f177</color>
 
     <!--KenKenActivity-->
     <color name="btn_1_background">#FE7484</color>

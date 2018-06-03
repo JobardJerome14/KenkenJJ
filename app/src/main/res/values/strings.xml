@@ -2,6 +2,7 @@
     <string name="app_name">KenJJ</string>
     <string name="welcome_text">Bienvenue sur KenJJ</string>
     <string name="welcome_btn">Jouer</string>
+    <string name="stats_btn">Statistiques</string>
     <string name="win_message_title">Gagné!</string>
     <string name="win_message_desc">Bravo, tu as terminé cette grille!\n XYZ% des joueurs ont réussi cette grille!</string>
     <string name="mode_crayon_label">Mode crayon</string>
@@ -18,4 +19,11 @@
         Pour commencer, il est nécessaire de réperer les blocs qui ne contiennent qu\'une seule case. Il faut recopier dans ce bloc le petit chiffre inscrit en haut à gauche.\n\n
         Ensuite, il va falloir faire des calculs pour remplir les autres cases. Parmi les exemples possibles d\'addition (5 peut s\'écrire 4+1 ou 1+4 ou 3+2 ou 2+3), ce sont les blocs déjà trouvés qui vont nous permettre de trouver la bonne addition. Toujours en se rappelant de la règle : un même chiffre ne peut être présent qu\'une fois par ligne et qu\'une fois par colonne.\n\n
         Bon jeu !</string>
+
+
+    <!-- Stats activity -->
+    <string name="st_play">Parties jouées</string>
+    <string name="st_resolved">Parties réussies</string>
+    <string name="st_pourcentage">Pourcentage de réussite</string>
+    <string name="st_avg_time_resolved">Temps moyen de résolution</string>
 </resources>
