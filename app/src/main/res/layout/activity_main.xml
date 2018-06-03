@@ -29,4 +29,17 @@
         android:text="@string/welcome_btn"
         app:layout_constraintTop_toBottomOf="@+id/tw_main" />
 
+    <Button
+        android:id="@+id/welcome_rules_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/rules_btn"
+        android:textColor="@color/my_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/rules_btn_label"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_btn"
+        android:layout_marginTop="5dp"/>
+
 </android.support.constraint.ConstraintLayout>

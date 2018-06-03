@@ -18,6 +18,7 @@ public class MainActivity extends ActivityBase {
 
     TextView tw_main;
     Button welcome_btn;
+    Button welcome_rules_btn;
 
     SharedP sharedP;
 
@@ -46,6 +47,14 @@ public class MainActivity extends ActivityBase {
 
             }
         });
+
+        this.welcome_rules_btn = findViewById(R.id.welcome_rules_btn);
+        this.welcome_rules_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                go_to_rules();
+            }
+        });
     }
 
     public void play_ken() {
@@ -53,4 +62,11 @@ public class MainActivity extends ActivityBase {
 
         new FBevent(this, "clic", "button", "play_btn");
     }
+
+    public void go_to_rules() {
+        navigate(RulesActivity.class, null);
+
+        new FBevent(this, "clic", "button", "welcome_rules_btn");
+    }
+
 }
