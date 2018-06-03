@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
+import com.example.jeroj.kenkenjj.helpers.FBevent;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.Block;
 
@@ -72,7 +73,7 @@ public class BlockAdapter extends BaseAdapter {
             } else if(this.sharedP.getModeEdition().equals("CRAYON")) {
                 block_RL.setBackgroundResource(R.drawable.crayon_selected);
             } else {
-                //TODO event firebase
+                new FBevent(this.contexte, "crash", "mode_edition", "ni stylo ni crayon");
             }
         } else {
             block_RL.setBackgroundResource(R.drawable.sweet_borders);

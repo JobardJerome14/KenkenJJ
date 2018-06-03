@@ -187,8 +187,6 @@ public class KenkenActivity extends ActivityBase {
     private void bindView() {
         this.gridView = findViewById(R.id.gridview);
 
-        //this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
         Grille current_grille = this.sharedP.getCurrentGrille();
         if (current_grille != null /*&& current_grille.getId_grille() != 0*/) {
             //Load current Grille
@@ -203,7 +201,7 @@ public class KenkenActivity extends ActivityBase {
             get_grille_via_api();
         } else {
             //Problem
-            //TODO event firebase
+            report_firebase("crash", "bindview_ken", "no bind for ken_activity");
         }
 
         this.raz_btn = findViewById(R.id.raz_btn);
@@ -312,7 +310,7 @@ public class KenkenActivity extends ActivityBase {
         load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        new FBevent(this, "clic", "checkbox", "mode_crayon_chkbx");
+        report_firebase("clic", "checkbox", "mode_crayon_chkbx");
     }
 
     public void btn_click(int i) {
@@ -340,7 +338,7 @@ public class KenkenActivity extends ActivityBase {
 
                     block.setCrayon(crayon_formated_string(block));
                 } else {
-                    //TODO event firebase
+                    report_firebase("crash", "mode_edition_btn_click", "ni stylo ni crayon");
                 }
             }
             tmp++;
@@ -381,8 +379,7 @@ public class KenkenActivity extends ActivityBase {
         this.blockAdapter.notifyDataSetChanged();
 
         String value = "keyboard_btn_"+String.valueOf(i);
-
-        new FBevent(this, "clic", "button", value);
+        report_firebase("clic", "button", value);
 
         check_grille();
     }
@@ -424,7 +421,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void see_rules() {
-        new FBevent(this, "clic", "button", "rules_btn");
+        report_firebase("clic", "button", "rules_btn");
 
         navigate(RulesActivity.class, null);
     }
@@ -465,7 +462,7 @@ public class KenkenActivity extends ActivityBase {
             load_grille(grille);
             this.blockAdapter.notifyDataSetChanged();
 
-            new FBevent(this, "clic", "button", "help_btn");
+            report_firebase("clic", "button", "help_btn");
 
             check_grille();
         }
@@ -491,7 +488,7 @@ public class KenkenActivity extends ActivityBase {
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        new FBevent(this, "clic", "button", "raz_btn");
+        report_firebase("clic", "button", "raz_btn");
     }
 
     private void new_game() {
@@ -503,7 +500,7 @@ public class KenkenActivity extends ActivityBase {
             gridView.setAdapter(this.blockAdapter);
             this.blockAdapter.notifyDataSetChanged();
 
-            new FBevent(this, "clic", "button", "new_game_btn");
+            report_firebase("clic", "button", "new_game_btn");
 
         } else if (this.sharedP.getModeApi().equals("1")) {
             get_grille_via_api();
@@ -554,19 +551,20 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void save_victory_via_api() {
-        //TODO get user et sauvegarde ou?
         //sauvegarde victoire en base via api
         API api = new API();
         api.updKenGame(this.sharedP.getUserId(), this.id_grille, 1, new ResultatCallback<RetourUpdate>() {
             @Override
             public void onWaitingResultat(RetourUpdate result) {
-                if (result.getStatus().equals("OK")) {
-                    //TODO
-                } else {
-                    //TODO
+                if (!result.getStatus().equals("OK")) {
+                    report_firebase("clic", "checkbox", "mode_crayon_chkbx");
                 }
             }
         });
+    }
+
+    public void report_firebase(String event, String key, String value) {
+        new FBevent(this,  event, key, value);
     }
 
 }
