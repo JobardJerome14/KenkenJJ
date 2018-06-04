@@ -92,7 +92,7 @@ public class API {
         call.enqueue(new Callback<Stats>() {
             @Override
             public void onResponse(@NonNull Call<Stats> call, @NonNull Response<Stats> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Stats stats = response.body();
                     resultatCallback.onWaitingResultat(stats);
                 } else {

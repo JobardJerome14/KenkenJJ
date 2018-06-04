@@ -58,7 +58,7 @@ public class SharedP {
 
     public void setModeEdition(boolean flag) {
         String mode_edition = "STYLO";
-        if(flag) {
+        if (flag) {
             mode_edition = "CRAYON";
         }
         getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
