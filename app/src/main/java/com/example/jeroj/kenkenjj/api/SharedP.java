@@ -54,16 +54,27 @@ public class SharedP {
     }
 
     public String getModeEdition() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, R.string.edition_stylo);
+        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, context.getString(R.string.edition_stylo));
     }
 
     public void setModeEdition(boolean flag) {
-        String mode_edition = R.string.edition_stylo;
+        String mode_edition = context.getString(R.string.edition_stylo);
         if (flag) {
-            mode_edition = R.string.edition_crayon;
+            mode_edition = context.getString(R.string.edition_crayon);
         }
         getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
                 .putString(UserPrefHelper.USER_MODE_EDITION, mode_edition)
+                .apply();
+    }
+
+
+    public String getLastCrayonSaisieIsNumber() {
+        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_LAST_CRAYON_SAISIE_IS_NUMBER, "1");
+    }
+
+    public void setLastCrayonSaisieIsNumber(String s) {
+        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+                .putString(UserPrefHelper.USER_LAST_CRAYON_SAISIE_IS_NUMBER, s)
                 .apply();
     }
 
@@ -73,5 +84,6 @@ public class SharedP {
         final static String USER_CURRENT_GRILLE = "user_grille";
         final static String USER_MODE_API = "mode_api";
         final static String USER_MODE_EDITION = "user_mode_edition";
+        final static String USER_LAST_CRAYON_SAISIE_IS_NUMBER = "user_last_crayon_saisie_is_number";
     }
 }

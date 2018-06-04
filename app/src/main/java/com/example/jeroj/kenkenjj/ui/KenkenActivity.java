@@ -236,7 +236,7 @@ public class KenkenActivity extends ActivityBase {
         });
 
         this.mode_crayon = findViewById(R.id.mode_crayon);
-        if (this.sharedP.getModeEdition().equals(R.string.edition_crayon)) {
+        if (this.sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
             this.mode_crayon.setChecked(true);
         }
         this.mode_crayon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -297,6 +297,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void change_edition_mode(boolean flag) {
+        //Log.i("JJJJJJJ", getString(R.string.edition_crayon) );
         this.sharedP.setModeEdition(flag);
         Grille current_grille = this.sharedP.getCurrentGrille();
         if (!flag) {
@@ -312,18 +313,24 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void btn_click(int i) {
+
+        if(sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
+            sharedP.setLastCrayonSaisieIsNumber("1");
+        }
+        Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+
         //Log.i("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
         int id_block = 0;
         int tmp = 0;
         for (Block block : current_grille.getBlocks()) {
             if (block.isSelected()) {
-                if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
+                if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
                     block.setCrayon("");
                     block.setCurrent_value(i);
                     block.setStylo(String.valueOf(i));
                     id_block = tmp;
-                } else if (sharedP.getModeEdition().equals(R.string.edition_crayon)) {
+                } else if (sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
                     block.setCurrent_value(0);
                     switch (i) {
                         case 1:
@@ -354,7 +361,7 @@ public class KenkenActivity extends ActivityBase {
             tmp++;
         }
 
-        if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
+        if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
             tmp = 0;
             for (Block block : current_grille.getBlocks()) {
                 boolean modif = false;
@@ -388,7 +395,9 @@ public class KenkenActivity extends ActivityBase {
                             break;
                     }
 
-                    block.setCrayon(crayon_formated_string(block));
+                    if(block.getStylo().equals("")) {
+                        block.setCrayon(crayon_formated_string(block));
+                    }
                 }
 
                 tmp++;

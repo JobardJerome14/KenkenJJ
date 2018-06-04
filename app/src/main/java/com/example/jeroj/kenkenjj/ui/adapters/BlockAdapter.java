@@ -1,6 +1,7 @@
 package com.example.jeroj.kenkenjj.ui.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,9 +67,9 @@ public class BlockAdapter extends BaseAdapter {
         final RelativeLayout block_RL = convertView.findViewById(R.id.block_id);
 
         if (cur_block.isSelected()) {
-            if (this.sharedP.getModeEdition().equals(R.string.edition_stylo)) {
+            if (this.sharedP.getModeEdition().equals(contexte.getString(R.string.edition_stylo))) {
                 block_RL.setBackgroundResource(R.drawable.stylo_selected);
-            } else if (this.sharedP.getModeEdition().equals(R.string.edition_crayon)) {
+            } else if (this.sharedP.getModeEdition().equals(contexte.getString(R.string.edition_crayon))) {
                 block_RL.setBackgroundResource(R.drawable.crayon_selected);
             } else {
                 new FBevent(this.contexte, "crash", "mode_edition", "ni stylo ni crayon");
@@ -80,11 +81,16 @@ public class BlockAdapter extends BaseAdapter {
         block_RL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
+                if (sharedP.getModeEdition().equals(contexte.getString(R.string.edition_stylo))) {
                     for (Block block : blocks) {
                         if (block.isSelected()) block.setSelected(!block.isSelected());
                     }
+                } else if (sharedP.getModeEdition().equals(contexte.getString(R.string.edition_crayon))) {
+                    Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+                    deselection_blocks_if_needed();
+                    sharedP.setLastCrayonSaisieIsNumber("0");
                 }
+
                 cur_block.setSelected(!cur_block.isSelected());
                 save_current_grille();
                 notifyDataSetChanged();
@@ -147,6 +153,15 @@ public class BlockAdapter extends BaseAdapter {
     private void save_current_grille() {
         Grille grille = new Grille(this.id_grille, this.blocks, this.percent_victory);
         this.sharedP.setCurrentGrille(grille);
+    }
+
+    private void deselection_blocks_if_needed() {
+        Log.i("deselection mode" , this.sharedP.getLastCrayonSaisieIsNumber());
+        if(this.sharedP.getLastCrayonSaisieIsNumber().equals("1")) {
+            for (Block block : this.blocks) {
+                block.setSelected(false);
+            }
+        }
     }
 
 
