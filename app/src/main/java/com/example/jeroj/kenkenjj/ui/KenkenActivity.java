@@ -1,8 +1,10 @@
 package com.example.jeroj.kenkenjj.ui;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,7 @@ import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
+import com.example.jeroj.kenkenjj.ui.reusable.AlertFragment;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,6 +41,7 @@ public class KenkenActivity extends ActivityBase {
     Button btn4;
     Button btn5;
     Button btn6;
+
     private GridView gridView;
     private BlockAdapter blockAdapter;
     private Integer id_grille = 0;
@@ -499,6 +503,18 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void raz() {
+
+//        FragmentManager manager = getFragmentManager();
+//        Fragment frag = manager.findFragmentByTag("dialog");
+//        if (frag != null) {
+//            manager.beginTransaction().remove(frag).commit();
+//        }
+//
+//        AlertFragment alertFragment = AlertFragment.newInstance(R.string.app_name, R.string.app_name);
+//        alertFragment.show(manager,"dialog");
+
+
+
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
         for (Block block : grille.getBlocks()) {
             block.setCurrent_value(0);
