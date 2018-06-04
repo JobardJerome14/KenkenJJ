@@ -10,7 +10,6 @@ import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.UUID;
 
