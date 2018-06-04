@@ -16,7 +16,7 @@ public class StatsActivity extends AppCompatActivity {
     TextView st2_play;
     TextView st2_resolved;
     TextView st2_pourcentage;
-    TextView st2_avg_time_resolved;
+    //TextView st2_avg_time_resolved;
 
     SharedP sharedP;
 
@@ -38,7 +38,7 @@ public class StatsActivity extends AppCompatActivity {
 
         this.st2_resolved = findViewById(R.id.st2_resolved);
         this.st2_pourcentage = findViewById(R.id.st2_pourcentage);
-        this.st2_avg_time_resolved = findViewById(R.id.st2_avg_time_resolved);
+        //this.st2_avg_time_resolved = findViewById(R.id.st2_avg_time_resolved);
 
         API api = new API();
 
@@ -53,7 +53,7 @@ public class StatsActivity extends AppCompatActivity {
     public void load_stats(Stats stats) {
         this.st2_play.setText(String.valueOf(stats.getPlayed()));
         this.st2_resolved.setText(String.valueOf(stats.getResolved()));
-        this.st2_pourcentage.setText(String.valueOf(stats.getPourcentage()));
-        this.st2_avg_time_resolved.setText(String.valueOf(stats.getAvg_time_resolved()));
+        this.st2_pourcentage.setText(String.valueOf(stats.getPourcentage()) + " %");
+        //this.st2_avg_time_resolved.setText(String.valueOf(stats.getAvg_time_resolved()));
     }
 }

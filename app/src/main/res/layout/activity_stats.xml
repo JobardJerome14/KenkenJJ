@@ -1,91 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.StatsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:text="@string/st_play"
+        android:textColor="@color/btn_main"
+        android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/st_play"
-                android:layout_gravity="right"
-                android:padding="15dp"/>
+    <TextView
+        android:id="@+id/st2_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/btn_4_background"
+        android:layout_marginBottom="15dp"
+        android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/st_resolved"
-                android:layout_gravity="right"
-                android:padding="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/st_pourcentage"
-                android:layout_gravity="right"
-                android:padding="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/st_avg_time_resolved"
-                android:layout_gravity="right"
-                android:padding="15dp"/>
-        </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:text="@string/st_resolved"
+        android:textColor="@color/btn_main"
+        android:textStyle="bold" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="2">
+    <TextView
+        android:id="@+id/st2_resolved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/btn_4_background"
+        android:layout_marginBottom="15dp"
+        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/st2_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:padding="15dp"/>
-
-            <TextView
-                android:id="@+id/st2_resolved"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:padding="15dp"/>
-
-            <TextView
-                android:id="@+id/st2_pourcentage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:padding="15dp"/>
-
-            <TextView
-                android:id="@+id/st2_avg_time_resolved"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:padding="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:text="@string/st_pourcentage"
+        android:textColor="@color/btn_main"
+        android:textStyle="bold" />
 
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/st2_pourcentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/btn_4_background"
+        android:layout_marginBottom="15dp"
+        android:textStyle="bold" />
 
-    </LinearLayout>
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/st_avg_time_resolved"-->
+    <!--android:layout_gravity="right"-->
+    <!--android:padding="15dp"/>-->
 
 
+    <!--            <TextView
+                    android:id="@+id/st2_avg_time_resolved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:padding="15dp"/>-->
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
