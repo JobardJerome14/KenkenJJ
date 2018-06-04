@@ -15,10 +15,10 @@ import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
+import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.ui.adapters.BlockAdapter;
-import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.ArrayList;
@@ -31,8 +31,6 @@ public class KenkenActivity extends ActivityBase {
     Button new_game_btn;
     Button help_btn;
     Button rules_btn;
-    private GridView gridView;
-    private BlockAdapter blockAdapter;
     CheckBox mode_crayon;
     Button btn1;
     Button btn2;
@@ -40,7 +38,8 @@ public class KenkenActivity extends ActivityBase {
     Button btn4;
     Button btn5;
     Button btn6;
-
+    private GridView gridView;
+    private BlockAdapter blockAdapter;
     private Integer id_grille = 0;
     private String user_id = "JJUSER";
 
@@ -237,7 +236,7 @@ public class KenkenActivity extends ActivityBase {
         });
 
         this.mode_crayon = findViewById(R.id.mode_crayon);
-        if(this.sharedP.getModeEdition().equals("CRAYON")) {
+        if (this.sharedP.getModeEdition().equals("CRAYON")) {
             this.mode_crayon.setChecked(true);
         }
         this.mode_crayon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -300,7 +299,7 @@ public class KenkenActivity extends ActivityBase {
     public void change_edition_mode(boolean flag) {
         this.sharedP.setModeEdition(flag);
         Grille current_grille = this.sharedP.getCurrentGrille();
-        if(!flag) {
+        if (!flag) {
             for (Block block : current_grille.getBlocks()) {
                 block.setSelected(false);
             }
@@ -317,8 +316,8 @@ public class KenkenActivity extends ActivityBase {
         Grille current_grille = this.sharedP.getCurrentGrille();
         int id_block = 0;
         int tmp = 0;
-        for(Block block : current_grille.getBlocks()) {
-            if(block.isSelected()) {
+        for (Block block : current_grille.getBlocks()) {
+            if (block.isSelected()) {
                 if (sharedP.getModeEdition().equals("STYLO")) {
                     block.setCrayon("");
                     block.setCurrent_value(i);
@@ -326,13 +325,25 @@ public class KenkenActivity extends ActivityBase {
                     id_block = tmp;
                 } else if (sharedP.getModeEdition().equals("CRAYON")) {
                     block.setCurrent_value(0);
-                    switch(i) {
-                        case 1 : block.setC1_selected(!block.isC1_selected()); break;
-                        case 2 : block.setC2_selected(!block.isC2_selected()); break;
-                        case 3 : block.setC3_selected(!block.isC3_selected()); break;
-                        case 4 : block.setC4_selected(!block.isC4_selected()); break;
-                        case 5 : block.setC5_selected(!block.isC5_selected()); break;
-                        case 6 : block.setC6_selected(!block.isC6_selected()); break;
+                    switch (i) {
+                        case 1:
+                            block.setC1_selected(!block.isC1_selected());
+                            break;
+                        case 2:
+                            block.setC2_selected(!block.isC2_selected());
+                            break;
+                        case 3:
+                            block.setC3_selected(!block.isC3_selected());
+                            break;
+                        case 4:
+                            block.setC4_selected(!block.isC4_selected());
+                            break;
+                        case 5:
+                            block.setC5_selected(!block.isC5_selected());
+                            break;
+                        case 6:
+                            block.setC6_selected(!block.isC6_selected());
+                            break;
                     }
 
                     block.setCrayon(crayon_formated_string(block));
@@ -347,25 +358,37 @@ public class KenkenActivity extends ActivityBase {
             tmp = 0;
             for (Block block : current_grille.getBlocks()) {
                 boolean modif = false;
-                if(tmp%6 == id_block%6 && tmp!=id_block) {
+                if (tmp % 6 == id_block % 6 && tmp != id_block) {
                     modif = true;
                 }
 
-                if( (tmp - (tmp%6)) == (id_block - id_block%6) &&  tmp!=id_block) {
+                if ((tmp - (tmp % 6)) == (id_block - id_block % 6) && tmp != id_block) {
                     modif = true;
                 }
 
-                if(modif) {
+                if (modif) {
                     switch (i) {
-                        case 1 : block.setC1_selected(false); break;
-                        case 2 : block.setC2_selected(false); break;
-                        case 3 : block.setC3_selected(false); break;
-                        case 4 : block.setC4_selected(false); break;
-                        case 5 : block.setC5_selected(false); break;
-                        case 6 : block.setC6_selected(false); break;
+                        case 1:
+                            block.setC1_selected(false);
+                            break;
+                        case 2:
+                            block.setC2_selected(false);
+                            break;
+                        case 3:
+                            block.setC3_selected(false);
+                            break;
+                        case 4:
+                            block.setC4_selected(false);
+                            break;
+                        case 5:
+                            block.setC5_selected(false);
+                            break;
+                        case 6:
+                            block.setC6_selected(false);
+                            break;
                     }
 
-                    if(block.getStylo() != null && block.getStylo().equals("")) {
+                    if (block.getStylo() != null && block.getStylo().equals("")) {
                         block.setCrayon(crayon_formated_string(block));
                     }
                 }
@@ -377,7 +400,7 @@ public class KenkenActivity extends ActivityBase {
         load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        String value = "keyboard_btn_"+String.valueOf(i);
+        String value = "keyboard_btn_" + String.valueOf(i);
         report_firebase("clic", "button", value);
 
         check_grille();
@@ -385,32 +408,32 @@ public class KenkenActivity extends ActivityBase {
 
     public String crayon_formated_string(Block block) {
         String crayon = "";
-        if(block.isC1_selected()) {
+        if (block.isC1_selected()) {
             crayon = crayon + "1 ";
         } else {
             crayon = crayon + "  ";
         }
-        if(block.isC2_selected()) {
+        if (block.isC2_selected()) {
             crayon = crayon + "2 ";
         } else {
             crayon = crayon + "  ";
         }
-        if(block.isC3_selected()) {
+        if (block.isC3_selected()) {
             crayon = crayon + "3 ";
         } else {
             crayon = crayon + "  ";
         }
-        if(block.isC4_selected()) {
+        if (block.isC4_selected()) {
             crayon = crayon + "4 ";
         } else {
             crayon = crayon + "  ";
         }
-        if(block.isC5_selected()) {
+        if (block.isC5_selected()) {
             crayon = crayon + "5 ";
         } else {
             crayon = crayon + "  ";
         }
-        if(block.isC6_selected()) {
+        if (block.isC6_selected()) {
             crayon = crayon + "6 ";
         } else {
             crayon = crayon + "  ";
@@ -508,7 +531,7 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void check_grille() {
-        Log.i("check_grille win" , String.valueOf(this.win));
+        Log.i("check_grille win", String.valueOf(this.win));
         if (!this.win) {
             //Integer i = 0;
             Integer good = 0;
@@ -530,7 +553,6 @@ public class KenkenActivity extends ActivityBase {
             }
         }
     }
-
 
 
     private void notify_victory() {
@@ -563,7 +585,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void report_firebase(String event, String key, String value) {
-        new FBevent(this,  event, key, value);
+        new FBevent(this, event, key, value);
     }
 
 }
