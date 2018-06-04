@@ -1,7 +1,6 @@
 package com.example.jeroj.kenkenjj.ui.adapters;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
-import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.Block;
+import com.example.jeroj.kenkenjj.models.Grille;
 
 import java.util.ArrayList;
 
@@ -64,13 +63,12 @@ public class BlockAdapter extends BaseAdapter {
         final Block cur_block = this.blocks.get(position);
 
 
-
         final RelativeLayout block_RL = convertView.findViewById(R.id.block_id);
 
-        if(cur_block.isSelected()) {
-            if(this.sharedP.getModeEdition().equals("STYLO")) {
+        if (cur_block.isSelected()) {
+            if (this.sharedP.getModeEdition().equals("STYLO")) {
                 block_RL.setBackgroundResource(R.drawable.stylo_selected);
-            } else if(this.sharedP.getModeEdition().equals("CRAYON")) {
+            } else if (this.sharedP.getModeEdition().equals("CRAYON")) {
                 block_RL.setBackgroundResource(R.drawable.crayon_selected);
             } else {
                 new FBevent(this.contexte, "crash", "mode_edition", "ni stylo ni crayon");
@@ -82,7 +80,7 @@ public class BlockAdapter extends BaseAdapter {
         block_RL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sharedP.getModeEdition().equals("STYLO")) {
+                if (sharedP.getModeEdition().equals("STYLO")) {
                     for (Block block : blocks) {
                         if (block.isSelected()) block.setSelected(!block.isSelected());
                     }
@@ -92,7 +90,6 @@ public class BlockAdapter extends BaseAdapter {
                 notifyDataSetChanged();
             }
         });
-
 
 
         final TextView tv_overtexte = convertView.findViewById(R.id.tv_overtexte);
@@ -105,7 +102,7 @@ public class BlockAdapter extends BaseAdapter {
 
         final TextView crayon = convertView.findViewById(R.id.crayon);
         //Log.i("get crayon", cur_block.getCrayon());
-        if(cur_block.getCrayon() != null && !cur_block.getCrayon().equals("")) {
+        if (cur_block.getCrayon() != null && !cur_block.getCrayon().equals("")) {
             crayon.setText(cur_block.getCrayon());
         }
 
@@ -147,13 +144,10 @@ public class BlockAdapter extends BaseAdapter {
     }
 
 
-
     private void save_current_grille() {
         Grille grille = new Grille(this.id_grille, this.blocks, this.percent_victory);
         this.sharedP.setCurrentGrille(grille);
     }
-
-
 
 
 }
