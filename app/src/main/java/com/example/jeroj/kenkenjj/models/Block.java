@@ -22,7 +22,7 @@ public class Block {
     @SerializedName("texte")
     private Integer good_value = 0;
 
-    private String stylo;
+    private String stylo = "";
     private String crayon = "";
     private int current_value = 0;
 

@@ -388,9 +388,7 @@ public class KenkenActivity extends ActivityBase {
                             break;
                     }
 
-                    if (block.getStylo() != null && block.getStylo().equals("")) {
-                        block.setCrayon(crayon_formated_string(block));
-                    }
+                    block.setCrayon(crayon_formated_string(block));
                 }
 
                 tmp++;
