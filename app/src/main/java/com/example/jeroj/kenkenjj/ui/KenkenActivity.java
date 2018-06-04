@@ -236,7 +236,7 @@ public class KenkenActivity extends ActivityBase {
         });
 
         this.mode_crayon = findViewById(R.id.mode_crayon);
-        if (this.sharedP.getModeEdition().equals("CRAYON")) {
+        if (this.sharedP.getModeEdition().equals(R.string.edition_crayon)) {
             this.mode_crayon.setChecked(true);
         }
         this.mode_crayon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -318,12 +318,12 @@ public class KenkenActivity extends ActivityBase {
         int tmp = 0;
         for (Block block : current_grille.getBlocks()) {
             if (block.isSelected()) {
-                if (sharedP.getModeEdition().equals("STYLO")) {
+                if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
                     block.setCrayon("");
                     block.setCurrent_value(i);
                     block.setStylo(String.valueOf(i));
                     id_block = tmp;
-                } else if (sharedP.getModeEdition().equals("CRAYON")) {
+                } else if (sharedP.getModeEdition().equals(R.string.edition_crayon)) {
                     block.setCurrent_value(0);
                     switch (i) {
                         case 1:
@@ -354,7 +354,7 @@ public class KenkenActivity extends ActivityBase {
             tmp++;
         }
 
-        if (sharedP.getModeEdition().equals("STYLO")) {
+        if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
             tmp = 0;
             for (Block block : current_grille.getBlocks()) {
                 boolean modif = false;

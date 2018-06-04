@@ -3,6 +3,7 @@ package com.example.jeroj.kenkenjj.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.google.gson.Gson;
 
@@ -53,13 +54,13 @@ public class SharedP {
     }
 
     public String getModeEdition() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, "STYLO");
+        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, R.string.edition_stylo);
     }
 
     public void setModeEdition(boolean flag) {
-        String mode_edition = "STYLO";
+        String mode_edition = R.string.edition_stylo;
         if (flag) {
-            mode_edition = "CRAYON";
+            mode_edition = R.string.edition_crayon;
         }
         getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
                 .putString(UserPrefHelper.USER_MODE_EDITION, mode_edition)

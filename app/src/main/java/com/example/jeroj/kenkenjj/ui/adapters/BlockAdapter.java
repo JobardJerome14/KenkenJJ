@@ -66,9 +66,9 @@ public class BlockAdapter extends BaseAdapter {
         final RelativeLayout block_RL = convertView.findViewById(R.id.block_id);
 
         if (cur_block.isSelected()) {
-            if (this.sharedP.getModeEdition().equals("STYLO")) {
+            if (this.sharedP.getModeEdition().equals(R.string.edition_stylo)) {
                 block_RL.setBackgroundResource(R.drawable.stylo_selected);
-            } else if (this.sharedP.getModeEdition().equals("CRAYON")) {
+            } else if (this.sharedP.getModeEdition().equals(R.string.edition_crayon)) {
                 block_RL.setBackgroundResource(R.drawable.crayon_selected);
             } else {
                 new FBevent(this.contexte, "crash", "mode_edition", "ni stylo ni crayon");
@@ -80,7 +80,7 @@ public class BlockAdapter extends BaseAdapter {
         block_RL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sharedP.getModeEdition().equals("STYLO")) {
+                if (sharedP.getModeEdition().equals(R.string.edition_stylo)) {
                     for (Block block : blocks) {
                         if (block.isSelected()) block.setSelected(!block.isSelected());
                     }
