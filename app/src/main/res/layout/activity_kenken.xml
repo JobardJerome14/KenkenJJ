@@ -4,110 +4,109 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
+        android:id="@+id/lin_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/lin_grid"
+        <GridView
+            android:id="@+id/gridview"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:numColumns="6"
+            android:stretchMode="columnWidth" />
+
+        <CheckBox
+            android:id="@+id/mode_crayon"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentTop="true">
-            <GridView
-                android:id="@+id/gridview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:fillViewport="true"
-                android:numColumns="6"
-                android:stretchMode="columnWidth"
-                android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/mode_crayon_label" />
 
-            <CheckBox
-                android:id="@+id/mode_crayon"
-                android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/mode_crayon_label"/>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="2">
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_gravity="bottom"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:id="@+id/lin_btn_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/lin_btn_1"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                    <Button
+                        android:id="@+id/raz_btn"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/raz_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:background="@color/btn_1_background"
-                            android:textColor="@color/my_white"
-                            android:textAllCaps="false"
-                            android:layout_weight="1"
-                            android:text="@string/raz_btn_label" />
-
-                        <Button
-                            android:id="@+id/help_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:layout_weight="1"
-                            android:background="@color/btn_3_background"
-                            android:textColor="@color/my_white"
-                            android:textAllCaps="false"
-                            android:text="@string/help_btn_label" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin_btn_2"
-                        android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:background="@color/btn_1_background"
+                        android:padding="8dp"
+                        android:text="@string/raz_btn_label"
+                        android:textAllCaps="false"
+                        android:textColor="@color/my_white" />
+
+                    <Button
+                        android:id="@+id/help_btn"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/new_game_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:layout_weight="1"
-                            android:background="@color/btn_2_background"
-                            android:textColor="@color/my_white"
-                            android:textAllCaps="false"
-                            android:text="@string/new_game_btn_label" />
-
-
-
-                        <Button
-                            android:id="@+id/rules_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:layout_weight="1"
-                            android:background="@color/btn_4_background"
-                            android:textColor="@color/my_white"
-                            android:textAllCaps="false"
-                            android:text="@string/rules_btn_label" />
-
-                    </LinearLayout>
+                        android:layout_weight="1"
+                        android:background="@color/btn_3_background"
+                        android:padding="8dp"
+                        android:text="@string/help_btn_label"
+                        android:textAllCaps="false"
+                        android:textColor="@color/my_white" />
 
                 </LinearLayout>
 
-            </ScrollView>
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lin_btn_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/new_game_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/btn_2_background"
+                        android:padding="8dp"
+                        android:text="@string/new_game_btn_label"
+                        android:textAllCaps="false"
+                        android:textColor="@color/my_white" />
+
+
+                    <Button
+                        android:id="@+id/rules_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/btn_4_background"
+                        android:padding="8dp"
+                        android:text="@string/rules_btn_label"
+                        android:textAllCaps="false"
+                        android:textColor="@color/my_white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
 
 
     <LinearLayout
@@ -115,56 +114,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
             android:layout_weight="1"
-            android:textColor="@color/my_white"
-            android:text="1"/>
+            android:background="@color/colorAccent"
+            android:text="1"
+            android:textColor="@color/my_white" />
+
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
             android:layout_weight="1"
-            android:textColor="@color/my_white"
-            android:text="2"/>
+            android:background="@color/colorAccent"
+            android:text="2"
+            android:textColor="@color/my_white" />
+
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/my_white"
             android:layout_weight="1"
-            android:text="3"/>
+            android:background="@color/colorAccent"
+            android:text="3"
+            android:textColor="@color/my_white" />
+
         <Button
             android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/my_white"
             android:layout_weight="1"
-            android:text="4"/>
+            android:background="@color/colorAccent"
+            android:text="4"
+            android:textColor="@color/my_white" />
+
         <Button
             android:id="@+id/btn5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/my_white"
             android:layout_weight="1"
-            android:text="5"/>
+            android:background="@color/colorAccent"
+            android:text="5"
+            android:textColor="@color/my_white" />
+
         <Button
             android:id="@+id/btn6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:textColor="@color/my_white"
             android:layout_weight="1"
-            android:text="6"/>
+            android:background="@color/colorAccent"
+            android:text="6"
+            android:textColor="@color/my_white" />
 
     </LinearLayout>
 

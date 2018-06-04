@@ -21,9 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         android:padding="5dp"
         android:textColor="@color/btn_4_background"
-        android:layout_marginBottom="15dp"
         android:textStyle="bold" />
 
     <TextView
@@ -41,9 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         android:padding="5dp"
         android:textColor="@color/btn_4_background"
-        android:layout_marginBottom="15dp"
         android:textStyle="bold" />
 
     <TextView
@@ -61,9 +61,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         android:padding="5dp"
         android:textColor="@color/btn_4_background"
-        android:layout_marginBottom="15dp"
         android:textStyle="bold" />
 
     <!--<TextView-->
