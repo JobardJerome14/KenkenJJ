@@ -17,13 +17,16 @@ public class AlertFragment extends DialogFragment {
     private int ok_label = R.string.ok_label;
     private int ko_label = R.string.ko_label;
 
-    public static AlertFragment newInstance(int title, int message, ResultatCallback<String> alertFragmentCB) {
+    private boolean showCancel = true;
+
+    public static AlertFragment newInstance(int title, int message, boolean showCancel, ResultatCallback<String> alertFragmentCB) {
         AlertFragment frag = new AlertFragment();
         frag.alertFragmentCB = alertFragmentCB;
 
         Bundle args = new Bundle();
         args.putInt("title", title);
         args.putInt("message", message);
+        args.putBoolean("show_cancel", showCancel);
         frag.setArguments(args);
 
         return frag;
@@ -35,7 +38,9 @@ public class AlertFragment extends DialogFragment {
         int title = getArguments().getInt("title");
         int message = getArguments().getInt("message");
 
-        return new AlertDialog.Builder(getActivity())
+        this.showCancel = getArguments().getBoolean("show_cancel");
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(this.ok_label, new DialogInterface.OnClickListener() {
@@ -43,14 +48,18 @@ public class AlertFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         do_ok_callback();
                     }
-                })
-                .setNegativeButton(this.ko_label, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create();
+                });
+
+        if(this.showCancel) {
+            dialog.setNegativeButton(this.ko_label, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+        }
+
+        return dialog.create();
     }
 
     public void do_ok_callback() {

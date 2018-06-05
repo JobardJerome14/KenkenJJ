@@ -521,7 +521,7 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.raz_btn_label, R.string.raz_btn_desc, new ResultatCallback<String>() {
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.raz_btn_label, R.string.raz_btn_desc, true, new ResultatCallback<String>() {
                     @Override
                     public void onWaitingResultat(String result) {
                         do_raz();
@@ -560,7 +560,7 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, new ResultatCallback<String>() {
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, false, new ResultatCallback<String>() {
             @Override
             public void onWaitingResultat(String result) {
                 do_new_game();
