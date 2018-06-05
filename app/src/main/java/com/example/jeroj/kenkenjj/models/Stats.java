@@ -13,8 +13,6 @@ public class Stats {
     @SerializedName("pourcentage")
     private Integer pourcentage;
 
-    @SerializedName("avg_time_resolved")
-    private Integer avg_time_resolved;
 
 
     public Integer getPlayed() {
@@ -41,11 +39,4 @@ public class Stats {
         this.pourcentage = pourcentage;
     }
 
-    public Integer getAvg_time_resolved() {
-        return avg_time_resolved;
-    }
-
-    public void setAvg_time_resolved(Integer avg_time_resolved) {
-        this.avg_time_resolved = avg_time_resolved;
-    }
 }
