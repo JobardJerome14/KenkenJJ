@@ -1,11 +1,14 @@
 package com.example.jeroj.kenkenjj.api;
 
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+import com.example.jeroj.kenkenjj.helpers.FBevent;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.models.Stats;
+import com.example.jeroj.kenkenjj.ui.reusable.MyApplication;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -52,13 +55,14 @@ public class API {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
                 } else {
-                    //TODO event firebase ?
+                    report_firebase("getken", "onResponse", "response not successful");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Grille> call, @NonNull Throwable t) {
-                //TODO event firebase ?
+                report_firebase("getKenkenGrille", "onFailure", "KO");
+                Toast.makeText(MyApplication.getContext(), "Chargement nouvele grille impossible", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -74,13 +78,13 @@ public class API {
                     RetourUpdate retourUpdate = response.body();
                     updateCallback.onWaitingResultat(retourUpdate);
                 } else {
-                    //TODO event firebase ?
+                    report_firebase("updKenGame", "onResponse", "response not successful");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<RetourUpdate> call, @NonNull Throwable t) {
-                //TODO event firebase ?
+                report_firebase("updKenGame", "onFailure", "KO");
             }
         });
     }
@@ -96,15 +100,20 @@ public class API {
                     Stats stats = response.body();
                     resultatCallback.onWaitingResultat(stats);
                 } else {
-                    //TODO
+                    report_firebase("getKenStats", "onResponse", "response not successful");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
-                //TODO
+                report_firebase("getKenStats", "onFailure", "KO");
             }
         });
+    }
+
+
+    public void report_firebase(String event, String key, String value) {
+        new FBevent(MyApplication.getContext(), event, key, value);
     }
 
 }
