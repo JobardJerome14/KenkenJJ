@@ -24,7 +24,7 @@ public class FBevent {
 
         mFirebaseAnalytics.logEvent(event, bundle);
 
-        Log.i("!!!  firebase event !!!", bundle.toString());
+        Log.i("!!!  firebase event !!!", event + ' ' + bundle.toString());
     }
 
 }
