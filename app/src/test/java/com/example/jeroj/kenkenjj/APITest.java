@@ -22,7 +22,7 @@ public class APITest {
 
         // ip 10.0.2.2 special IP for localhost
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost").client(client)
+                .baseUrl("https://afternoon-wave-75382.herokuapp.com/").client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
