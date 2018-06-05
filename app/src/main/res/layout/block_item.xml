@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dp"
-            android:textSize="12sp"
+            android:textSize="@dimen/size_crayon"
             android:textStyle="bold" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:padding="3dp"
             android:textAlignment="center"
             android:textColor="@color/block_number"
-            android:textSize="20sp"
+            android:textSize="@dimen/size_stylo"
             android:textStyle="bold" />
 
         <TextView
@@ -38,9 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/stylo"
             android:layout_marginTop="-14dp"
-
             android:textColor="@color/block_crayon"
-            android:textSize="12sp" />
+            android:textSize="@dimen/size_crayon" />
 
     </RelativeLayout>
 
