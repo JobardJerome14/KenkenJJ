@@ -322,10 +322,14 @@ public class KenkenActivity extends ActivityBase {
 
     public void btn_click(int i) {
 
-/*        if(sharedP.getModeEdition()!= null && sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
-            sharedP.setLastCrayonSaisieIsNumber("1");
-        }*/
-        //Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+        if(sharedP.getModeEdition()!= null) {
+            if(sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
+                sharedP.setLastCrayonSaisieIsNumber("1");
+            }
+        }
+        if(sharedP.getLastCrayonSaisieIsNumber() != null) {
+            Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+        }
 
         //Log.i("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
