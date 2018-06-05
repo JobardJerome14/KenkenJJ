@@ -19,13 +19,13 @@ public class AlertFragment extends DialogFragment {
 
     private boolean showCancel = true;
 
-    public static AlertFragment newInstance(int title, int message, boolean showCancel, ResultatCallback<String> alertFragmentCB) {
+    public static AlertFragment newInstance(String title, String message, boolean showCancel, ResultatCallback<String> alertFragmentCB) {
         AlertFragment frag = new AlertFragment();
         frag.alertFragmentCB = alertFragmentCB;
 
         Bundle args = new Bundle();
-        args.putInt("title", title);
-        args.putInt("message", message);
+        args.putString("title", title);
+        args.putString("message", message);
         args.putBoolean("show_cancel", showCancel);
         frag.setArguments(args);
 
@@ -35,8 +35,8 @@ public class AlertFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        int title = getArguments().getInt("title");
-        int message = getArguments().getInt("message");
+        String title = getArguments().getString("title");
+        String message = getArguments().getString("message");
 
         this.showCancel = getArguments().getBoolean("show_cancel");
 

@@ -521,7 +521,7 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.raz_btn_label, R.string.raz_btn_desc, true, new ResultatCallback<String>() {
+        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.raz_btn_label), getString(R.string.raz_btn_desc), true, new ResultatCallback<String>() {
                     @Override
                     public void onWaitingResultat(String result) {
                         do_raz();
@@ -560,7 +560,7 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, true, new ResultatCallback<String>() {
+        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.new_game_btn_label), getString(R.string.new_game_btn_desc), true, new ResultatCallback<String>() {
             @Override
             public void onWaitingResultat(String result) {
                 do_new_game();
@@ -620,7 +620,8 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.win_message_title, R.string.win_message_desc, false, new ResultatCallback<String>() {
+        Grille grille = this.sharedP.getCurrentGrille();
+        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.win_message_title), getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()), false, new ResultatCallback<String>() {
             @Override
             public void onWaitingResultat(String result) {
 
