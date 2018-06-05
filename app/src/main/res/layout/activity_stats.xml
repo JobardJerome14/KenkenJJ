@@ -66,20 +66,4 @@
         android:textColor="@color/btn_4_background"
         android:textStyle="bold" />
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/st_avg_time_resolved"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:padding="15dp"/>-->
-
-
-    <!--            <TextView
-                    android:id="@+id/st2_avg_time_resolved"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:padding="15dp"/>-->
-
-
 </LinearLayout>
