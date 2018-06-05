@@ -14,6 +14,8 @@
 
 
     <string name="new_game_btn_label">Nouvelle partie</string>
+    <string name="new_game_btn_desc">Etes-vous sûr de vouloir commencer une nouvelle grille?</string>
+
     <string name="rules_btn_label">Règles</string>
     <string name="help_btn_label">Aide</string>
     <string name="rules_title">Règles</string>

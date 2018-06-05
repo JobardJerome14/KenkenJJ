@@ -515,9 +515,8 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void raz() {
-
         FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("dialog");
+        Fragment frag = manager.findFragmentByTag("raz_dialog");
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
         }
@@ -529,8 +528,7 @@ public class KenkenActivity extends ActivityBase {
                     }
                 });
 
-        alertFragment.show(manager, "dialog");
-
+        alertFragment.show(manager, "raz_dialog");
     }
 
     private void do_raz() {
@@ -556,6 +554,23 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void new_game() {
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("new_game_dialog");
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
+
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, new ResultatCallback<String>() {
+            @Override
+            public void onWaitingResultat(String result) {
+                do_new_game();
+            }
+        });
+
+        alertFragment.show(manager, "new_game_dialog");
+    }
+
+    private void do_new_game() {
         //get nouvelle grille ET sauvegarde abandon en base via api
         this.win = false;
         if (this.sharedP.getModeApi().equals("0")) {
