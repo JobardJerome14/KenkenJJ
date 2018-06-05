@@ -6,13 +6,18 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.example.jeroj.kenkenjj.R;
+import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
+
 public class AlertFragment extends DialogFragment {
 
-    private AlertFragmentCB alertFragmentCB;
+    private ResultatCallback<String> alertFragmentCB;
 
 
+    private int ok_label = R.string.ok_label;
+    private int ko_label = R.string.ko_label;
 
-    public static AlertFragment newInstance(int title, int message, AlertFragmentCB alertFragmentCB) {
+    public static AlertFragment newInstance(int title, int message, ResultatCallback<String> alertFragmentCB) {
         AlertFragment frag = new AlertFragment();
         frag.alertFragmentCB = alertFragmentCB;
 
@@ -20,6 +25,7 @@ public class AlertFragment extends DialogFragment {
         args.putInt("title", title);
         args.putInt("message", message);
         frag.setArguments(args);
+
         return frag;
     }
 
@@ -32,13 +38,13 @@ public class AlertFragment extends DialogFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(this.ok_label, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        do_callback();
+                        do_ok_callback();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(this.ko_label, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -47,13 +53,8 @@ public class AlertFragment extends DialogFragment {
                 .create();
     }
 
-    public void do_callback() {
-        this.alertFragmentCB.onAlertFragmentClick();
-    }
-
-
-    public interface AlertFragmentCB {
-        void onAlertFragmentClick();
+    public void do_ok_callback() {
+        this.alertFragmentCB.onWaitingResultat(getString(this.ok_label));
     }
 
 

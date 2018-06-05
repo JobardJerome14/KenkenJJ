@@ -8,7 +8,11 @@
     <string name="mode_crayon_label">Mode crayon</string>
     <string name="edition_stylo">STYLO</string>
     <string name="edition_crayon">CRAYON</string>
+
     <string name="raz_btn_label">Vider la grille</string>
+    <string name="raz_btn_desc">Etes-vous sûr de vouloir vider la grille?</string>
+
+
     <string name="new_game_btn_label">Nouvelle partie</string>
     <string name="rules_btn_label">Règles</string>
     <string name="help_btn_label">Aide</string>
@@ -28,4 +32,9 @@
     <string name="st_resolved">Parties réussies</string>
     <string name="st_pourcentage">Pourcentage de réussite</string>
     <string name="st_avg_time_resolved">Temps moyen de résolution</string>
+
+    <!-- Fragment dialog strings -->
+    <string name="ok_label">OK</string>
+    <string name="ko_label">Annuler</string>
+
 </resources>

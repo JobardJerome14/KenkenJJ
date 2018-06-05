@@ -522,12 +522,13 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.app_name, R.string.app_name, new AlertFragment.AlertFragmentCB() {
-            @Override
-            public void onAlertFragmentClick() {
-                do_raz();
-            }
-        });
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.raz_btn_label, R.string.raz_btn_desc, new ResultatCallback<String>() {
+                    @Override
+                    public void onWaitingResultat(String result) {
+                        do_raz();
+                    }
+                });
+
         alertFragment.show(manager, "dialog");
 
     }
