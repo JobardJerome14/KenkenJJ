@@ -516,17 +516,23 @@ public class KenkenActivity extends ActivityBase {
 
     private void raz() {
 
-//        FragmentManager manager = getFragmentManager();
-//        Fragment frag = manager.findFragmentByTag("dialog");
-//        if (frag != null) {
-//            manager.beginTransaction().remove(frag).commit();
-//        }
-//
-//        AlertFragment alertFragment = AlertFragment.newInstance(R.string.app_name, R.string.app_name);
-//        alertFragment.show(manager,"dialog");
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("dialog");
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
 
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.app_name, R.string.app_name, new AlertFragment.AlertFragmentCB() {
+            @Override
+            public void onAlertFragmentClick() {
+                do_raz();
+            }
+        });
+        alertFragment.show(manager, "dialog");
 
+    }
 
+    private void do_raz() {
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
         for (Block block : grille.getBlocks()) {
             block.setCurrent_value(0);

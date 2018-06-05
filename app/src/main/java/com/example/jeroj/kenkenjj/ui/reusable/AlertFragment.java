@@ -6,14 +6,16 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.example.jeroj.kenkenjj.R;
-import com.example.jeroj.kenkenjj.ui.KenkenActivity;
-
 public class AlertFragment extends DialogFragment {
 
+    private AlertFragmentCB alertFragmentCB;
 
-    public static AlertFragment newInstance(int title, int message) {
+
+
+    public static AlertFragment newInstance(int title, int message, AlertFragmentCB alertFragmentCB) {
         AlertFragment frag = new AlertFragment();
+        frag.alertFragmentCB = alertFragmentCB;
+
         Bundle args = new Bundle();
         args.putInt("title", title);
         args.putInt("message", message);
@@ -33,16 +35,25 @@ public class AlertFragment extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO
+                        do_callback();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO
+                        dialog.dismiss();
                     }
                 })
                 .create();
+    }
+
+    public void do_callback() {
+        this.alertFragmentCB.onAlertFragmentClick();
+    }
+
+
+    public interface AlertFragmentCB {
+        void onAlertFragmentClick();
     }
 
 
