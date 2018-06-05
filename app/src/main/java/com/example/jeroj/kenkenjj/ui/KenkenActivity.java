@@ -59,6 +59,10 @@ public class KenkenActivity extends ActivityBase {
 
         sharedP = new SharedP(this);
         this.user_id = sharedP.getUserId();
+
+        if(sharedP.getModeEdition()==null) {
+            sharedP.setModeEdition(false);
+        }
         bindView();
     }
 
@@ -318,10 +322,10 @@ public class KenkenActivity extends ActivityBase {
 
     public void btn_click(int i) {
 
-        if(sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
+/*        if(sharedP.getModeEdition()!= null && sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
             sharedP.setLastCrayonSaisieIsNumber("1");
-        }
-        Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+        }*/
+        //Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
 
         //Log.i("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
@@ -399,7 +403,11 @@ public class KenkenActivity extends ActivityBase {
                             break;
                     }
 
-                    if(block.getStylo().equals("")) {
+                    String tmp_str = "";
+                    if(block.getStylo()!=null) {
+                        tmp_str = block.getStylo();
+                    }
+                    if( tmp_str.equals("")) {
                         block.setCrayon(crayon_formated_string(block));
                     }
                 }
