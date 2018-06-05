@@ -560,7 +560,7 @@ public class KenkenActivity extends ActivityBase {
             manager.beginTransaction().remove(frag).commit();
         }
 
-        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, false, new ResultatCallback<String>() {
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.new_game_btn_label, R.string.new_game_btn_desc, true, new ResultatCallback<String>() {
             @Override
             public void onWaitingResultat(String result) {
                 do_new_game();
@@ -613,7 +613,24 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void notify_victory() {
-        Grille grille = this.sharedP.getCurrentGrille();
+
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("notify_victory_dialog");
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
+
+        AlertFragment alertFragment = AlertFragment.newInstance(R.string.win_message_title, R.string.win_message_desc, false, new ResultatCallback<String>() {
+            @Override
+            public void onWaitingResultat(String result) {
+
+            }
+        });
+
+        alertFragment.show(manager, "notify_victory_dialog");
+    }
+
+/*        Grille grille = this.sharedP.getCurrentGrille();
 
         AlertDialog alertDialog;
         alertDialog = new AlertDialog.Builder(this).create();
@@ -626,7 +643,7 @@ public class KenkenActivity extends ActivityBase {
                     }
                 });
         alertDialog.show();
-    }
+    }*/
 
     private void save_victory_via_api() {
         //sauvegarde victoire en base via api
