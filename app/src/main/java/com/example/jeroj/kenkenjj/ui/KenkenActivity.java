@@ -631,20 +631,6 @@ public class KenkenActivity extends ActivityBase {
         alertFragment.show(manager, "notify_victory_dialog");
     }
 
-/*        Grille grille = this.sharedP.getCurrentGrille();
-
-        AlertDialog alertDialog;
-        alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle(R.string.win_message_title);
-        alertDialog.setMessage(this.getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()));
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
-    }*/
 
     private void save_victory_via_api() {
         //sauvegarde victoire en base via api
