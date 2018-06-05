@@ -107,6 +107,7 @@ public class API {
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
                 report_firebase("getKenStats", "onFailure", "KO");
+                Toast.makeText(MyApplication.getContext(), "Chargement statistiques impossible", Toast.LENGTH_SHORT).show();
             }
         });
     }
