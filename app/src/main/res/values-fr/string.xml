@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">KenJJ</string>
+    <string name="welcome_text">Bienvenue sur KenJJ</string>
+    <string name="welcome_btn">Jouer</string>
+    <string name="stats_btn">Statistiques</string>
+    <string name="win_message_title">Gagné!</string>
+    <string name="win_message_desc">Bravo, tu as terminé cette grille!\n XYZ% des joueurs ont réussi cette grille!</string>
+    <string name="mode_crayon_label">Mode crayon</string>
+    <string name="edition_stylo">STYLO</string>
+    <string name="edition_crayon">CRAYON</string>
+
+    <string name="raz_btn_label">Vider la grille</string>
+    <string name="raz_btn_desc">Etes-vous sûr de vouloir vider la grille?</string>
+
+
+    <string name="new_game_btn_label">Nouvelle partie</string>
+    <string name="new_game_btn_desc">Etes-vous sûr de vouloir commencer une nouvelle grille?</string>
+
+    <string name="rules_btn_label">Règles</string>
+    <string name="help_btn_label">Aide</string>
+    <string name="rules_title">Règles</string>
+    <string name="rules_body">
+        Le jeu est une grille de chiffres à compléter inventée par un instituteur japonais, Tetsuya Miyamoto. Proche du sudoku, il mêle intuition, logique et calcul.\n\n
+        A la manière du sudoku, le but du jeu est de remplir toutes les cases de la grille avec des chiffres allant de 1 à 6 sans jamais avoir deux fois le même chiffre dans la même colonne ou sur la même ligne.\n\n
+        La grille est constituée de 6 lignes et 6 colonnes contenant des blocs délimités par un épais trait bleu. Le chiffre inscrit en haut à gauche de chaque bloc est le résultat de l\'opération effectuée avec les chiffres des cases d\'un même bloc.\n\n
+        Chaque grille n\'a qu\'une seule solution.\n\n
+        Pour commencer, il est nécessaire de réperer les blocs qui ne contiennent qu\'une seule case. Il faut recopier dans ce bloc le petit chiffre inscrit en haut à gauche.\n\n
+        Ensuite, il va falloir faire des calculs pour remplir les autres cases. Parmi les exemples possibles d\'addition (5 peut s\'écrire 4+1 ou 1+4 ou 3+2 ou 2+3), ce sont les blocs déjà trouvés qui vont nous permettre de trouver la bonne addition. Toujours en se rappelant de la règle : un même chiffre ne peut être présent qu\'une fois par ligne et qu\'une fois par colonne.\n\n
+        Bon jeu !</string>
+
+
+    <!-- Stats activity -->
+    <string name="st_play">Parties jouées</string>
+    <string name="st_resolved">Parties réussies</string>
+    <string name="st_pourcentage">Pourcentage de réussite</string>
+
+    <!-- Fragment dialog strings -->
+    <string name="ok_label">OK</string>
+    <string name="ko_label">Annuler</string>
+
+
+    <!-- API Toasts -->
+    <string name="api_new_game_impossible">Chargement nouvelle partie impossible</string>
+    <string name="api_get_stats_impossible">Chargement statistiques impossible</string>
+
+</resources>
