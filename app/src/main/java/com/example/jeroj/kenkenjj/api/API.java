@@ -23,8 +23,6 @@ public class API {
 
     private IApi iApi;
 
-    private SharedP sharedP;
-
     /**
      *
      */
@@ -62,7 +60,7 @@ public class API {
             @Override
             public void onFailure(@NonNull Call<Grille> call, @NonNull Throwable t) {
                 report_firebase("getKenkenGrille", "onFailure", "KO");
-                Toast.makeText(MyApplication.getContext(), "Chargement nouvele grille impossible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(), APIHelper.NEW_GAME_IMPOSSIBLE, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -107,14 +105,20 @@ public class API {
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
                 report_firebase("getKenStats", "onFailure", "KO");
-                Toast.makeText(MyApplication.getContext(), "Chargement statistiques impossible", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(), APIHelper.GET_STATS_IMPOSSIBLE, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
-    public void report_firebase(String event, String key, String value) {
+    private void report_firebase(String event, String key, String value) {
         new FBevent(MyApplication.getContext(), event, key, value);
     }
 
+    private class APIHelper {
+        final static String NEW_GAME_IMPOSSIBLE = "Chargement nouvele grille impossible";
+        final static String GET_STATS_IMPOSSIBLE = "Chargement statistiques impossible";
+    }
+
 }
+
