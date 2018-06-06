@@ -2,6 +2,7 @@ package com.example.jeroj.kenkenjj;
 
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
+import com.example.jeroj.kenkenjj.models.Stats;
 
 import org.junit.Test;
 
@@ -118,6 +119,41 @@ public class APITests {
                 assertTrue(false);
                 e.printStackTrace();
             }
+        } catch (IOException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void test_get_ken_stats_1() {
+        APITest apitest = new APITest();
+        Call<Stats> cm = apitest.get_ken_stats("user_test");
+        try {
+            Response<Stats> rm = cm.execute();
+
+            assertNotEquals("0",  String.valueOf(rm.body().getPlayed()));
+            assertNotEquals("0",  String.valueOf(rm.body().getResolved()));
+            assertNotEquals("0",  String.valueOf(rm.body().getPourcentage()));
+
+        } catch (IOException e) {
+            assertTrue(false);
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test_get_ken_stats_2() {
+        APITest apitest = new APITest();
+        Call<Stats> cm = apitest.get_ken_stats("blablabla");
+        try {
+            Response<Stats> rm = cm.execute();
+
+            assertEquals("0",  String.valueOf(rm.body().getPlayed()));
+            assertEquals("0",  String.valueOf(rm.body().getResolved()));
+            assertEquals("0",  String.valueOf(rm.body().getPourcentage()));
+
         } catch (IOException e) {
             assertTrue(false);
             e.printStackTrace();
