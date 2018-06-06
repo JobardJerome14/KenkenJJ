@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
+import com.example.jeroj.kenkenjj.helpers.IFBEvent;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
 import com.example.jeroj.kenkenjj.models.Stats;
@@ -54,13 +55,13 @@ public class API {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
                 } else {
-                    report_firebase("crash", "getKenkenGrille", "onResponse");
+                    report_firebase(IFBEvent.CRASH_EVENT,  IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Grille> call, @NonNull Throwable t) {
-                report_firebase("crash", "getKenkenGrille", "onFailure");
+                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_FAILURE);
                 Toast.makeText(MyApplication.getContext(), R.string.api_new_game_impossible, Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,13 +78,13 @@ public class API {
                     RetourUpdate retourUpdate = response.body();
                     updateCallback.onWaitingResultat(retourUpdate);
                 } else {
-                    report_firebase("crash", "updKenGame", "onResponse");
+                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<RetourUpdate> call, @NonNull Throwable t) {
-                report_firebase("crash", "updKenGame", "onFailure");
+                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_FAILURE);
             }
         });
     }
@@ -99,13 +100,13 @@ public class API {
                     Stats stats = response.body();
                     resultatCallback.onWaitingResultat(stats);
                 } else {
-                    report_firebase("crash", "getKenStats", "onResponse");
+                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
-                report_firebase("crash", "getKenStats", "onFailure");
+                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_FAILURE);
                 Toast.makeText(MyApplication.getContext(), R.string.api_get_stats_impossible, Toast.LENGTH_SHORT).show();
             }
         });

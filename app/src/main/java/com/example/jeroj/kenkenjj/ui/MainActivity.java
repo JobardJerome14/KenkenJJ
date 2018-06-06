@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
+import com.example.jeroj.kenkenjj.helpers.IFBEvent;
 import com.example.jeroj.kenkenjj.ui.reusable.ActivityBase;
 
 import java.util.UUID;
@@ -67,19 +68,19 @@ public class MainActivity extends ActivityBase {
     public void play_ken() {
         navigate(KenkenActivity.class, null);
 
-        new FBevent(this, "clic", "button", "play_btn");
+        new FBevent(this, IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "play_btn");
     }
 
     public void go_to_rules() {
         navigate(RulesActivity.class, null);
 
-        new FBevent(this, "clic", "button", "welcome_rules_btn");
+        new FBevent(this, IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "welcome_rules_btn");
     }
 
     public void show_stats() {
         navigate(StatsActivity.class, null);
 
-        new FBevent(this, "clic", "button", "stats_btn");
+        new FBevent(this, IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "stats_btn");
     }
 
 }

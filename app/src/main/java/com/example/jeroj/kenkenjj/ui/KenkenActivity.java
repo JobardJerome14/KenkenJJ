@@ -17,6 +17,7 @@ import com.example.jeroj.kenkenjj.api.API;
 import com.example.jeroj.kenkenjj.api.SharedP;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
+import com.example.jeroj.kenkenjj.helpers.IFBEvent;
 import com.example.jeroj.kenkenjj.models.Block;
 import com.example.jeroj.kenkenjj.models.Grille;
 import com.example.jeroj.kenkenjj.models.RetourUpdate;
@@ -207,7 +208,7 @@ public class KenkenActivity extends ActivityBase {
             get_grille_via_api();
         } else {
             //Problem
-            report_firebase("crash", "bindview_ken", "no bind for ken_activity");
+            report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.BIND_KENVIEW_KEY, IFBEvent.BIND_KENVIEW_KO_VALUE);
         }
 
         this.raz_btn = findViewById(R.id.raz_btn);
@@ -317,7 +318,7 @@ public class KenkenActivity extends ActivityBase {
         load_grille(current_grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        report_firebase("clic", "checkbox", "mode_crayon_chkbx");
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.CHECKBOX_KEY, "mode_crayon_chkbx");
     }
 
     public void btn_click(int i) {
@@ -367,7 +368,7 @@ public class KenkenActivity extends ActivityBase {
 
                     block.setCrayon(crayon_formated_string(block));
                 } else {
-                    report_firebase("crash", "mode_edition_btn_click", "ni stylo ni crayon");
+                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.MODE_EDITION_BTN_CLICK_KEY, IFBEvent.MODE_EDITION_KO_VALUE);
                 }
             }
             tmp++;
@@ -424,7 +425,7 @@ public class KenkenActivity extends ActivityBase {
         this.blockAdapter.notifyDataSetChanged();
 
         String value = "keyboard_btn_" + String.valueOf(i);
-        report_firebase("clic", "button", value);
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, value);
 
         check_grille();
     }
@@ -466,7 +467,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void see_rules() {
-        report_firebase("clic", "button", "rules_btn");
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "rules_btn");
 
         navigate(RulesActivity.class, null);
     }
@@ -507,7 +508,7 @@ public class KenkenActivity extends ActivityBase {
             load_grille(grille);
             this.blockAdapter.notifyDataSetChanged();
 
-            report_firebase("clic", "button", "help_btn");
+            report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "help_btn");
 
             check_grille();
         }
@@ -550,7 +551,7 @@ public class KenkenActivity extends ActivityBase {
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
 
-        report_firebase("clic", "button", "raz_btn");
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "raz_btn");
     }
 
     private void new_game() {
@@ -578,12 +579,11 @@ public class KenkenActivity extends ActivityBase {
             this.blockAdapter = new BlockAdapter(this, grille);
             gridView.setAdapter(this.blockAdapter);
             this.blockAdapter.notifyDataSetChanged();
-
-            report_firebase("clic", "button", "new_game_btn");
-
         } else if (this.sharedP.getModeApi().equals("1")) {
             get_grille_via_api();
         }
+
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "new_game_btn");
     }
 
 
@@ -639,7 +639,7 @@ public class KenkenActivity extends ActivityBase {
             @Override
             public void onWaitingResultat(RetourUpdate result) {
                 if (!result.getStatus().equals("OK")) {
-                    report_firebase("clic", "checkbox", "mode_crayon_chkbx");
+                    report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.CHECKBOX_KEY, "mode_crayon_chkbx");
                 }
             }
         });
