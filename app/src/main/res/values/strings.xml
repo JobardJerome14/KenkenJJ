@@ -39,4 +39,9 @@
     <string name="ok_label">OK</string>
     <string name="ko_label">Annuler</string>
 
+
+    <!-- API Toasts -->
+    <string name="api_new_game_impossible">Chargement nouvelle partie impossible</string>
+    <string name="api_get_stats_impossible">Chargement statistiques impossible</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.example.jeroj.kenkenjj.api;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.helpers.ResultatCallback;
 import com.example.jeroj.kenkenjj.helpers.FBevent;
 import com.example.jeroj.kenkenjj.models.Grille;
@@ -53,14 +54,14 @@ public class API {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
                 } else {
-                    report_firebase("getken", "onResponse", "response not successful");
+                    report_firebase("crash", "getKenkenGrille", "onResponse");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Grille> call, @NonNull Throwable t) {
-                report_firebase("getKenkenGrille", "onFailure", "KO");
-                Toast.makeText(MyApplication.getContext(), APIHelper.NEW_GAME_IMPOSSIBLE, Toast.LENGTH_SHORT).show();
+                report_firebase("crash", "getKenkenGrille", "onFailure");
+                Toast.makeText(MyApplication.getContext(), R.string.api_new_game_impossible, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,13 +77,13 @@ public class API {
                     RetourUpdate retourUpdate = response.body();
                     updateCallback.onWaitingResultat(retourUpdate);
                 } else {
-                    report_firebase("updKenGame", "onResponse", "response not successful");
+                    report_firebase("crash", "updKenGame", "onResponse");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<RetourUpdate> call, @NonNull Throwable t) {
-                report_firebase("updKenGame", "onFailure", "KO");
+                report_firebase("crash", "updKenGame", "onFailure");
             }
         });
     }
@@ -98,14 +99,14 @@ public class API {
                     Stats stats = response.body();
                     resultatCallback.onWaitingResultat(stats);
                 } else {
-                    report_firebase("getKenStats", "onResponse", "response not successful");
+                    report_firebase("crash", "getKenStats", "onResponse");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
-                report_firebase("getKenStats", "onFailure", "KO");
-                Toast.makeText(MyApplication.getContext(), APIHelper.GET_STATS_IMPOSSIBLE, Toast.LENGTH_SHORT).show();
+                report_firebase("crash", "getKenStats", "onFailure");
+                Toast.makeText(MyApplication.getContext(), R.string.api_get_stats_impossible, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -115,10 +116,7 @@ public class API {
         new FBevent(MyApplication.getContext(), event, key, value);
     }
 
-    private class APIHelper {
-        final static String NEW_GAME_IMPOSSIBLE = "Chargement nouvele grille impossible";
-        final static String GET_STATS_IMPOSSIBLE = "Chargement statistiques impossible";
-    }
+
 
 }
 
