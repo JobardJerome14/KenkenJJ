@@ -24,7 +24,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ui.RulesActivity" />
         <activity android:name=".ui.StatsActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
