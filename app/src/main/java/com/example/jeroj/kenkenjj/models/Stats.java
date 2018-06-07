@@ -14,7 +14,6 @@ public class Stats {
     private Integer pourcentage;
 
 
-
     public Integer getPlayed() {
         return played;
     }

@@ -112,7 +112,7 @@ public class APITests {
         APITest apitest = new APITest();
         Call<Grille> cm = apitest.get_grille("user_test");
         try {
-            Response<Grille> rm = cm.execute();
+            cm.execute();
             Call<RetourUpdate> cm2 = apitest.update_ken_game("user_test", 0, 1);
             try {
                 Response<RetourUpdate> rm2 = cm2.execute();

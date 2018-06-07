@@ -51,6 +51,7 @@ public class StatsActivity extends AppCompatActivity {
     public void load_stats(Stats stats) {
         this.st2_play.setText(String.valueOf(stats.getPlayed()));
         this.st2_resolved.setText(String.valueOf(stats.getResolved()));
-        this.st2_pourcentage.setText(String.valueOf(stats.getPourcentage()) + " %");
+        String percent = String.valueOf(stats.getPourcentage()) + " %";
+        this.st2_pourcentage.setText(percent);
     }
 }

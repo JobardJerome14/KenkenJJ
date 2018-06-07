@@ -14,23 +14,23 @@ public class SharedP {
         this.context = context;
     }
 
-    private SharedPreferences getSharedPref(String dictonnary) {
-        return this.context.getSharedPreferences(dictonnary, Context.MODE_PRIVATE);
+    private SharedPreferences getSharedPref() {
+        return this.context.getSharedPreferences(UserPrefHelper.USER_PREF_DICO, Context.MODE_PRIVATE);
     }
 
     public String getUserId() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_ID, "");
+        return getSharedPref().getString(UserPrefHelper.USER_ID, "");
     }
 
     public void setUserId(String user_id) {
-        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+        getSharedPref().edit()
                 .putString(UserPrefHelper.USER_ID, user_id)
                 .apply();
     }
 
     public Grille getCurrentGrille() {
         Gson gson = new Gson();
-        String json = getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_CURRENT_GRILLE, "");
+        String json = getSharedPref().getString(UserPrefHelper.USER_CURRENT_GRILLE, "");
         return gson.fromJson(json, Grille.class);
     }
 
@@ -38,23 +38,23 @@ public class SharedP {
         Gson gson = new Gson();
         String json = gson.toJson(grille);
 
-        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+        getSharedPref().edit()
                 .putString(UserPrefHelper.USER_CURRENT_GRILLE, json)
                 .apply();
     }
 
     public String getModeApi() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_API, "0");
+        return getSharedPref().getString(UserPrefHelper.USER_MODE_API, "0");
     }
 
     public void setModeApi(String mode_api) {
-        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+        getSharedPref().edit()
                 .putString(UserPrefHelper.USER_MODE_API, mode_api)
                 .apply();
     }
 
     public String getModeEdition() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_MODE_EDITION, context.getString(R.string.edition_stylo));
+        return getSharedPref().getString(UserPrefHelper.USER_MODE_EDITION, context.getString(R.string.edition_stylo));
     }
 
     public void setModeEdition(boolean flag) {
@@ -62,18 +62,18 @@ public class SharedP {
         if (flag) {
             mode_edition = context.getString(R.string.edition_crayon);
         }
-        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+        getSharedPref().edit()
                 .putString(UserPrefHelper.USER_MODE_EDITION, mode_edition)
                 .apply();
     }
 
 
     public String getLastCrayonSaisieIsNumber() {
-        return getSharedPref(UserPrefHelper.USER_PREF_DICO).getString(UserPrefHelper.USER_LAST_CRAYON_SAISIE_IS_NUMBER, "1");
+        return getSharedPref().getString(UserPrefHelper.USER_LAST_CRAYON_SAISIE_IS_NUMBER, "1");
     }
 
     public void setLastCrayonSaisieIsNumber(String s) {
-        getSharedPref(UserPrefHelper.USER_PREF_DICO).edit()
+        getSharedPref().edit()
                 .putString(UserPrefHelper.USER_LAST_CRAYON_SAISIE_IS_NUMBER, s)
                 .apply();
     }

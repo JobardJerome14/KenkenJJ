@@ -33,7 +33,6 @@ public class API {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        //String url = "https://8080-dot-3963909-dot-devshell.appspot.com/";
         //String url = "http://10.0.2.2:80";
         String url = "https://afternoon-wave-75382.herokuapp.com/";
 
@@ -55,13 +54,13 @@ public class API {
                     Grille grille = response.body();
                     resultatCallback.onWaitingResultat(grille);
                 } else {
-                    report_firebase(IFBEvent.CRASH_EVENT,  IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_RESPONSE);
+                    report_firebase_API_crash(IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Grille> call, @NonNull Throwable t) {
-                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_FAILURE);
+                report_firebase_API_crash(IFBEvent.API_GET_KEN_GRILLE_KEY, IFBEvent.API_ON_FAILURE);
                 Toast.makeText(MyApplication.getContext(), R.string.api_new_game_impossible, Toast.LENGTH_SHORT).show();
             }
         });
@@ -78,13 +77,13 @@ public class API {
                     RetourUpdate retourUpdate = response.body();
                     updateCallback.onWaitingResultat(retourUpdate);
                 } else {
-                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_RESPONSE);
+                    report_firebase_API_crash(IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<RetourUpdate> call, @NonNull Throwable t) {
-                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_FAILURE);
+                report_firebase_API_crash(IFBEvent.API_UPD_KEN_GAME_KEY, IFBEvent.API_ON_FAILURE);
             }
         });
     }
@@ -100,21 +99,21 @@ public class API {
                     Stats stats = response.body();
                     resultatCallback.onWaitingResultat(stats);
                 } else {
-                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_RESPONSE);
+                    report_firebase_API_crash(IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_RESPONSE);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Stats> call, @NonNull Throwable t) {
-                report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_FAILURE);
+                report_firebase_API_crash(IFBEvent.API_GET_KEN_STATS_KEY, IFBEvent.API_ON_FAILURE);
                 Toast.makeText(MyApplication.getContext(), R.string.api_get_stats_impossible, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
-    private void report_firebase(String event, String key, String value) {
-        new FBevent(MyApplication.getContext(), event, key, value);
+    private void report_firebase_API_crash(String key, String value) {
+        new FBevent(MyApplication.getContext(), IFBEvent.CRASH_EVENT, key, value);
     }
 
 

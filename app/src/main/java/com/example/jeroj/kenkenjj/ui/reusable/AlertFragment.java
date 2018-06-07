@@ -14,7 +14,7 @@ public class AlertFragment extends DialogFragment {
     private ResultatCallback<String> alertFragmentCB;
 
 
-    private int ok_label = R.string.ok_label;
+    private final int ok_label = R.string.ok_label;
 
 
     public static AlertFragment newInstance(String title, String message, boolean showCancel, ResultatCallback<String> alertFragmentCB) {
