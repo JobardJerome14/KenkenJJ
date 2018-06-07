@@ -37,10 +37,12 @@ public class NavigationTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    private int SLEEP_TIME = 2500;
 
     @Test
     public void navigationTest() {
+
+        int SLEEP_TIME = 2500;
+
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html

@@ -37,11 +37,13 @@ public class WinTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    private int SLEEP_TIME = 1250;
 
 
     @Test
     public void winTest() {
+
+        int SLEEP_TIME = 1250;
+
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
