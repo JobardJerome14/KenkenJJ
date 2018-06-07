@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-//@SuppressWarnings("all")
+@SuppressWarnings("all")
 public class ActivityBase extends AppCompatActivity {
 
     public void navigate(Class activity, Bundle bundle) {

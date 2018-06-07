@@ -20,11 +20,11 @@ public class Block {
 
 
     @SerializedName("texte")
-    private Integer good_value = 0;
+    private Integer good_value;
 
     private String stylo = "";
     private String crayon = "";
-    private int current_value = 0;
+    private int current_value;
 
     private boolean stylo_selected = false;
     private boolean crayon_selected = false;
@@ -71,40 +71,20 @@ public class Block {
         return tw_overtext;
     }
 
-    public void setTw_overtext(String tw_overtext) {
-        this.tw_overtext = tw_overtext;
-    }
-
     public Boolean getBorderTop() {
         return borderTop;
-    }
-
-    public void setBorderTop(Boolean borderTop) {
-        this.borderTop = borderTop;
     }
 
     public Boolean getBorderLeft() {
         return borderLeft;
     }
 
-    public void setBorderLeft(Boolean borderLeft) {
-        this.borderLeft = borderLeft;
-    }
-
     public Boolean getBorderRight() {
         return borderRight;
     }
 
-    public void setBorderRight(Boolean borderRight) {
-        this.borderRight = borderRight;
-    }
-
     public Boolean getBorderBottom() {
         return borderBottom;
-    }
-
-    public void setBorderBottom(Boolean borderBottom) {
-        this.borderBottom = borderBottom;
     }
 
     public int getCurrent_value() {
@@ -117,10 +97,6 @@ public class Block {
 
     public Integer getGood_value() {
         return good_value;
-    }
-
-    public void setGood_value(Integer good_value) {
-        this.good_value = good_value;
     }
 
 

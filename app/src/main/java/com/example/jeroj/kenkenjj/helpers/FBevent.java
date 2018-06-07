@@ -9,18 +9,18 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class FBevent {
 
-    private FirebaseAnalytics mFirebaseAnalytics;
-
-    private SharedP sharedP;
-
     public FBevent(Context contexte, String event, String key, String value) {
 
-        this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(contexte);
-        this.sharedP = new SharedP(contexte);
+        FirebaseAnalytics mFirebaseAnalytics;
+
+        SharedP sharedP;
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(contexte);
+        sharedP = new SharedP(contexte);
 
         Bundle bundle = new Bundle();
         bundle.putString(key, value);
-        bundle.putString("user_id", this.sharedP.getUserId());
+        bundle.putString("user_id", sharedP.getUserId());
 
         mFirebaseAnalytics.logEvent(event, bundle);
 

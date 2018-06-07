@@ -26,16 +26,8 @@ public class Grille {
         return id_grille;
     }
 
-    public void setId_grille(Integer id_grille) {
-        this.id_grille = id_grille;
-    }
-
     public ArrayList<Block> getBlocks() {
         return blocks;
-    }
-
-    public void setBlocks(ArrayList<Block> blocks) {
-        this.blocks = blocks;
     }
 
 
@@ -43,7 +35,4 @@ public class Grille {
         return percent_victory;
     }
 
-    public void setPercent_victory(String percent_victory) {
-        this.percent_victory = percent_victory;
-    }
 }

@@ -19,24 +19,12 @@ public class Stats {
         return played;
     }
 
-    public void setPlayed(Integer played) {
-        this.played = played;
-    }
-
     public Integer getResolved() {
         return resolved;
     }
 
-    public void setResolved(Integer resolved) {
-        this.resolved = resolved;
-    }
-
     public Integer getPourcentage() {
         return pourcentage;
-    }
-
-    public void setPourcentage(Integer pourcentage) {
-        this.pourcentage = pourcentage;
     }
 
 }

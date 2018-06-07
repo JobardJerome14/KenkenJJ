@@ -3,7 +3,6 @@ package com.example.jeroj.kenkenjj.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.jeroj.kenkenjj.R;
 import com.example.jeroj.kenkenjj.api.SharedP;
@@ -15,7 +14,6 @@ import java.util.UUID;
 
 public class MainActivity extends ActivityBase {
 
-    TextView tw_main;
     Button welcome_btn;
     Button welcome_rules_btn;
     Button stats_btn;
@@ -37,8 +35,6 @@ public class MainActivity extends ActivityBase {
     }
 
     private void bindView() {
-        this.tw_main = findViewById(R.id.tw_main);
-
         this.welcome_btn = findViewById(R.id.welcome_btn);
         this.welcome_btn.setOnClickListener(new View.OnClickListener() {
             @Override
