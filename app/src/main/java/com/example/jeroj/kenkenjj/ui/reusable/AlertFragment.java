@@ -15,9 +15,7 @@ public class AlertFragment extends DialogFragment {
 
 
     private int ok_label = R.string.ok_label;
-    private int ko_label = R.string.ko_label;
 
-    private boolean showCancel = true;
 
     public static AlertFragment newInstance(String title, String message, boolean showCancel, ResultatCallback<String> alertFragmentCB) {
         AlertFragment frag = new AlertFragment();
@@ -38,7 +36,8 @@ public class AlertFragment extends DialogFragment {
         String title = getArguments().getString("title");
         String message = getArguments().getString("message");
 
-        this.showCancel = getArguments().getBoolean("show_cancel");
+        int ko_label = R.string.ko_label;
+        boolean showCancel = getArguments().getBoolean("show_cancel");
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
@@ -50,8 +49,8 @@ public class AlertFragment extends DialogFragment {
                     }
                 });
 
-        if(this.showCancel) {
-            dialog.setNegativeButton(this.ko_label, new DialogInterface.OnClickListener() {
+        if(showCancel) {
+            dialog.setNegativeButton(ko_label, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
