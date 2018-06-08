@@ -546,6 +546,9 @@ public class KenkenActivity extends ActivityBase {
 
         this.win = false;
 
+        this.sharedP.setModeEdition(false);
+        this.mode_crayon.setChecked(false);
+
         load_grille(grille);
         this.blockAdapter.notifyDataSetChanged();
 
