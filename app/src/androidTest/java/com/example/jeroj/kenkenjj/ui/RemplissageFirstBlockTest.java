@@ -22,6 +22,7 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
@@ -43,16 +44,7 @@ public class RemplissageFirstBlockTest {
     @Test
     public void remplissageFirstBlockTest() {
 
-        int SLEEP_TIME = 1250;
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep();
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.welcome_btn), withText("Play"),
@@ -64,53 +56,51 @@ public class RemplissageFirstBlockTest {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        sleep();
+
+        ViewInteraction raz = onView(withId(R.id.raz_btn));
+        raz.perform(click());
+        sleep();
+
+        ViewInteraction choice_ok = onView(withId(android.R.id.button1));
+        choice_ok.perform(scrollTo(), click());
+
+
+        DataInteraction gridview = onData(anything())
+                .inAdapterView(withId(R.id.gridview));
+        gridview.atPosition(0).perform(click());
+
+        ViewInteraction btn1 = onView(withId(R.id.btn1));
+        ViewInteraction btn2 = onView(withId(R.id.btn2));
+        ViewInteraction btn3 = onView(withId(R.id.btn3));
+        ViewInteraction btn4 = onView(withId(R.id.btn4));
+        ViewInteraction btn5 = onView(withId(R.id.btn5));
+        ViewInteraction btn6 = onView(withId(R.id.btn6));
+
+        btn1.perform(click());
+        sleep();
+        btn2.perform(click());
+        sleep();
+        btn3.perform(click());
+        sleep();
+        btn4.perform(click());
+        sleep();
+        btn5.perform(click());
+        sleep();
+        btn6.perform(click());
+        sleep();
+
+        DataInteraction tv2 = gridview.atPosition(0).onChildView(withId(R.id.stylo));
+        tv2.check(matches(withText("6")));
+
+    }
+
+    private void sleep(){
         try {
-            Thread.sleep(SLEEP_TIME);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        DataInteraction relativeLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gridview),
-                        childAtPosition(
-                                withId(R.id.lin_grid),
-                                0)))
-                .atPosition(0);
-        relativeLayout.perform(click());
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btn1), withText("1"),
-                        childAtPosition(
-                                allOf(withId(R.id.btm_keyboard_view),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        appCompatButton2.perform(click());
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.stylo), withText("1"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.block_id),
-                                        2),
-                                1),
-                        isDisplayed()));
-        textView.check(matches(withText("1")));
-
     }
 
     private static Matcher<View> childAtPosition(
