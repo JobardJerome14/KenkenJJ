@@ -15,6 +15,7 @@ import com.real.first.sandoken.helpers.FBevent;
 import com.real.first.sandoken.helpers.IFBEvent;
 import com.real.first.sandoken.models.Block;
 import com.real.first.sandoken.models.Grille;
+import com.real.first.sandoken.ui.reusable.LogUtils;
 
 import java.util.ArrayList;
 
@@ -87,7 +88,7 @@ public class BlockAdapter extends BaseAdapter {
                         if (block.isSelected()) block.setSelected(!block.isSelected());
                     }
                 } else if (sharedP.getModeEdition().equals(contexte.getString(R.string.edition_crayon))) {
-                    Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+                    //LogUtils.log("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
                     deselection_blocks_if_needed();
                     sharedP.setLastCrayonSaisieIsNumber("0");
                 }
@@ -108,7 +109,7 @@ public class BlockAdapter extends BaseAdapter {
         }
 
         final TextView crayon = convertView.findViewById(R.id.crayon);
-        //Log.i("get crayon", cur_block.getCrayon());
+        //LogUtils.log("get crayon", cur_block.getCrayon());
         if (cur_block.getCrayon() != null && !cur_block.getCrayon().equals("")) {
             crayon.setText(cur_block.getCrayon());
         }
@@ -157,7 +158,7 @@ public class BlockAdapter extends BaseAdapter {
     }
 
     private void deselection_blocks_if_needed() {
-        Log.i("deselection mode" , this.sharedP.getLastCrayonSaisieIsNumber());
+        LogUtils.log("deselection mode" , this.sharedP.getLastCrayonSaisieIsNumber());
         if(this.sharedP.getLastCrayonSaisieIsNumber().equals("1")) {
             for (Block block : this.blocks) {
                 block.setSelected(false);

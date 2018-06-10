@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.real.first.sandoken.api.SharedP;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.real.first.sandoken.ui.reusable.LogUtils;
 
 public class FBevent {
 
@@ -24,7 +25,7 @@ public class FBevent {
 
         mFirebaseAnalytics.logEvent(event, bundle);
 
-        Log.i("!!!  firebase event !!!", event + ' ' + bundle.toString());
+        LogUtils.log("!!!  firebase event !!!", event + ' ' + bundle.toString());
     }
 
 }

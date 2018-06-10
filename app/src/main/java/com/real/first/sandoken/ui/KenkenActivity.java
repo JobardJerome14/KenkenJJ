@@ -22,6 +22,7 @@ import com.real.first.sandoken.models.RetourUpdate;
 import com.real.first.sandoken.ui.adapters.BlockAdapter;
 import com.real.first.sandoken.ui.reusable.ActivityBase;
 import com.real.first.sandoken.ui.reusable.AlertFragment;
+import com.real.first.sandoken.ui.reusable.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -249,7 +250,6 @@ public class KenkenActivity extends ActivityBase {
         this.mode_crayon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //Log.i("checkbox clicked ", String.valueOf(isChecked));
                 change_edition_mode(isChecked);
             }
         });
@@ -304,7 +304,6 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void change_edition_mode(boolean flag) {
-        //Log.i("JJJJJJJ", getString(R.string.edition_crayon) );
         this.sharedP.setModeEdition(flag);
         Grille current_grille = this.sharedP.getCurrentGrille();
         if (!flag) {
@@ -320,17 +319,16 @@ public class KenkenActivity extends ActivityBase {
     }
 
     public void btn_click(int i) {
-
         if(sharedP.getModeEdition()!= null) {
             if(sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
                 sharedP.setLastCrayonSaisieIsNumber("1");
             }
         }
-        if(sharedP.getLastCrayonSaisieIsNumber() != null) {
-            Log.i("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
-        }
+/*        if(sharedP.getLastCrayonSaisieIsNumber() != null) {
+            LogUtils.log("LastCrayonSaisieIsNum", sharedP.getLastCrayonSaisieIsNumber());
+        }*/
 
-        //Log.i("btn click", String.valueOf(i));
+        //LogUtils.log("btn click", String.valueOf(i));
         Grille current_grille = this.sharedP.getCurrentGrille();
         int id_block = 0;
         int tmp = 0;
@@ -491,12 +489,12 @@ public class KenkenActivity extends ActivityBase {
 
         if (!help_impossible) {
             int size_nf = bloc_non_trouve.size();
-            Log.i("tab non trouve size_nf", "size_nf : " + size_nf);
+            //LogUtils.log("tab non trouve size_nf", "size_nf : " + size_nf);
 
             Random r = new Random();
             int id_bloc = r.nextInt(size_nf);
-            //Log.i("tab non trouve", "id_bloc : " + id_bloc);
-            //Log.i("tab non trouve", "val get : " + bloc_non_trouve.get(id_bloc));
+            //LogUtils.log("tab non trouve", "id_bloc : " + id_bloc);
+            //LogUtils.log("tab non trouve", "val get : " + bloc_non_trouve.get(id_bloc));
             Block blk_to_help = grille.getBlocks().get(bloc_non_trouve.get(id_bloc));
             blk_to_help.setCurrent_value(blk_to_help.getGood_value());
             blk_to_help.setStylo(String.valueOf(blk_to_help.getGood_value()));
@@ -589,23 +587,23 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void check_grille() {
-        Log.i("check_grille win", String.valueOf(this.win));
+        //LogUtils.log("check_grille win", String.valueOf(this.win));
         if (!this.win) {
             //Integer i = 0;
             Integer good = 0;
             Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
             for (Block block : grille.getBlocks()) {
                 //i++;
-                //Log.i("block_current_value", i+" : "+block.getCurrent_value());
-                //Log.i("block_good_value", i+" : "+block.getGood_value());
+                //LogUtils.log("block_current_value", i+" : "+block.getCurrent_value());
+                //LogUtils.log("block_good_value", i+" : "+block.getGood_value());
                 if (block.getCurrent_value() == block.getGood_value()) {
                     good++;
                 }
             }
-            Log.i("nb bloc bon : ", String.valueOf(good));
+            LogUtils.log("nb bloc bon : ", String.valueOf(good));
             if (good == 36) {
                 this.win = true;
-                //Log.i("victory", "C'est la victoire !");
+                //LogUtils.log("victory", "C'est la victoire !");
                 notify_victory();
                 save_victory_via_api();
             }
