@@ -1,4 +1,4 @@
-package com.example.jeroj.kenkenjj.ui;
+package com.real.first.sandoken.ui;
 
 
 import android.support.test.espresso.DataInteraction;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import com.example.jeroj.kenkenjj.R;
+import com.real.first.sandoken.R;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

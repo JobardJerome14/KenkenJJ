@@ -1,4 +1,4 @@
-package com.example.jeroj.kenkenjj;
+package com.real.first.sandoken;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.jeroj.kenkenjj", appContext.getPackageName());
+        assertEquals("com.real.first.sandoken", appContext.getPackageName());
     }
 }
