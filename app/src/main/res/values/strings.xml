@@ -24,8 +24,8 @@
         Sudoku-style, the goal of the game is to fill all grid squares with numbers from 1 to 6 without ever having twice the same number in the same column or on the same line.\n\n
         The grid consists of 6 rows and 6 columns containing blocks delimited by a thick blue line. The number written on the top left of each block is the result of the operation performed with the numbers of the boxes in the same block.\n\n
         Each grid has only one solution.\n\n
-        To begin, it is necessary to list the blocks that contain only one box. You must copy in this block the small number written on the top left.\n\n
-        Then, it will be necessary to make calculations to fill the other boxes. Among the possible examples of addition (5 can be written 4 + 1 or 1 + 4 or 3 + 2 or 2 + 3), it is the blocks already found that will allow us to find the right addition. Still remembering the rule: the same number can only be present once per line and once per column.\n\n
+        For an addition, there are few possibilities, example "5+" can be written 4 + 1 or 1 + 4 or 3 + 2 or 2 + 3, it is blocks already found that will allow us to find the right addition. Still remembering the rule: the same number can only be present once per line and once per column.\n\n
+        To help you, a pencil mode is available to enter the possibilities of a box and so proceed by elimination to find the right number.\n\n
         Good game !</string>
 
 

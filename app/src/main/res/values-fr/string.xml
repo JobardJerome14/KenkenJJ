@@ -24,8 +24,8 @@
         A la manière du sudoku, le but du jeu est de remplir toutes les cases de la grille avec des chiffres allant de 1 à 6 sans jamais avoir deux fois le même chiffre dans la même colonne ou sur la même ligne.\n\n
         La grille est constituée de 6 lignes et 6 colonnes contenant des blocs délimités par un épais trait bleu. Le chiffre inscrit en haut à gauche de chaque bloc est le résultat de l\'opération effectuée avec les chiffres des cases d\'un même bloc.\n\n
         Chaque grille n\'a qu\'une seule solution.\n\n
-        Pour commencer, il est nécessaire de réperer les blocs qui ne contiennent qu\'une seule case. Il faut recopier dans ce bloc le petit chiffre inscrit en haut à gauche.\n\n
-        Ensuite, il va falloir faire des calculs pour remplir les autres cases. Parmi les exemples possibles d\'addition (5 peut s\'écrire 4+1 ou 1+4 ou 3+2 ou 2+3), ce sont les blocs déjà trouvés qui vont nous permettre de trouver la bonne addition. Toujours en se rappelant de la règle : un même chiffre ne peut être présent qu\'une fois par ligne et qu\'une fois par colonne.\n\n
+        Pour une addition, il y a plusieurs possibilités, exemple : "5+" peut s\'écrire 4+1 ou 1+4 ou 3+2 ou 2+3, ce sont les blocs déjà trouvés qui vont vous permettre de trouver la bonne addition. Toujours en se rappelant de la règle : un même chiffre ne peut être présent qu\'une fois par ligne et qu\'une fois par colonne.\n\n
+        Pour vous aider, un mode crayon est disponible pour saisir les possibilités d\'une case et ainsi procéder par élimination juqu\'à trouver le bon chiffre.\n\n
         Bon jeu !</string>
 
 
