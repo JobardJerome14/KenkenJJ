@@ -11,3 +11,5 @@
 .idea/*
 app/build/*
 .idea\*
+keystores.jks
+app\release\*
