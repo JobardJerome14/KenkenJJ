@@ -680,15 +680,6 @@ public class UITest {
 
         sleep();
 
-        ViewInteraction appCompatButton4 = onView(withId(R.id.rules_btn));
-        appCompatButton4.perform(click());
-
-        sleep();
-
-        pressBack();
-
-        sleep();
-
         pressBack();
 
     }
