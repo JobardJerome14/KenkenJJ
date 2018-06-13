@@ -23,7 +23,7 @@ public interface IFBEvent {
     String API_ON_RESPONSE = "onResponse";
     String API_ON_FAILURE = "onFailure";
 
-    String BIND_KENVIEW_KO_VALUE = "no bind for ken_activity";
-    String MODE_EDITION_KO_VALUE = "ni stylo ni crayon";
+    String BIND_KENVIEW_KO_VALUE = "no_bind_for_ken_activity";
+    String MODE_EDITION_KO_VALUE = "ni_stylo_ni_crayon";
 
 }
