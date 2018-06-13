@@ -813,6 +813,101 @@ public class UITest {
     }
 
 
+    @Test
+    public void clearBoxTest() {
+        sleep();
+
+        ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
+        appCompatButton.perform(click());
+
+        sleep();
+
+        ViewInteraction raz = onView(withId(R.id.raz_btn));
+        raz.perform(click());
+        sleep();
+
+        ViewInteraction choice_ok = onView(withId(android.R.id.button1));
+        choice_ok.perform(scrollTo(), click());
+
+
+        DataInteraction gridview = onData(anything())
+                .inAdapterView(withId(R.id.gridview));
+
+        ViewInteraction btn1 = onView(withId(R.id.btn1));
+        ViewInteraction btn2 = onView(withId(R.id.btn2));
+        ViewInteraction btn3 = onView(withId(R.id.btn3));
+        ViewInteraction btn4 = onView(withId(R.id.btn4));
+        ViewInteraction btn5 = onView(withId(R.id.btn5));
+        ViewInteraction btn6 = onView(withId(R.id.btn6));
+
+
+
+        ViewInteraction pencil_mode = onView(withId(R.id.mode_crayon)).check(matches(ViewMatchers.isNotChecked()));
+        pencil_mode.perform(click());
+
+        sleep();
+
+        gridview.atPosition(17).perform(click());
+        sleep();
+
+        btn1.perform(click());
+        sleep();
+        btn2.perform(click());
+        sleep();
+        btn3.perform(click());
+        sleep();
+        btn4.perform(click());
+        sleep();
+        btn5.perform(click());
+        sleep();
+        btn6.perform(click());
+        sleep();
+
+        pencil_mode.perform(click());
+        sleep();
+
+        gridview.atPosition(9).perform(click());
+        sleep();
+        btn6.perform(click());
+        sleep();
+
+        gridview.atPosition(9).onChildView(withId(R.id.stylo)).check(matches(withText("6")));
+        gridview.atPosition(17).onChildView(withId(R.id.crayon)).check(matches(withText("1 2 3 4 5 6 ")));
+
+        gridview.atPosition(25).perform(click());
+        sleep();
+
+        ViewInteraction clearboxBtn = onView(withId(R.id.clear_box_btn));
+        clearboxBtn.perform(click());
+        sleep();
+
+        //Nothing cleared
+        gridview.atPosition(9).onChildView(withId(R.id.stylo)).check(matches(withText("6")));
+        gridview.atPosition(17).onChildView(withId(R.id.crayon)).check(matches(withText("1 2 3 4 5 6 ")));
+
+        gridview.atPosition(9).perform(click());
+        sleep();
+
+        clearboxBtn.perform(click());
+        sleep();
+
+        //9 cleared , 17 still written
+        gridview.atPosition(9).onChildView(withId(R.id.stylo)).check(matches(withText("")));
+        gridview.atPosition(17).onChildView(withId(R.id.crayon)).check(matches(withText("1 2 3 4 5 6 ")));
+
+        gridview.atPosition(17).perform(click());
+        sleep();
+
+        clearboxBtn.perform(click());
+        sleep();
+
+        //15 cleared , 17 still written
+        gridview.atPosition(9).onChildView(withId(R.id.stylo)).check(matches(withText("")));
+        gridview.atPosition(17).onChildView(withId(R.id.crayon)).check(matches(withText("")));
+
+        sleep();
+
+    }
 
 
     private void sleep(){
