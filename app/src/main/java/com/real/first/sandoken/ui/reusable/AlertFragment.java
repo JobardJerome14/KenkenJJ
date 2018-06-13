@@ -2,9 +2,14 @@ package com.real.first.sandoken.ui.reusable;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.real.first.sandoken.R;
 import com.real.first.sandoken.api.helpers.ResultatCallback;
@@ -30,14 +35,17 @@ public class AlertFragment extends DialogFragment {
         return frag;
     }
 
-
+    @Nullable
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        String title = getArguments().getString("title");
-        String message = getArguments().getString("message");
-
+        String title = "", message = "";
         int ko_label = R.string.ko_label;
-        boolean showCancel = getArguments().getBoolean("show_cancel");
+        boolean showCancel = true;
+        if(getArguments() != null) {
+            title = getArguments().getString("title");
+            message = getArguments().getString("message");
+            showCancel = getArguments().getBoolean("show_cancel");
+        }
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
                 .setTitle(title)

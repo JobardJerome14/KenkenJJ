@@ -1,8 +1,7 @@
 package com.real.first.sandoken.ui;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -527,7 +526,7 @@ public class KenkenActivity extends ActivityBase {
 
 
     private void raz() {
-        FragmentManager manager = getFragmentManager();
+/*        FragmentManager manager = getFragmentManager();
         Fragment frag = manager.findFragmentByTag("raz_dialog");
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
@@ -540,7 +539,22 @@ public class KenkenActivity extends ActivityBase {
                     }
                 });
 
-        alertFragment.show(manager, "raz_dialog");
+        alertFragment.show(manager, "raz_dialog");*/
+
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        if(fm != null) {
+            fm.beginTransaction().commit();
+            AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.raz_btn_label), getString(R.string.raz_btn_desc), true, new ResultatCallback<String>() {
+                @Override
+                public void onWaitingResultat(String result) {
+                    do_raz();
+                }
+            });
+
+            alertFragment.show(fm, "dialog_fragment");
+        }
     }
 
     private void do_raz() {
@@ -569,7 +583,7 @@ public class KenkenActivity extends ActivityBase {
     }
 
     private void new_game() {
-        FragmentManager manager = getFragmentManager();
+/*        FragmentManager manager = getFragmentManager();
         Fragment frag = manager.findFragmentByTag("new_game_dialog");
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
@@ -582,7 +596,21 @@ public class KenkenActivity extends ActivityBase {
             }
         });
 
-        alertFragment.show(manager, "new_game_dialog");
+        alertFragment.show(manager, "new_game_dialog");*/
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        if(fm != null) {
+            fm.beginTransaction().commit();
+            AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.new_game_btn_label), getString(R.string.new_game_btn_desc), true, new ResultatCallback<String>() {
+                @Override
+                public void onWaitingResultat(String result) {
+                    do_new_game();
+                }
+            });
+
+            alertFragment.show(fm, "new_game_dialog");
+        }
     }
 
     private void do_new_game() {
@@ -628,7 +656,7 @@ public class KenkenActivity extends ActivityBase {
 
     private void notify_victory() {
 
-        FragmentManager manager = getFragmentManager();
+/*        FragmentManager manager = getFragmentManager();
         Fragment frag = manager.findFragmentByTag("notify_victory_dialog");
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
@@ -642,7 +670,22 @@ public class KenkenActivity extends ActivityBase {
             }
         });
 
-        alertFragment.show(manager, "notify_victory_dialog");
+        alertFragment.show(manager, "notify_victory_dialog");*/
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        if(fm != null) {
+            fm.beginTransaction().commit();
+            Grille grille = this.sharedP.getCurrentGrille();
+            AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.win_message_title), getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()), false, new ResultatCallback<String>() {
+                @Override
+                public void onWaitingResultat(String result) {
+
+                }
+            });
+
+            alertFragment.show(fm, "notify_victory_dialog");
+        }
     }
 
 
