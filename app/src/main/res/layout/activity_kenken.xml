@@ -91,13 +91,13 @@
 
 
                     <Button
-                        android:id="@+id/rules_btn"
+                        android:id="@+id/clear_box_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@color/btn_4_background"
                         android:padding="8dp"
-                        android:text="@string/rules_btn_label"
+                        android:text="@string/clear_box_btn_label"
                         android:textAllCaps="false"
                         android:textColor="@color/my_white" />
 

@@ -3,7 +3,6 @@ package com.real.first.sandoken.ui;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,7 +32,7 @@ public class KenkenActivity extends ActivityBase {
     Button raz_btn;
     Button new_game_btn;
     Button help_btn;
-    Button rules_btn;
+    Button clear_box_btn;
     CheckBox mode_crayon;
     Button btn1;
     Button btn2;
@@ -235,11 +234,11 @@ public class KenkenActivity extends ActivityBase {
         });
 
 
-        this.rules_btn = findViewById(R.id.rules_btn);
-        this.rules_btn.setOnClickListener(new View.OnClickListener() {
+        this.clear_box_btn = findViewById(R.id.clear_box_btn);
+        this.clear_box_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                see_rules();
+                clear_box();
             }
         });
 
@@ -462,10 +461,26 @@ public class KenkenActivity extends ActivityBase {
         return crayon;
     }
 
-    public void see_rules() {
-        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "rules_btn");
+    public void clear_box() {
+        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "clear_box_btn");
 
-        navigate(RulesActivity.class, null);
+        Grille grille = this.sharedP.getCurrentGrille();
+        for (Block block : grille.getBlocks()) {
+            if(block.isSelected()) {
+                block.setCurrent_value(0);
+                block.setStylo("");
+                block.setCrayon("");
+                block.setC1_selected(false);
+                block.setC2_selected(false);
+                block.setC3_selected(false);
+                block.setC4_selected(false);
+                block.setC5_selected(false);
+                block.setC6_selected(false);
+            }
+        }
+
+        load_grille(grille);
+        this.blockAdapter.notifyDataSetChanged();
     }
 
     public void help() {

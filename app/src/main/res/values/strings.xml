@@ -17,6 +17,7 @@
     <string name="new_game_btn_desc">Are you sure you want to start a new grid?</string>
 
     <string name="rules_btn_label">Rules</string>
+    <string name="clear_box_btn_label">Clear box</string>
     <string name="help_btn_label">Help</string>
     <string name="rules_title">Rules</string>
     <string name="rules_body">

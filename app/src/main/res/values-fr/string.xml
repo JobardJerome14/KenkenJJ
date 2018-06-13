@@ -17,6 +17,7 @@
     <string name="new_game_btn_desc">Etes-vous sûr de vouloir commencer une nouvelle grille?</string>
 
     <string name="rules_btn_label">Règles</string>
+    <string name="clear_box_btn_label">Vider case</string>
     <string name="help_btn_label">Aide</string>
     <string name="rules_title">Règles</string>
     <string name="rules_body">
