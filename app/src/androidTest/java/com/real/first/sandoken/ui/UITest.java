@@ -25,7 +25,6 @@ import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -61,7 +60,7 @@ public class UITest {
         sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
-        choice_ok.perform(scrollTo(), click());
+        choice_ok.perform(click());
 
 
         DataInteraction gridview = onData(anything())
@@ -286,7 +285,7 @@ public class UITest {
         sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
-        choice_ok.perform(scrollTo(), click());
+        choice_ok.perform(click());
 
 
         DataInteraction gridview = onData(anything())
@@ -359,7 +358,7 @@ public class UITest {
         sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
-        choice_ok.perform(scrollTo(), click());
+        choice_ok.perform(click());
 
 
         DataInteraction gridview = onData(anything())
@@ -700,7 +699,7 @@ public class UITest {
         sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
-        choice_ok.perform(scrollTo(), click());
+        choice_ok.perform(click());
 
 
         DataInteraction gridview = onData(anything())
@@ -827,7 +826,7 @@ public class UITest {
         sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
-        choice_ok.perform(scrollTo(), click());
+        choice_ok.perform(click());
 
 
         DataInteraction gridview = onData(anything())
