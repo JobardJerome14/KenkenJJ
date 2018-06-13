@@ -62,7 +62,7 @@ public class MainActivity extends ActivityBase {
     }
 
     public void play_ken() {
-        navigate(KenkenActivity.class, null);
+        navigate(SandokenActivity.class, null);
 
         new FBevent(this, IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "play_btn");
     }

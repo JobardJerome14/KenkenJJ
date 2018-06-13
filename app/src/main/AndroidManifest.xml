@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.KenkenActivity"
+        <activity android:name=".ui.SandokenActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.RulesActivity" />
         <activity android:name=".ui.StatsActivity"

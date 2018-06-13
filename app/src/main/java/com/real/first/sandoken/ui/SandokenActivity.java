@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-public class KenkenActivity extends ActivityBase {
+public class SandokenActivity extends ActivityBase {
 
     Button raz_btn;
     Button new_game_btn;
