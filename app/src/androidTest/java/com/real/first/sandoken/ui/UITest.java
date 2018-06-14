@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.real.first.sandoken.R;
+import com.real.first.sandoken.ui.MainActivity;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
