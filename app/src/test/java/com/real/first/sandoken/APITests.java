@@ -1,7 +1,5 @@
-// com.real.first.sandoken;
+package com.real.first.sandoken;
 
-import com.real.first.sandoken;
-import com.real.first.sandoken.APITest;
 import com.real.first.sandoken.models.Grille;
 import com.real.first.sandoken.models.RetourUpdate;
 import com.real.first.sandoken.models.Stats;
