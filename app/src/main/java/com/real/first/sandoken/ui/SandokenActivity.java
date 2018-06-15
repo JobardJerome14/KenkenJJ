@@ -526,23 +526,6 @@ public class SandokenActivity extends ActivityBase {
 
 
     private void raz() {
-/*        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("raz_dialog");
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
-        }
-
-        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.raz_btn_label), getString(R.string.raz_btn_desc), true, new ResultatCallback<String>() {
-                    @Override
-                    public void onWaitingResultat(String result) {
-                        do_raz();
-                    }
-                });
-
-        alertFragment.show(manager, "raz_dialog");*/
-
-
-
         FragmentManager fm = getSupportFragmentManager();
         if(fm != null) {
             fm.beginTransaction().commit();
@@ -559,46 +542,31 @@ public class SandokenActivity extends ActivityBase {
 
     private void do_raz() {
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
-        for (Block block : grille.getBlocks()) {
-            block.setCurrent_value(0);
-            block.setStylo("");
-            block.setCrayon("");
-            block.setC1_selected(false);
-            block.setC2_selected(false);
-            block.setC3_selected(false);
-            block.setC4_selected(false);
-            block.setC5_selected(false);
-            block.setC6_selected(false);
+        if(grille.getBlocks() != null) {
+            for (Block block : grille.getBlocks()) {
+                block.setCurrent_value(0);
+                block.setStylo("");
+                block.setCrayon("");
+                block.setC1_selected(false);
+                block.setC2_selected(false);
+                block.setC3_selected(false);
+                block.setC4_selected(false);
+                block.setC5_selected(false);
+                block.setC6_selected(false);
+            }
+
+            this.win = false;
+
+            this.sharedP.setModeEdition(false);
+            this.mode_crayon.setChecked(false);
+
+            load_grille(grille);
+            this.blockAdapter.notifyDataSetChanged();
         }
-
-        this.win = false;
-
-        this.sharedP.setModeEdition(false);
-        this.mode_crayon.setChecked(false);
-
-        load_grille(grille);
-        this.blockAdapter.notifyDataSetChanged();
-
         report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "raz_btn");
     }
 
     private void new_game() {
-/*        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("new_game_dialog");
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
-        }
-
-        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.new_game_btn_label), getString(R.string.new_game_btn_desc), true, new ResultatCallback<String>() {
-            @Override
-            public void onWaitingResultat(String result) {
-                do_new_game();
-            }
-        });
-
-        alertFragment.show(manager, "new_game_dialog");*/
-
-
         FragmentManager fm = getSupportFragmentManager();
         if(fm != null) {
             fm.beginTransaction().commit();
@@ -655,24 +623,6 @@ public class SandokenActivity extends ActivityBase {
 
 
     private void notify_victory() {
-
-/*        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("notify_victory_dialog");
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
-        }
-
-        Grille grille = this.sharedP.getCurrentGrille();
-        AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.win_message_title), getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()), false, new ResultatCallback<String>() {
-            @Override
-            public void onWaitingResultat(String result) {
-
-            }
-        });
-
-        alertFragment.show(manager, "notify_victory_dialog");*/
-
-
         FragmentManager fm = getSupportFragmentManager();
         if(fm != null) {
             fm.beginTransaction().commit();

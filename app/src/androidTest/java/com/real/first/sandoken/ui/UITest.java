@@ -690,17 +690,24 @@ public class UITest {
 
         sleep();
 
+
+
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
         sleep();
 
+
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
         sleep();
 
+
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
         choice_ok.perform(click());
+
+        sleep();
+
 
 
         DataInteraction gridview = onData(anything())
