@@ -186,7 +186,7 @@ public class SandokenActivity extends ActivityBase {
             @Override
             public void onWaitingResultat(Grille grille) {
                 load_grille(grille);
-             //   spinner.setVisibility(View.GONE);
+                spinner.setVisibility(View.GONE);
             }
         });
     }
