@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import com.real.first.sandoken.R;
 import com.real.first.sandoken.api.API;
@@ -40,6 +41,7 @@ public class SandokenActivity extends ActivityBase {
     Button btn5;
     Button btn6;
 
+    private ProgressBar spinner;
     private GridView gridView;
     private BlockAdapter blockAdapter;
     private Integer id_grille = 0;
@@ -179,16 +181,21 @@ public class SandokenActivity extends ActivityBase {
 
     private void get_grille_via_api() {
         API api = new API();
+        spinner.setVisibility(View.VISIBLE);
         api.getKenkenGrille(this.user_id, new ResultatCallback<Grille>() {
             @Override
             public void onWaitingResultat(Grille grille) {
                 load_grille(grille);
+             //   spinner.setVisibility(View.GONE);
             }
         });
     }
 
 
     private void bindView() {
+        this.spinner = findViewById(R.id.progressBar1);
+
+
         this.gridView = findViewById(R.id.gridview);
 
         Grille current_grille = this.sharedP.getCurrentGrille();
