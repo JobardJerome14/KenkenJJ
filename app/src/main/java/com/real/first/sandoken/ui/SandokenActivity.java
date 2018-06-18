@@ -304,15 +304,16 @@ public class SandokenActivity extends ActivityBase {
     public void change_edition_mode(boolean flag) {
         this.sharedP.setModeEdition(flag);
         Grille current_grille = this.sharedP.getCurrentGrille();
-        if (!flag) {
-            for (Block block : current_grille.getBlocks()) {
-                block.setSelected(false);
+        if(current_grille.getBlocks() != null) {
+            if (!flag) {
+                for (Block block : current_grille.getBlocks()) {
+                    block.setSelected(false);
+                }
             }
+
+            load_grille(current_grille);
+            this.blockAdapter.notifyDataSetChanged();
         }
-
-        load_grille(current_grille);
-        this.blockAdapter.notifyDataSetChanged();
-
         report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.CHECKBOX_KEY, "mode_crayon_chkbx");
     }
 
@@ -542,26 +543,28 @@ public class SandokenActivity extends ActivityBase {
 
     private void do_raz() {
         Grille grille = this.sharedP.getCurrentGrille(); //mode virtuel
-        if(grille.getBlocks() != null) {
-            for (Block block : grille.getBlocks()) {
-                block.setCurrent_value(0);
-                block.setStylo("");
-                block.setCrayon("");
-                block.setC1_selected(false);
-                block.setC2_selected(false);
-                block.setC3_selected(false);
-                block.setC4_selected(false);
-                block.setC5_selected(false);
-                block.setC6_selected(false);
+        if(grille != null) {
+            if (grille.getBlocks() != null) {
+                for (Block block : grille.getBlocks()) {
+                    block.setCurrent_value(0);
+                    block.setStylo("");
+                    block.setCrayon("");
+                    block.setC1_selected(false);
+                    block.setC2_selected(false);
+                    block.setC3_selected(false);
+                    block.setC4_selected(false);
+                    block.setC5_selected(false);
+                    block.setC6_selected(false);
+                }
+
+                this.win = false;
+
+                this.sharedP.setModeEdition(false);
+                this.mode_crayon.setChecked(false);
+
+                load_grille(grille);
+                this.blockAdapter.notifyDataSetChanged();
             }
-
-            this.win = false;
-
-            this.sharedP.setModeEdition(false);
-            this.mode_crayon.setChecked(false);
-
-            load_grille(grille);
-            this.blockAdapter.notifyDataSetChanged();
         }
         report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, "raz_btn");
     }
