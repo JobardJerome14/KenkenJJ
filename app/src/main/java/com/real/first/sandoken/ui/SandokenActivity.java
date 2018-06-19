@@ -194,6 +194,7 @@ public class SandokenActivity extends ActivityBase {
 
     private void bindView() {
         this.spinner = findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
 
         this.gridView = findViewById(R.id.gridview);
