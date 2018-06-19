@@ -49,12 +49,10 @@ public class UITest {
     @Test
     public void remplissageStyloGrilleTest() {
 
-        sleep();
-
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
@@ -225,7 +223,6 @@ public class UITest {
         sleep();
 
 
-
         gridview.atPosition(0).onChildView(withId(R.id.stylo)).check(matches(withText("1")));
         gridview.atPosition(1).onChildView(withId(R.id.stylo)).check(matches(withText("2")));
         gridview.atPosition(2).onChildView(withId(R.id.stylo)).check(matches(withText("3")));
@@ -267,19 +264,16 @@ public class UITest {
         gridview.atPosition(33).onChildView(withId(R.id.stylo)).check(matches(withText("3")));
         gridview.atPosition(34).onChildView(withId(R.id.stylo)).check(matches(withText("4")));
         gridview.atPosition(35).onChildView(withId(R.id.stylo)).check(matches(withText("5")));
-
     }
 
 
     @Test
     public void remplissageFirstBlockTest() {
 
-        sleep();
-
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
@@ -315,7 +309,6 @@ public class UITest {
 
         DataInteraction tv2 = gridview.atPosition(0).onChildView(withId(R.id.stylo));
         tv2.check(matches(withText("6")));
-
     }
 
 
@@ -326,7 +319,7 @@ public class UITest {
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         Espresso.pressBack();
     }
@@ -352,7 +345,7 @@ public class UITest {
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
@@ -419,7 +412,6 @@ public class UITest {
         gridview.atPosition(0).onChildView(withId(R.id.crayon)).check(matches(withText("1   3   5 6 ")));
         gridview.atPosition(35).onChildView(withId(R.id.crayon)).check(matches(withText("1   3   5 6 ")));
 
-
     }
 
 
@@ -431,7 +423,7 @@ public class UITest {
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         ViewInteraction appCompatButton2 = onView(withId(R.id.new_game_btn));
         appCompatButton2.perform(click());
@@ -441,8 +433,7 @@ public class UITest {
         ViewInteraction appCompatButton3 = onView(withId(android.R.id.button1));
         appCompatButton3.perform(click());
 
-        sleep();
-
+        sleep_ws();
 
         ViewInteraction appCompatButton4 = onView(withId(R.id.raz_btn));
         appCompatButton4.perform(click());
@@ -605,15 +596,11 @@ public class UITest {
         pressBack();
 
         sleep();
-
     }
 
 
     @Test
     public void navigationTest() {
-        sleep();
-
-
         ViewInteraction button = onView(
                 allOf(withId(R.id.welcome_btn),
                         childAtPosition(
@@ -661,7 +648,6 @@ public class UITest {
 
         sleep();
 
-
         pressBack();
 
         sleep();
@@ -678,7 +664,7 @@ public class UITest {
         ViewInteraction appCompatButton3 = onView(withId(R.id.welcome_btn));
         appCompatButton3.perform(click());
 
-        sleep();
+        sleep_ws();
 
         pressBack();
 
@@ -688,87 +674,46 @@ public class UITest {
     @Test
     public void dialogFragmentTest() {
 
-        sleep();
-
-
-
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
-
+        sleep_ws();
 
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
-        sleep();
 
+        sleep();
 
         ViewInteraction choice_ok = onView(withId(android.R.id.button1));
         choice_ok.perform(click());
 
         sleep();
 
-
-
         DataInteraction gridview = onData(anything())
                 .inAdapterView(withId(R.id.gridview));
 
-
         sleep();
 
-        DataInteraction relativeLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gridview),
-                        childAtPosition(
-                                withId(R.id.lin_grid),
-                                0)))
-                .atPosition(4);
-        relativeLayout.perform(click());
+        gridview.atPosition(4).perform(click());
 
-        sleep();
+        ViewInteraction btn2 = onView(withId(R.id.btn2));
+        ViewInteraction btn6 = onView(withId(R.id.btn6));
 
 
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.btn6), withText("6"),
-                        childAtPosition(
-                                allOf(withId(R.id.btm_keyboard_view),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                1)),
-                                5),
-                        isDisplayed()));
-        appCompatButton3.perform(click());
-
+        btn6.perform(click());
         sleep();
 
         ViewInteraction appCompatCheckBox = onView(withId(R.id.mode_crayon));
         appCompatCheckBox.perform(click());
-
         sleep();
 
-
-        DataInteraction relativeLayout2 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gridview),
-                        childAtPosition(
-                                withId(R.id.lin_grid),
-                                0)))
-                .atPosition(25);
-        relativeLayout2.perform(click());
-
+        gridview.atPosition(25).perform(click());
         sleep();
 
-        ViewInteraction appCompatButton4 = onView(
-                allOf(withId(R.id.btn2), withText("2"),
-                        childAtPosition(
-                                allOf(withId(R.id.btm_keyboard_view),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                1)),
-                                1),
-                        isDisplayed()));
-        appCompatButton4.perform(click());
-
+        btn2.perform(click());
         sleep();
 
+        sleep();
 
         ViewInteraction appCompatButton5 = onView(withId(R.id.raz_btn));
         appCompatButton5.perform(click());
@@ -815,8 +760,7 @@ public class UITest {
 
         ViewInteraction appCompatButton12 = onView(withId(android.R.id.button1));
         appCompatButton12.perform(click());
-
-        sleep();
+        sleep_ws();
     }
 
 
@@ -827,7 +771,7 @@ public class UITest {
         ViewInteraction appCompatButton = onView(withId(R.id.welcome_btn));
         appCompatButton.perform(click());
 
-        sleep();
+        sleep_ws();
 
         ViewInteraction raz = onView(withId(R.id.raz_btn));
         raz.perform(click());
@@ -911,19 +855,26 @@ public class UITest {
         //15 cleared , 17 still written
         gridview.atPosition(9).onChildView(withId(R.id.stylo)).check(matches(withText("")));
         gridview.atPosition(17).onChildView(withId(R.id.crayon)).check(matches(withText("")));
-
-        sleep();
-
     }
 
 
     private void sleep(){
         try {
-            Thread.sleep(777);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+
+    private void sleep_ws(){
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
