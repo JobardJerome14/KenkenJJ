@@ -182,11 +182,13 @@ public class SandokenActivity extends ActivityBase {
     private void get_grille_via_api() {
         API api = new API();
         spinner.setVisibility(View.VISIBLE);
+        gridView.setVisibility(View.GONE);
         api.getKenkenGrille(this.user_id, new ResultatCallback<Grille>() {
             @Override
             public void onWaitingResultat(Grille grille) {
                 load_grille(grille);
                 spinner.setVisibility(View.GONE);
+                gridView.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -198,6 +200,7 @@ public class SandokenActivity extends ActivityBase {
 
 
         this.gridView = findViewById(R.id.gridview);
+        gridView.setVisibility(View.VISIBLE);
 
         Grille current_grille = this.sharedP.getCurrentGrille();
         if (current_grille != null /*&& current_grille.getId_grille() != 0*/) {
