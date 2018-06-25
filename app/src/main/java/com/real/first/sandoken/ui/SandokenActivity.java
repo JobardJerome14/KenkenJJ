@@ -342,98 +342,100 @@ public class SandokenActivity extends ActivityBase {
         Grille current_grille = this.sharedP.getCurrentGrille();
         int id_block = 0;
         int tmp = 0;
-        for (Block block : current_grille.getBlocks()) {
-            if (block.isSelected()) {
-                if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
-                    block.setCrayon("");
-                    block.setCurrent_value(i);
-                    block.setStylo(String.valueOf(i));
-                    id_block = tmp;
-                } else if (sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
-                    block.setCurrent_value(0);
-                    switch (i) {
-                        case 1:
-                            block.setC1_selected(!block.isC1_selected());
-                            break;
-                        case 2:
-                            block.setC2_selected(!block.isC2_selected());
-                            break;
-                        case 3:
-                            block.setC3_selected(!block.isC3_selected());
-                            break;
-                        case 4:
-                            block.setC4_selected(!block.isC4_selected());
-                            break;
-                        case 5:
-                            block.setC5_selected(!block.isC5_selected());
-                            break;
-                        case 6:
-                            block.setC6_selected(!block.isC6_selected());
-                            break;
-                    }
-
-                    block.setCrayon(crayon_formated_string(block));
-                } else {
-                    report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.MODE_EDITION_BTN_CLICK_KEY, IFBEvent.MODE_EDITION_KO_VALUE);
-                }
-            }
-            tmp++;
-        }
-
-        if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
-            tmp = 0;
+        if(current_grille.getBlocks() != null) {
             for (Block block : current_grille.getBlocks()) {
-                boolean modif = false;
-                if (tmp % 6 == id_block % 6 && tmp != id_block) {
-                    modif = true;
-                }
+                if (block.isSelected()) {
+                    if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
+                        block.setCrayon("");
+                        block.setCurrent_value(i);
+                        block.setStylo(String.valueOf(i));
+                        id_block = tmp;
+                    } else if (sharedP.getModeEdition().equals(getString(R.string.edition_crayon))) {
+                        block.setCurrent_value(0);
+                        switch (i) {
+                            case 1:
+                                block.setC1_selected(!block.isC1_selected());
+                                break;
+                            case 2:
+                                block.setC2_selected(!block.isC2_selected());
+                                break;
+                            case 3:
+                                block.setC3_selected(!block.isC3_selected());
+                                break;
+                            case 4:
+                                block.setC4_selected(!block.isC4_selected());
+                                break;
+                            case 5:
+                                block.setC5_selected(!block.isC5_selected());
+                                break;
+                            case 6:
+                                block.setC6_selected(!block.isC6_selected());
+                                break;
+                        }
 
-                if ((tmp - (tmp % 6)) == (id_block - id_block % 6) && tmp != id_block) {
-                    modif = true;
-                }
-
-                if (modif) {
-                    switch (i) {
-                        case 1:
-                            block.setC1_selected(false);
-                            break;
-                        case 2:
-                            block.setC2_selected(false);
-                            break;
-                        case 3:
-                            block.setC3_selected(false);
-                            break;
-                        case 4:
-                            block.setC4_selected(false);
-                            break;
-                        case 5:
-                            block.setC5_selected(false);
-                            break;
-                        case 6:
-                            block.setC6_selected(false);
-                            break;
-                    }
-
-                    String tmp_str = "";
-                    if(block.getStylo()!=null) {
-                        tmp_str = block.getStylo();
-                    }
-                    if( tmp_str.equals("")) {
                         block.setCrayon(crayon_formated_string(block));
+                    } else {
+                        report_firebase(IFBEvent.CRASH_EVENT, IFBEvent.MODE_EDITION_BTN_CLICK_KEY, IFBEvent.MODE_EDITION_KO_VALUE);
                     }
                 }
-
                 tmp++;
             }
+
+            if (sharedP.getModeEdition().equals(getString(R.string.edition_stylo))) {
+                tmp = 0;
+                for (Block block : current_grille.getBlocks()) {
+                    boolean modif = false;
+                    if (tmp % 6 == id_block % 6 && tmp != id_block) {
+                        modif = true;
+                    }
+
+                    if ((tmp - (tmp % 6)) == (id_block - id_block % 6) && tmp != id_block) {
+                        modif = true;
+                    }
+
+                    if (modif) {
+                        switch (i) {
+                            case 1:
+                                block.setC1_selected(false);
+                                break;
+                            case 2:
+                                block.setC2_selected(false);
+                                break;
+                            case 3:
+                                block.setC3_selected(false);
+                                break;
+                            case 4:
+                                block.setC4_selected(false);
+                                break;
+                            case 5:
+                                block.setC5_selected(false);
+                                break;
+                            case 6:
+                                block.setC6_selected(false);
+                                break;
+                        }
+
+                        String tmp_str = "";
+                        if (block.getStylo() != null) {
+                            tmp_str = block.getStylo();
+                        }
+                        if (tmp_str.equals("")) {
+                            block.setCrayon(crayon_formated_string(block));
+                        }
+                    }
+
+                    tmp++;
+                }
+            }
+
+            load_grille(current_grille);
+            this.blockAdapter.notifyDataSetChanged();
+
+            String value = "keyboard_btn_" + String.valueOf(i);
+            report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, value);
+
+            check_grille();
         }
-
-        load_grille(current_grille);
-        this.blockAdapter.notifyDataSetChanged();
-
-        String value = "keyboard_btn_" + String.valueOf(i);
-        report_firebase(IFBEvent.CLIC_EVENT, IFBEvent.BUTTON_KEY, value);
-
-        check_grille();
     }
 
     public String crayon_formated_string(Block block) {
