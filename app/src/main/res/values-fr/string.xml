@@ -4,7 +4,7 @@
     <string name="welcome_btn">Jouer</string>
     <string name="stats_btn">Statistiques</string>
     <string name="win_message_title">Gagné!</string>
-    <string name="win_message_desc">Bravo, tu as terminé cette grille!\n XYZ% des joueurs ont réussi ce Sandoken!</string>
+    <string name="win_message_desc">Bravo, tu as terminé cette grille!\n XYZ% des joueurs ont réussi ce Sandoken!\n ABC joueur(s) ont réussi ce Sandoken</string>
     <string name="mode_crayon_label">Mode crayon</string>
     <string name="edition_stylo">STYLO</string>
     <string name="edition_crayon">CRAYON</string>

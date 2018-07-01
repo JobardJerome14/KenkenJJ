@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 public interface IApi {
 
     //@GET("/src/gcpkenjj/php_gae_quickstart-2018-05-29-23-25/get-grille.php")
-    @GET("/kenjjget")
+    @GET("/kenjjgetV2")
     Call<Grille> getKenkenGrille(
             @Query("user_id") String user_id
     );

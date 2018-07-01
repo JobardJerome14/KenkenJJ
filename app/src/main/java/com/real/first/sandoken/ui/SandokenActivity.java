@@ -169,7 +169,7 @@ public class SandokenActivity extends ActivityBase {
             blocks.add(new Block("", false, true, true, true, 5));
         }
 
-        return new Grille(this.id_grille, blocks, "73");
+        return new Grille(this.id_grille, blocks, "73", "14");
     }
 
     private void load_grille(Grille grille) {
@@ -643,7 +643,7 @@ public class SandokenActivity extends ActivityBase {
         if(fm != null) {
             fm.beginTransaction().commit();
             Grille grille = this.sharedP.getCurrentGrille();
-            AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.win_message_title), getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()), false, new ResultatCallback<String>() {
+            AlertFragment alertFragment = AlertFragment.newInstance(getString(R.string.win_message_title), getString(R.string.win_message_desc).replace("XYZ", grille.getPercent_victory()).replace("ABC", grille.getNb_victory()), false, new ResultatCallback<String>() {
                 @Override
                 public void onWaitingResultat(String result) {
 
