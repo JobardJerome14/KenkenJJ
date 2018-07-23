@@ -70,7 +70,9 @@ public class AlertFragment extends DialogFragment {
     }
 
     public void do_ok_callback() {
-        this.alertFragmentCB.onWaitingResultat(getString(this.ok_label));
+        if(this.alertFragmentCB != null ) {
+            this.alertFragmentCB.onWaitingResultat(getString(this.ok_label));
+        }
     }
 
 
