@@ -13,3 +13,4 @@ app/build/*
 .idea\*
 keystores.jks
 app/release/*
+gradle/wrapper/gradle-wrapper\.properties
